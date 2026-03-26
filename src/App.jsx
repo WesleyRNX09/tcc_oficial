@@ -11,6 +11,7 @@ function Atividade01() {
                 <div className={styles.verde}></div>
                 <div className={styles.branco}></div>
                 <div className={styles.amarelo}></div>
+                <div className={styles.amarelo}></div>
             </div>
         </div>
      
