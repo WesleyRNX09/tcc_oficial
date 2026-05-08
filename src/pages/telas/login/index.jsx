@@ -34,7 +34,7 @@ function Login01() {
 
               <div className={styles.login_caixa01}>
 
-                <label className={styles.login_label}>E-mail111111111111111:</label>
+                <label className={styles.login_label}>E-mail:</label>
                 <input className={styles.login_textarea} placeholder="Digite aqui..."></input>
 
               </div>
