@@ -24,7 +24,7 @@ function cadastro (){
 
                     <div className={styles.cadastro_boxs}>
                 
-                        <label className={styles.cadastro_titulo}>Faça ssssssssss seu Login:</label>
+                        <label className={styles.cadastro_titulo}>Faça seu Login:</label>
 
                         <div className={styles.cadastro_caixas}>
 
