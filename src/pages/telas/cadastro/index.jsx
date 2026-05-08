@@ -6,6 +6,7 @@ import Botao from './botao';
 
 function cadastro (){
     return (
+        
         <div className={styles.container}>
       
             <div className={styles.barra_Principal}> 
@@ -23,7 +24,7 @@ function cadastro (){
 
                     <div className={styles.cadastro_boxs}>
                 
-                        <label className={styles.cadastro_titulo}>Faça seu Login:</label>
+                        <label className={styles.cadastro_titulo}>Faça ssssssssss seu Login:</label>
 
                         <div className={styles.cadastro_caixas}>
 
