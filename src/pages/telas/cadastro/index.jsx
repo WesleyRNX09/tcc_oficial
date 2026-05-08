@@ -38,7 +38,7 @@ function cadastro (){
                             <div className={styles.cadastro_caixa02}>
 
                                 <label className={styles.cadastro_label}>Email:</label>
-                                <input className={styles.cadastro_textarea} placeholder="Digite aqui..1111111111111111111111111111."></input>
+                                <input className={styles.cadastro_textarea} placeholder="Digite aqui..."></input>
                                 
                             </div>
 
