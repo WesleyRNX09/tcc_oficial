@@ -1,0 +1,239 @@
+.container { 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
+    height: 100%; 
+} 
+
+.barra_Principal { 
+    border-bottom: #e50914 0.3rem solid; 
+    width: 100%; 
+    display: flex; 
+    height: 9rem; 
+    align-items: center; 
+    justify-content: space-between; /* distribui os lados */ 
+    background-color: #1a1a1a; 
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
+    padding: 0 2rem; 
+} 
+
+.barra_Logo { 
+    display: flex; 
+    align-items: center; 
+    margin-left: clamp(2rem, 5vw, 15rem); 
+    height: 100%;
+} 
+
+.barra_Imagem { 
+    height: 10rem; 
+    object-fit: contain;
+} 
+
+.tempo_Conteudo{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 80vh; 
+    padding: 5rem;
+}
+
+.tempo_Margem{
+    width: 130vh; 
+    height: 100vh; 
+    align-items: center;
+    display: flex; 
+    flex-direction: column; 
+    position: relative; 
+    overflow: visible; 
+    background-color: #1a1a1a; 
+    border-radius: clamp(2rem, 4vw, 5rem); 
+    padding: 2rem; 
+    
+}
+
+.tempo_imagem_container{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+    justify-content: center;
+}
+
+.tempo_imagem{
+    max-width: 100%; 
+    height: 15rem; 
+    display: flex;
+}
+
+.tempo_titulo{
+    font-size: 4.5rem;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 4rem;
+}
+
+.tempo_linha {
+    width: 80%;
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 3rem;
+}
+
+/* LINHA */
+.tempo_linha::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    height: 3px;
+    background: #E0E0E0;
+
+    z-index: 1;
+}
+
+.tempo_etapa {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 2;
+}
+
+/* BOLINHAS */
+.tempo_bolinha {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    background: #E0E0E0;
+
+    position: absolute;
+    top: -3.5rem;
+
+    z-index: 3;
+}
+
+/* PRIMEIRA */
+.tempo_etapa:first-child .tempo_bolinha {
+    left: 0;
+}
+
+/* ÚLTIMA */
+.tempo_etapa:last-child .tempo_bolinha {
+    right: 0;
+}
+
+/* TODAS DO MEIO */
+.tempo_etapa:not(:first-child):not(:last-child) .tempo_bolinha {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tempo_linha_letras {
+    color: #E0E0E0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 0.05rem;
+}
+
+.tempo_etapa small {
+    color: #E0E0E0;
+    font-size: 1.1rem;
+
+}
+
+.ativo .tempo_bolinha {
+    background: #E0E0E0;
+}
+
+.progresso .tempo_bolinha {
+    background: #e50914;
+}
+
+.progresso .tempo_linha_letras {
+    color: #e50914;
+    font-weight: 700;
+}
+
+.tempo_imagem_container01 { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    position: relative;
+    bottom: 15rem;
+} 
+
+.tempo_imagem01 {  
+    height: 50%; 
+    display: flex; 
+    
+} 
+
+.login_box{
+    display: flex;
+    position: absolute;
+    z-index: 3;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #121212;
+    margin-top: 2rem;
+
+    height: 9rem;
+    width: 60rem;
+
+    border: #e50914 2px solid;
+    border-radius: 2rem;
+    bottom: 17rem;
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
+}
+
+.login_textbox01{
+    color: #E0E0E0;
+    font-size: 1.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 0.05rem;
+}
+
+.login_textbox02{
+    color: #e50914;
+    font-size: 1.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 0.05rem;
+}
+
+.rodape_principal{ 
+    border-top: #e50914 0.3rem solid;
+    width: 100%;
+    height: 9rem;
+
+    background-color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3);
+
+    margin-top: auto; 
+} 
+
+.voltar{
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 28rem;
+    z-index: 4;
+    margin-left: 10rem;
+}

@@ -1,21 +1,23 @@
-import styles from './app.css';
 
-function Atividade01() {
-    return (
-        <div className={styles.container}>
-            <h1 className={styles.text}>Atividade 1</h1>
-            <p className={styles.text}>Conteúdo mínimo para componente React</p>
-           
-            <div className={styles.cores}>
-                <div className={styles.vermelho}></div>
-                <div className={styles.verde}></div>
-                <div className={styles.branco}></div>
-                <div className={styles.amarelo}></div>
-            </div>
-        </div>
-     
+import { Routes, Route } from 'react-router-dom'
 
-    )
+import Home from './pages/home'
+import Login01 from './pages/telas/login';
+import Procurar01 from './pages/telas/procurar_veiculo';
+import TempoReal01 from './pages/telas/tempo_real';
+import Cadastro from './pages/telas/cadastro';
+
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />   
+      <Route path="/login" element={<Login01 />} /> 
+      <Route path="/procurar_veiculo" element={<Procurar01 />} /> 
+      <Route path="/tempo_real" element={<TempoReal01 />} />
+      <Route path="/cadastro" element={<Cadastro />} /> 
+    </Routes>
+  )
 }
 
-export default Atividade01;
+export default App;

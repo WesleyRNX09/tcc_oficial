@@ -1,0 +1,163 @@
+
+.container { 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
+    height: 100%; 
+} 
+
+.barra_Principal { 
+    border-bottom: #e50914 0.3rem solid; 
+    width: 100%; 
+    display: flex; 
+    height: 9rem; 
+    align-items: center; 
+    justify-content: space-between; /* distribui os lados */ 
+    background-color: #1a1a1a; 
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
+    padding: 0 2rem; 
+} 
+
+.barra_Logo { 
+    display: flex; 
+    align-items: center; 
+    margin-left: clamp(2rem, 5vw, 15rem); 
+    height: 100%;
+} 
+
+.barra_Imagem { 
+    height: 10rem; 
+    object-fit: contain;
+} 
+
+
+.login_Conteudo{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 80vh; 
+    padding: 2rem;
+}
+
+.login_Margem{
+    width: 80vh; 
+    height: 72vh; 
+    align-items: center;
+    display: flex; 
+    flex-direction: column; 
+    position: relative; 
+    overflow: visible; 
+    background-color: #1a1a1a; 
+    border-radius: clamp(2rem, 4vw, 5rem); 
+    padding: 2rem; 
+}
+
+.home_imagem_container{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+    justify-content: center;
+}
+
+.login_imagem{
+    max-width: 100%; 
+    height: 15rem; 
+    display: flex;
+}
+
+.login_boxs{
+    margin-top: 10rem;
+}
+
+.login_titulo{
+    font-size: 4.5rem;
+    display: flex;
+    justify-content: center;
+    bottom: 11rem;
+    position: relative;
+    font-weight: 700;
+}
+
+.login_label{
+    font-size: 2rem;
+    color: #E0E0E0;
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+    display: flex;
+    
+}
+
+.login_textarea { 
+    min-height: 1rem;
+    padding: 1rem;
+    border: 1px solid #E0E0E0;
+    border-radius: 1.4rem;
+    font-size: 2rem;
+    resize: none;
+    outline: none;
+    transition: border 0.2s ease;
+    box-sizing: border-box;
+    text-align: left;      /* mantém o texto alinhado à esquerda */
+    height: 6rem;
+    width: 60rem;
+    
+}
+
+.home_botoes{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+
+
+.login_caixa01{
+    margin-top: -7rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.login_caixa02{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.login_senha{
+
+    align-self: flex-end; 
+    color:rgb(40, 126, 255);
+}
+
+.login_linha{
+    width: 70%; 
+    height: 4px;
+    border-radius: 2px; 
+    position: absolute; 
+    bottom: 6rem; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 2; 
+    display: flex; 
+    justify-content: center; 
+    border: #E0E0E0 solid 2px;
+}
+
+.home_botoes2{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 6rem;
+}
+
+.rodape_principal{ 
+    border-top: #e50914 0.3rem solid;
+    width: 100%; height: 9rem; 
+    background-color: #1a1a1a; 
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
+    padding: 0 2rem; 
+    position: absolute; 
+    bottom: -4rem; 
+} 
