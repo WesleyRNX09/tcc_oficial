@@ -1,7 +1,8 @@
 import Botao from './botao'
 import { Link } from "react-router-dom";
 import logo from '../../assets/logo.png';
-import fundo from '../../assets/fundoHOM3.png';
+import fundo01 from '../../assets/pagina_inicial01.png';
+import fundo02 from '../../assets/fundoHOM3.png';
 import { useNavigate } from "react-router-dom";
 
 import styles from './index.module.css';
@@ -31,35 +32,36 @@ function Home() {
            
         </div>
       </div>
-      
 
-        <div className={styles.home_Conteudo}>
+      <div className={styles.home_conteudo}>
 
-          <div className={styles.home_Margem}>
+        <div className={styles.home_margin1}>
+          <Botao texto="CADASTRE-SE" acao={'vermelho'} />
+          <img src={fundo01} className={styles.home_imagem01} />
+          <Botao texto="CADASTRE-SE" acao={'branco'} />
+        </div>
+        
+        <div className={styles.home_margin2}>
 
-            <div className={styles.home_imagem_container}>
-              <img src={fundo} className={styles.home_imagem} />     
-            </div>
+          <div className={styles.home_box}>
 
-            <div className={styles.home_linha}>
-              <p className={styles.home_linha_letras}>Revisão Geral</p>
-              <p className={styles.home_linha_letras}>Suspensão</p>
-              <p className={styles.home_linha_letras}>Freios</p>
-              <p className={styles.home_linha_letras}>Pneus</p>
-              <p className={styles.home_linha_letras}>Óleo</p>  
-            </div>
-      
-            <div className={styles.home_botoes}>
+            <img src={fundo02} className={styles.home_imagem02} />
 
-                <Botao texto="ENTRE EM CONTATO CONOSCO" acao={'branco'} />
-                <Botao texto="ACOMPANHAR VEÍCULO" acao={'vermelho'} aoClicar={() => navigate("/procurar_veiculo")} />
-                
+            <div className={styles.home_box02}>
+
             </div>
           </div>
-
-          <div className={styles.rodape_principal}></div>
-
         </div>
+
+      </div>
+      
+
+        
+        
+
+      <div className={styles.rodape_principal}></div>
+
+      
            
     </div>
   )

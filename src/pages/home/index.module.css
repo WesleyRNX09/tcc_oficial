@@ -12,7 +12,7 @@
     height: 9rem; 
     align-items: center; 
     justify-content: space-between; /* distribui os lados */ 
-    background-color: #1a1a1a; 
+    background-color: #0A0A0A; 
     box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
     padding: 0 2rem; 
 } 
@@ -52,84 +52,69 @@
     color: #E0E0E0 ; 
 } 
 
-.home_Conteudo { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    min-height: 80vh; 
-    padding: 2rem; 
-} 
-
-.home_linha { 
-    width: 100%; 
-    height: 4px; 
-    background-color: #E0E0E0; 
-    border-radius: 2px; 
-    position: absolute; 
-    bottom: 100px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    z-index: 2; 
-    display: flex; 
-    justify-content: center; 
-} 
-
-.home_linha_letras { 
+.home_conteudo{
     display: flex;
-    margin: 7rem; 
-    margin-top: 2rem; 
-    position: relative; 
-    top: -5.1rem; 
-    letter-spacing: 0.05rem; 
-    font-weight: 800; 
-} 
+}
 
-.home_Margem { 
-    width: 130vh; 
-    height: 70vh; 
-    min-height: 50vh; 
-    display: flex; 
-    flex-direction: column; 
-    position: relative; 
-    overflow: visible; 
-    justify-content: center; 
-    align-items: center; 
-    background-color: #1a1a1a; 
-    border-radius: clamp(2rem, 4vw, 5rem); 
-    padding: 2rem; 
-} 
+.home_margin1{
+    background-color: #0A0A0A;
+    height: 85.2vh;
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home_imagem01{
+    display: flex;
+    height: 60rem;
+}
+
+.home_imagem02{
+    width: 100%;
+    max-width: 90rem;
+    height: auto;
+    object-fit: contain;
+}
+
+.home_margin2{
+    width: 100%;
+    display: flex;
+    justify-content: center; /* centraliza horizontal */
+    align-items: center; /* centraliza vertical */
     
-.home_imagem_container { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    width: 100%; 
-    justify-content: center; 
-} 
+}
 
-.home_imagem { 
-    max-width: 100%; 
-    height: 95%; 
-    display: flex; 
-} 
+.home_box{
+    display: flex;
+    justify-content: center;
+    
+    border: #676767 1px solid;
+    border-radius: 3rem;
+    background-color: #0A0A0A ;
 
-.home_botoes { 
-    position: absolute;
-    bottom: -40px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    display: flex; 
-    gap: clamp(2rem, 5vw, 10rem); 
-    justify-content: center; 
-    align-items: center; 
-    flex-wrap: wrap; 
-    width: max-content; 
-} 
+    width: 90%;
+    max-width: 160rem;
+    min-height: 70rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .rodape_principal{ 
     border-top: #e50914 0.3rem solid;
     width: 100%; height: 9rem; 
-    background-color: #1a1a1a; 
+    background-color: #0A0A0A; 
     box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
     padding: 0 2rem; 
     position: absolute; 
