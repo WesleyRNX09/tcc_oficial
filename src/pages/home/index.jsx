@@ -48,9 +48,42 @@ function Home() {
             <img src={fundo02} className={styles.home_imagem02} />
 
             <div className={styles.home_box02}>
+              
+              <h1>Serviços</h1>
 
+                <div className={styles.home_caixas}>
+
+                  <div className={styles.home_caixa}>
+
+                    <h3>Revisão Geral</h3>
+                  </div>
+
+                  <div className={styles.home_caixa}>
+                    
+                    <h3>Suspensão</h3>
+                  </div>
+
+                  <div className={styles.home_caixa}>
+                    
+                    <h3>Freios</h3>
+                  </div>
+
+                  <div className={styles.home_caixa}>
+                    
+                    <h3>Pneus</h3>
+                  </div>
+
+                  <div className={styles.home_caixa}>
+                    
+                    <h3>Óleo</h3>
+                  </div>
+
+                </div>
+                
+                <Botao texto="CADASTRE-SE" acao={'vermelho'} />
             </div>
           </div>
+
         </div>
 
       </div>

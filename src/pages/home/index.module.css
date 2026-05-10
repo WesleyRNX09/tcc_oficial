@@ -2,7 +2,7 @@
     align-items: center; 
     justify-content: space-between; 
     width: 100%; 
-    height: 100%; 
+    min-height: 100vh; 
 } 
 
 .barra_Principal { 
@@ -54,51 +54,121 @@
 
 .home_conteudo{
     display: flex;
+    width: 100%;
+    align-items: flex-start;
 }
 
 .home_margin1{
     background-color: #0A0A0A;
-    height: 85.2vh;
+    min-height: 100vh;
     width: 50rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 5rem;
 }
 
 .home_imagem01{
-    display: flex;
-    height: 60rem;
+    width: 25%;
+    min-width: 32rem;
+    max-width: 40rem;   
 }
 
 .home_imagem02{
     width: 100%;
-    max-width: 90rem;
-    height: auto;
-    object-fit: contain;
+    max-height: 55rem;      /* ← limita a altura da imagem */
+    object-fit: contain;    /* ← mantém proporção sem distorcer */
+    padding: 0;             /* ← remove padding desnecessário */
+    box-sizing: border-box;
+    
 }
 
 .home_margin2{
-    width: 100%;
+    width: 75%;
+    min-height: auto;       /* ← tira o min-height grande */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     display: flex;
-    justify-content: center; /* centraliza horizontal */
-    align-items: center; /* centraliza vertical */
-    
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
 .home_box{
     display: flex;
-    justify-content: center;
-    
+    flex-direction: column;
+    align-items: center;
+
     border: #676767 1px solid;
     border-radius: 3rem;
-    background-color: #0A0A0A ;
+    background-color: #0A0A0A;
 
-    width: 90%;
-    max-width: 160rem;
-    min-height: 70rem;
+    width: 100%;
+    max-width: 140rem;
+
+    padding: 2rem;      /* ← era 4rem, reduz */
+    gap: 2rem;          /* ← era 4rem, reduz */
+
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
+.home_box02{
+    width: 100%;
+
+    border: #676767 solid 1px;
+    border-radius: 2rem;
+
+    padding: 4rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-sizing: border-box;
+    
+}
+
+.home_caixas{
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 2rem;
+
+    margin-top: 3rem;
+}
+
+.home_caixa{
+    background-color: #111;
+
+    border: 1px solid #2e2e2e;
+    border-radius: 1.5rem;
+
+    padding: 2rem;
+
+    min-height: 12rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s;
+}
+
+.home_caixa:hover{
+    border-color: #e50914;
+    transform: translateY(-5px);
+}
+
+.home_caixa h3{
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
 
 
 
@@ -113,12 +183,11 @@
 
 .rodape_principal{ 
     border-top: #e50914 0.3rem solid;
-    width: 100%; height: 9rem; 
+    width: 100%;
+    height: 9rem; 
     background-color: #0A0A0A; 
     box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
     padding: 0 2rem; 
-    position: absolute; 
-    bottom: -4rem; 
 } 
 
 @media screen and (max-width: 1024px) {
