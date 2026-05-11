@@ -41,11 +41,12 @@
     padding: 0.5rem 1rem; 
     background-color: black; 
     color: white; 
-    border-radius: 0.5rem; 
+    border-radius: 1rem; 
     cursor: pointer; 
     margin-right: clamp(0.5rem, 2vw, 5rem); 
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-    letter-spacing: 0.05rem; font-weight: bold; 
+    font-weight: bold; 
+    letter-spacing: 0.9px;
+    border: #e50914 1px solid;
 } 
 
 .link_barra{ 
@@ -55,13 +56,13 @@
 .home_conteudo{
     display: flex;
     width: 100%;
-    align-items: flex-start;
+    align-items: stretch;  
 }
 
 .home_margin1{
-    background-color: #0A0A0A;
-    min-height: 100vh;
+     background-color: #0A0A0A;
     width: 50rem;
+    min-width: 50rem;      /* ← garante que não encolhe */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,27 +72,24 @@
 
 .home_imagem01{
     width: 25%;
-    min-width: 32rem;
-    max-width: 40rem;   
+    min-width: 45rem;
+    max-width: 55rem;   
 }
 
 .home_imagem02{
-    width: 100%;
-    max-height: 55rem;      /* ← limita a altura da imagem */
-    object-fit: contain;    /* ← mantém proporção sem distorcer */
-    padding: 0;             /* ← remove padding desnecessário */
+   width: 100%;
+    max-height: 50rem;     /* ← limita a altura da imagem */
+    object-fit: contain;
     box-sizing: border-box;
     
 }
 
 .home_margin2{
     width: 75%;
-    min-height: auto;       /* ← tira o min-height grande */
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    min-height: 100vh;        /* ← iguala a altura da margin1 */
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;      /* ← centraliza verticalmente */
     padding: 2rem;
     box-sizing: border-box;
 }
@@ -139,7 +137,6 @@
 
     gap: 2rem;
 
-    margin-top: 3rem;
 }
 
 .home_caixa{
@@ -157,6 +154,9 @@
     align-items: center;
 
     transition: 0.3s;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
 }
 
 .home_caixa:hover{
