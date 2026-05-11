@@ -81,7 +81,7 @@ function Home() {
 
                 </div>
                 
-                <Botao texto="ACOMPANHAR VEÍCULO" acao={'vermelho'}  />
+                <Botao texto="ACOMPANHAR VEÍCULO" acao={'vermelho'} aoClicar={() => navigate("/procurar_veiculo")}  />
             </div>
           </div>
 

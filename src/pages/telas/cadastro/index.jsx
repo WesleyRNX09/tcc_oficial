@@ -11,7 +11,12 @@ function cadastro (){
       
             <div className={styles.barra_Principal}> 
                 <div className={styles.barra_Logo}>
-                <img src={logo} className={styles.barra_Imagem} />
+                    <img src={logo} className={styles.barra_Imagem} />
+                </div>
+
+                <div className={styles.barra_conteudo}>
+                    <Link to="/" className={styles.barra_botao}>Inicio</Link>
+                    <Link to="/login" className={styles.barra_botao}>Fazer login </Link> 
                 </div>
             </div>
 
@@ -24,7 +29,7 @@ function cadastro (){
 
                     <div className={styles.cadastro_boxs}>
                 
-                        <label className={styles.cadastro_titulo}>Faça seu Login:</label>
+                        <label className={styles.cadastro_titulo}>Faça seu <span className={styles.cadastro_cad}> Cadastro:</span></label>
 
                         <div className={styles.cadastro_caixas}>
 

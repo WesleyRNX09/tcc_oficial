@@ -16,6 +16,11 @@ function Login01() {
         <div className={styles.barra_Logo}>
           <img src={logo} className={styles.barra_Imagem} />
         </div>
+
+        <div className={styles.barra_conteudo}>
+          <Link to="/" className={styles.barra_botao}>Inicio</Link>
+          <Link to="/login" className={styles.barra_botao}>Logar como Funcionarios</Link>
+        </div>
       </div>
 
       <div className={styles.login_Conteudo}>

@@ -77,16 +77,18 @@
 }
 
 .home_imagem02{
-   width: 100%;
-    max-height: 50rem;     /* ← limita a altura da imagem */
-    object-fit: contain;
+    width: 100%;
+    max-height: 55rem;     /* ← aumenta esse valor até ficar do tamanho que quiser */
+    object-fit: cover;     /* ← cover em vez de contain, preenche sem distorcer */
+    object-position: center;
     box-sizing: border-box;
+    padding: 9rem;
     
 }
 
 .home_margin2{
     width: 75%;
-    min-height: 100vh;        /* ← iguala a altura da margin1 */
+    min-height: 50vh;        /* ← iguala a altura da margin1 */
     display: flex;
     justify-content: center;
     align-items: center;      /* ← centraliza verticalmente */
@@ -111,6 +113,7 @@
 
     box-sizing: border-box;
     overflow: hidden;
+    
 }
 
 .home_box02{
@@ -153,16 +156,16 @@
     justify-content: center;
     align-items: center;
 
-    transition: 0.3s;
+    
     flex-direction: column;
     margin-top: 2rem;
     margin-bottom: 4rem;
 }
 
-.home_caixa:hover{
+/*.home_caixa:hover{
     border-color: #e50914;
     transform: translateY(-5px);
-}
+}*/
 
 .home_caixa h3{
     color: white;
