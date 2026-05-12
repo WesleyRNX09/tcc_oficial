@@ -124,14 +124,11 @@ function Home() {
 
               <label>Insira o Código do Veículo:</label>
 
-              <input
-                type="text"
-                className={styles.modal_input}
-              />
+              <input type="text" className={styles.modal_input}/>
 
-              <button className={styles.modal_btn}>
-                Confirmar
-              </button>
+              <div className={styles.modal_botao}>
+                <Botao texto="Confirmar" acao={'vermelho'} aoClicar={() => navigate("/tempo_real")}/>         
+              </div>
             </div>
           </div>
         )}
