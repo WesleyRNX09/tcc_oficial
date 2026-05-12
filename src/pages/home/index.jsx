@@ -16,6 +16,7 @@ import styles from './index.module.css';
 function Home() {
   const navigate = useNavigate();
   const [menuAberto, setMenuAberto] = useState(false);
+  const [modalAberto, setModalAberto] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -100,12 +101,40 @@ function Home() {
                   <h3>Óleo</h3>
                 </div>
               </div>
-              <Botao texto="ACOMPANHAR VEÍCULO" acao={'vermelho'} aoClicar={() => navigate("/procurar_veiculo")} />
+              <Botao
+                texto="ACOMPANHAR VEÍCULO" acao={'vermelho'} aoClicar={() => setModalAberto(true)}/>
             </div>
           </div>
         </div>
 
       </div>
+      
+      {modalAberto && (
+          <div className={styles.modal_overlay}onClick={() => setModalAberto(false)}>
+
+            <div className={styles.modal_box}onClick={(e) => e.stopPropagation()}>
+
+              <button className={styles.modal_fechar}onClick={() => setModalAberto(false)}>✕</button>
+              
+              <img src={logo} className={styles.modal_logo} />
+
+              <h1>
+                Pesquisar por <span>Veículo</span>
+              </h1>
+
+              <label>Insira o Código do Veículo:</label>
+
+              <input
+                type="text"
+                className={styles.modal_input}
+              />
+
+              <button className={styles.modal_btn}>
+                Confirmar
+              </button>
+            </div>
+          </div>
+        )}
 
       <div className={styles.rodape_principal}></div>
     </div>
