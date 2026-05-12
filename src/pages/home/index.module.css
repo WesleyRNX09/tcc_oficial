@@ -53,21 +53,100 @@
     color: #E0E0E0 ; 
 } 
 
+/* ── Botão hambúrguer ── */
+.barra_menu_btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  margin-right: 1.5rem;
+  transition: background 0.2s;
+}
+.barra_menu_btn:hover {
+  background: rgba(229, 9, 20, 0.1);
+}
+
+.barra_linha {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition:
+    transform  0.6s cubic-bezier(0.4, 0, 0.2, 1),  /* era 0.35s */
+    opacity    0.4s ease,                            /* era 0.2s */
+    background 0.4s ease;
+  transform-origin: center;
+}
+
+.barra_menu_btn_aberto .barra_linha:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.barra_menu_btn_aberto .barra_linha:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  background-color: #e50914;
+}
+
+.barra_menu_btn_aberto .barra_linha:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: #e50914;
+}
+
+
 .home_conteudo{
     display: flex;
     width: 100%;
     align-items: stretch;  
 }
 
-.home_margin1{
-     background-color: #0A0A0A;
-    width: 50rem;
-    min-width: 50rem;      /* ← garante que não encolhe */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5rem;
+/* ── Sidebar (home_margin1) — fechada por padrão ── */
+.home_margin1 {
+  background-color: #0A0A0A;
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 100;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 👈 anima os dois */
+}
+
+
+.home_margin1_inner {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  width: 100%;
+  padding: 2rem;
+  transition:
+    opacity 0.4s ease 0.2s;  /* 👈 só opacity, sem translateX */
+}
+
+.home_margin1_aberto .home_margin1_inner {
+  opacity: 1;                       
+}
+
+/* ── Botão de cadastro pulsa ao abrir ── */
+.home_margin1_aberto .btn_pulse {
+  animation: pulseEntrada 0.5s ease 0.35s both;
 }
 
 .home_imagem01{
@@ -78,8 +157,8 @@
 
 .home_imagem02{
     width: 100%;
-    max-height: 55rem;     /* ← aumenta esse valor até ficar do tamanho que quiser */
-    object-fit: cover;     /* ← cover em vez de contain, preenche sem distorcer */
+    max-height: 55rem;    
+    object-fit: cover;     
     object-position: center;
     box-sizing: border-box;
     padding: 9rem;
@@ -87,13 +166,24 @@
 }
 
 .home_margin2{
-    width: 75%;
-    min-height: 50vh;        /* ← iguala a altura da margin1 */
-    display: flex;
-    justify-content: center;
-    align-items: center;      /* ← centraliza verticalmente */
-    padding: 2rem;
-    box-sizing: border-box;
+    min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 👈 */
+  position: relative;
+  z-index: 1
+}
+
+
+/* ── Overlay escurecido (opcional, em telas pequenas) ── */
+.home_overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    animation: fadeOverlay 0.3s ease both;
 }
 
 .home_box{
@@ -108,8 +198,8 @@
     width: 100%;
     max-width: 140rem;
 
-    padding: 2rem;      /* ← era 4rem, reduz */
-    gap: 2rem;          /* ← era 4rem, reduz */
+    padding: 2rem;      
+    gap: 2rem;          
 
     box-sizing: border-box;
     overflow: hidden;
@@ -192,6 +282,17 @@
     box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
     padding: 0 2rem; 
 } 
+
+@keyframes pulseEntrada {
+  0%   { box-shadow: 0 0 0 0 rgba(229,9,20,0.5); transform: scale(0.95); }
+  50%  { box-shadow: 0 0 0 12px rgba(229,9,20,0); transform: scale(1.05); }
+  100% { box-shadow: 0 0 0 0 rgba(229,9,20,0);  transform: scale(1); }
+}
+
+@keyframes fadeOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 
 @media screen and (max-width: 1024px) {
      
