@@ -1,55 +1,43 @@
-/* ─── Reset & Base ─── */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+.container { 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
+    min-height: 100vh; 
+} 
 
-.container {
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  min-height: 100vh;
-}
+.barra_Principal { 
+    border-bottom: #e50914 0.3rem solid; 
+    width: 100%; 
+    display: flex; 
+    height: 9rem; 
+    align-items: center; 
+    justify-content: space-between; /* distribui os lados */ 
+    background-color: #0A0A0A; 
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
+    padding: 0 2rem; 
+} 
 
-/* ─── Navbar ─── */
-.barra_Principal {
-  border-bottom: #e50914 0.3rem solid;
-  width: 100%;
-  display: flex;
-  height: 9rem;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #0A0A0A;
-  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3);
-  padding: 0 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 200;
-}
+.barra_Logo { 
+    display: flex; 
+    align-items: center; 
+    margin-left: clamp(2rem, 5vw, 15rem); 
+    height: 100%;
+} 
 
-.barra_Logo {
-  display: flex;
-  align-items: center;
-  margin-left: clamp(0.5rem, 3vw, 10rem);
-  height: 100%;
-  gap: 0.5rem;
-}
+.barra_Imagem { 
+    height: 10rem; 
+    object-fit: contain;
+} 
 
-.barra_Imagem {
-  height: clamp(5rem, 8vw, 10rem);
-  object-fit: contain;
+.barra_conteudo { 
+    display: flex; 
+    flex-direction: row; 
+    gap: 1rem; 
+    margin-right: clamp(2rem, 5vw, 15rem); 
+    flex-wrap: wrap; justify-content: flex-end; 
 }
-
-.barra_conteudo {
-  display: flex;
-  flex-direction: row;
-  gap: clamp(0.3rem, 1vw, 1rem);
-  margin-right: clamp(0.5rem, 3vw, 10rem);
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.barra_botao {
+ 
+.barra_botao { 
   padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.5vw, 1rem);
   background-color: black;
   color: white;
@@ -62,17 +50,17 @@
   white-space: nowrap;
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
-}
+} 
 
 .barra_botao:hover {
   background-color: #e50914;
 }
 
-.link_barra {
-  color: #E0E0E0;
-}
+.link_barra{ 
+    color: #E0E0E0 ; 
+} 
 
-/* ─── Hambúrguer ─── */
+/* ── Botão hambúrguer ── */
 .barra_menu_btn {
   background: none;
   border: none;
@@ -86,11 +74,9 @@
   height: 3.5rem;
   padding: 0.5rem;
   border-radius: 0.8rem;
-  margin-right: 1rem;
+  margin-right: 1.5rem;
   transition: background 0.2s;
-  flex-shrink: 0;
 }
-
 .barra_menu_btn:hover {
   background: rgba(229, 9, 20, 0.1);
 }
@@ -102,8 +88,8 @@
   background-color: white;
   border-radius: 2px;
   transition:
-    transform  0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity    0.4s ease,
+    transform  0.6s cubic-bezier(0.4, 0, 0.2, 1),  /* era 0.35s */
+    opacity    0.4s ease,                            /* era 0.2s */
     background 0.4s ease;
   transform-origin: center;
 }
@@ -123,15 +109,14 @@
   background-color: #e50914;
 }
 
-/* ─── Layout principal ─── */
-.home_conteudo {
-  display: flex;
-  width: 100%;
-  align-items: stretch;
-  position: relative;
+
+.home_conteudo{
+    display: flex;
+    width: 100%;
+    align-items: stretch;  
 }
 
-/* ─── Sidebar ─── */
+/* ── Sidebar (home_margin1) — fechada por padrão ── */
 .home_margin1 {
   background-color: #0A0A0A;
   width: 0;
@@ -145,255 +130,293 @@
   flex-shrink: 0;
   position: relative;
   z-index: 100;
-  transition:
-    width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 👈 anima os dois */
 }
+
 
 .home_margin1_inner {
   opacity: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 5rem;
   width: 100%;
   padding: 2rem;
-  transition: opacity 0.4s ease 0.2s;
+  transition:
+    opacity 0.4s ease 0.2s;  /* 👈 só opacity, sem translateX */
 }
 
 .home_margin1_aberto .home_margin1_inner {
-  opacity: 1;
+  opacity: 1;                       
 }
 
+/* ── Botão de cadastro pulsa ao abrir ── */
 .home_margin1_aberto .btn_pulse {
   animation: pulseEntrada 0.5s ease 0.35s both;
 }
 
-.home_imagem01 {
-  width: 80%;
-  max-width: 40rem;
-  height: auto;
+.home_imagem01{
+    width: 25%;
+    min-width: 45rem;
+    max-width: 55rem;   
 }
 
-/* ─── Conteúdo principal ─── */
-.home_margin2 {
-  min-height: 50vh;
+.home_imagem02{
+    width: 100%;
+    max-height: 55rem;    
+    object-fit: cover;     
+    object-position: center;
+    box-sizing: border-box;
+    padding: 9rem;
+}
+
+.home_margin2{
+    min-height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: clamp(1rem, 3vw, 2rem);
+  padding: 2rem;
   box-sizing: border-box;
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 👈 */
   position: relative;
-  z-index: 1;
-  flex: 1;
-  min-width: 0;
+  z-index: 1    
 }
 
+
+/* ── Overlay escurecido (opcional, em telas pequenas) ── */
 .home_overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 99;
-  animation: fadeOverlay 0.3s ease both;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    animation: fadeOverlay 0.3s ease both;
 }
 
-/* ─── Box principal ─── */
-.home_box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: #676767 1px solid;
-  border-radius: clamp(1.5rem, 3vw, 3rem);
-  background-color: #0A0A0A;
-  width: 100%;
-  max-width: 140rem;
-  padding: clamp(1rem, 2vw, 2rem);
-  gap: clamp(1rem, 2vw, 2rem);
-  box-sizing: border-box;
-  overflow: hidden;
+.home_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: #676767 1px solid;
+    border-radius: 3rem;
+    background-color: #0A0A0A;
+
+    width: 100%;
+    max-width: 140rem;
+
+    padding: 2rem;      
+    gap: 2rem;          
+
+    box-sizing: border-box;
+    overflow: hidden;
+    
 }
 
-.home_imagem02 {
-  width: 100%;
-  max-height: 55rem;
-  object-fit: cover;
-  object-position: center;
-  box-sizing: border-box;
-  padding: clamp(1rem, 5vw, 9rem);
-  border-radius: clamp(1rem, 2vw, 2rem);
+.home_box02{
+    width: 100%;
+
+    border: #676767 solid 1px;
+    border-radius: 2rem;
+
+    padding: 4rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-sizing: border-box;
+    
 }
 
-.home_box02 {
-  width: 100%;
-  border: #676767 solid 1px;
-  border-radius: clamp(1rem, 2vw, 2rem);
-  padding: clamp(1.5rem, 3vw, 4rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
+.home_caixas{
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 2rem;
+
 }
 
-.home_box02 h1 {
-  color: white;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  text-align: center;
-  margin-bottom: 1rem;
+.home_caixa{
+    background-color: #111;
+
+    border: 1px solid #2e2e2e;
+    border-radius: 1.5rem;
+
+    padding: 2rem;
+
+    min-height: 12rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
 }
 
-/* ─── Grid de serviços ─── */
-.home_caixas {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
-  gap: clamp(1rem, 2vw, 2rem);
-  margin-bottom: 2rem;
+/*.home_caixa:hover{
+    border-color: #e50914;
+    transform: translateY(-5px);
+}*/
+
+.home_caixa h3{
+    color: white;
+    font-size: 2rem;
+    text-align: center;
 }
 
-.home_caixa {
-  background-color: #111;
-  border: 1px solid #2e2e2e;
-  border-radius: 1.5rem;
-  padding: clamp(1rem, 2vw, 2rem);
-  min-height: 10rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  transition: border-color 0.2s, transform 0.2s;
+
+.modal_overlay{
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(6px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
 }
 
-.home_caixa:hover {
-  border-color: #e50914;
-  transform: translateY(-4px);
+.modal_box{
+    width: 45rem;
+
+    background: #111;
+    border: 1px solid #2e2e2e;
+    border-radius: 2rem;
+
+    padding: 4rem;
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+
+    gap: 1.8rem;
+
+    box-shadow:
+      0 0 30px rgba(0,0,0,0.5),
+      0 0 20px rgba(229,9,20,0.15);
+
+    animation: modalEntrada .25s ease;
 }
 
-.home_caixa_imagem {
-  width: clamp(4rem, 6vw, 7rem);
-  height: clamp(4rem, 6vw, 7rem);
-  object-fit: contain;
-  margin-bottom: 0.8rem;
+
+
+.modal_fechar{
+    position: absolute;
+
+    top: 1.5rem;
+    right: 1.5rem;
+
+    width: 4rem;
+    height: 4rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #0A0A0A;
+
+    font-size: 2.4rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    padding: 0;
+    line-height: 1;
+
+   
 }
 
-.home_caixa h3 {
-  color: white;
-  font-size: clamp(1.2rem, 1.8vw, 2rem);
-  text-align: center;
+.modal_fechar:hover{
+     background: rgba(229,9,20,0.3);
+    color: #e50914;
+    transform: rotate(90deg) scale(1.05);
 }
 
-/* ─── Modal ─── */
-.modal_overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(6px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  padding: 1.5rem;
+.modal_logo{
+    width: 20rem;
+    object-fit: contain;
+    align-self: center;
+    object-fit: cover;
+    display: flex;
 }
 
-.modal_box {
-  width: min(45rem, 100%);
-  background: #111;
-  border: 1px solid #2e2e2e;
-  border-radius: 2rem;
-  padding: clamp(2rem, 5vw, 4rem);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  gap: clamp(1rem, 2vw, 1.8rem);
-  box-shadow:
-    0 0 30px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(229, 9, 20, 0.15);
-  animation: modalEntrada .25s ease;
+.modal_box h1{
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: -2rem;
 }
 
-.modal_fechar {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 3.5rem;
-  height: 3.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 50%;
-  background-color: #0A0A0A;
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-  transition: background 0.2s, color 0.2s, transform 0.2s;
+.modal_box span{
+    color: #e50914;
 }
 
-.modal_fechar:hover {
-  background: rgba(229, 9, 20, 0.3);
-  color: #e50914;
-  transform: rotate(90deg) scale(1.05);
+.modal_box label{
+    color: #ddd;
+    font-size: 2rem;
 }
 
-.modal_logo {
-  width: clamp(12rem, 30vw, 20rem);
-  object-fit: contain;
-  align-self: center;
+.modal_input{
+    width: 100%;
+
+    height: 4.5rem;
+
+    border-radius: 1rem;
+    border: 2px solid #e50914;
+
+    background: #fff;
+
+    padding: 0 1rem;
+
+    outline: none;
+
+    font-size: 1.6rem;
+
+    box-sizing: border-box;
 }
 
-.modal_box h1 {
-  color: white;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  text-align: center;
-  margin-top: -1rem;
+.modal_botao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.modal_box span {
-  color: #e50914;
+
+@keyframes modalEntrada{
+    from{
+        opacity: 0;
+        transform: scale(.9);
+    }
+
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-.modal_box label {
-  color: #ddd;
-  font-size: clamp(1.4rem, 2vw, 2rem);
-}
 
-.modal_input {
-  width: 100%;
-  height: 4.5rem;
-  border-radius: 1rem;
-  border: 2px solid #e50914;
-  background: #fff;
-  padding: 0 1rem;
-  outline: none;
-  font-size: clamp(1.4rem, 2vw, 1.6rem);
-  box-sizing: border-box;
-}
 
-.modal_botao {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-/* ─── Rodapé ─── */
-.rodape_principal {
-  border-top: #e50914 0.3rem solid;
-  width: 100%;
-  height: clamp(5rem, 8vw, 9rem);
-  background-color: #0A0A0A;
-  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3);
-  padding: 0 2rem;
-}
-
-/* ─── Keyframes ─── */
-@keyframes modalEntrada {
-  from { opacity: 0; transform: scale(.9); }
-  to   { opacity: 1; transform: scale(1); }
-}
+.rodape_principal{ 
+    border-top: #e50914 0.3rem solid;
+    width: 100%;
+    height: 9rem; 
+    background-color: #0A0A0A; 
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
+    padding: 0 2rem; 
+} 
 
 @keyframes pulseEntrada {
   0%   { box-shadow: 0 0 0 0 rgba(229,9,20,0.5); transform: scale(0.95); }
@@ -406,148 +429,107 @@
   to   { opacity: 1; }
 }
 
-/* ─── Responsividade ─── */
-
-/* Tablet grande */
 @media screen and (max-width: 1024px) {
-  .barra_Principal {
-    height: 7rem;
-  }
+     
+    .barra_Principal { 
+        height: 7rem; 
+    } 
 
-  .barra_Imagem {
-    height: 6rem;
-  }
+    .barra_Imagem { 
+        height: 7rem; 
+    } 
 
-  .home_imagem02 {
-    padding: 4rem;
-  }
-}
+    .home_linha { 
+        bottom: 80px; 
+    } 
 
-/* Tablet */
+    .home_botoes {
+        gap: 3rem; 
+    }
+} 
+
 @media screen and (max-width: 768px) {
-  .barra_Principal {
-    height: 6.5rem;
-    padding: 0 1.2rem;
-  }
-
-  .barra_Imagem {
-    height: 5rem;
-  }
-
-  .barra_botao {
-    font-size: 1.2rem;
-    padding: 0.4rem 0.7rem;
-  }
-
-  /* Em tablet, sidebar vira overlay por cima */
-  .home_margin1 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 150;
-    width: 0 !important;
-    min-width: 0 !important;
-  }
-
-  .home_margin1_aberto {
-    width: min(30rem, 85vw) !important;
-    min-width: min(30rem, 85vw) !important;
-  }
-
-  .home_margin2 {
-    width: 100% !important;
-    padding: 1rem;
-  }
-
-  .home_imagem02 {
-    padding: 2rem;
-    max-height: 35rem;
-  }
-
-  .home_caixas {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  }
-}
-
-/* Mobile */
+    .barra_Principal { 
+        height: 6rem; 
+        padding: 0 1rem; 
+    } 
+    
+    .barra_Imagem { 
+        height: 5rem; 
+    } 
+    
+    .barra_botao { 
+        padding: 0.4rem 0.8rem;
+        margin-right: 0; 
+        font-size: 1.4rem; 
+    } 
+    
+    .home_Conteudo { 
+        min-height: 60vh; 
+    } 
+    
+    .home_Margem { 
+        width: 95%; 
+        padding: 1.5rem; 
+    } 
+    
+    .home_linha { 
+        bottom: 60px; 
+    } 
+    
+    .home_botoes { 
+        flex-direction: column; 
+        gap: 1.5rem; 
+        bottom: -60px; 
+        width: 80%; 
+    } 
+} 
+    
 @media screen and (max-width: 480px) {
-  .barra_Principal {
-    height: 6rem;
-    padding: 0 1rem;
-  }
-
-  .barra_conteudo {
-    gap: 0.3rem;
-    margin-right: 0.5rem;
-  }
-
-  .barra_botao {
-    font-size: 1rem;
-    padding: 0.35rem 0.5rem;
-    border-radius: 0.6rem;
-    letter-spacing: 0.3px;
-  }
-
-  .home_margin1_aberto {
-    width: min(28rem, 90vw) !important;
-    min-width: min(28rem, 90vw) !important;
-  }
-
-  .home_margin2 {
-    padding: 0.8rem;
-  }
-
-  .home_box {
-    border-radius: 1.5rem;
-    padding: 0.8rem;
-  }
-
-  .home_imagem02 {
-    padding: 0.8rem;
-    max-height: 22rem;
-  }
-
-  .home_box02 {
-    padding: 1.5rem 1rem;
-    border-radius: 1rem;
-  }
-
-  .home_caixas {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-  }
-
-  .home_caixa {
-    min-height: 8rem;
-    padding: 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-radius: 1rem;
-  }
-
-  .home_caixa_imagem {
-    width: 3.5rem;
-    height: 3.5rem;
-  }
-
-  .home_caixa h3 {
-    font-size: 1.1rem;
-  }
-
-  .modal_box {
-    border-radius: 1.5rem;
-  }
-}
-
-/* Mobile pequeno */
-@media screen and (max-width: 360px) {
-  .barra_botao {
-    font-size: 0.9rem;
-    padding: 0.3rem 0.4rem;
-  }
-
-  .home_caixas {
-    grid-template-columns: 1fr 1fr;
-  }
+        .barra_Principal { 
+            flex-wrap: wrap; 
+            height: auto; 
+            padding: 1rem; 
+        } 
+        
+        .barra_Logo { 
+            margin-left: 0; 
+            justify-content: center; 
+            width: 100%; 
+        } 
+        
+        .barra_conteudo { 
+            margin-right: 0; 
+            width: 100%; 
+            justify-content: center; 
+            gap: 0.5rem; 
+        } 
+        
+        .barra_botao { 
+            font-size: 1.2rem; 
+        } 
+        
+        .home_Conteudo { 
+            min-height: auto; 
+            padding: 1rem; 
+        }
+        
+        .home_Margem { 
+            width: 100%; 
+            border-radius: 1.5rem; 
+            padding: 1rem; 
+        } 
+        
+        .home_linha { 
+            bottom: 50px;
+         } 
+         
+         .home_botoes { 
+            position: relative; 
+            bottom: auto; 
+            left: auto; 
+            transform: none; 
+            width: 100%; 
+            padding: 2rem 0; 
+        } 
 }
