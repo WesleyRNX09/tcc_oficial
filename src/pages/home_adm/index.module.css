@@ -1,0 +1,337 @@
+.container { 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
+    min-height: 100vh; 
+} 
+
+.barra_Principal { 
+    border-bottom: #e50914 0.3rem solid; 
+    width: 100%; 
+    display: flex; 
+    height: 9rem; 
+    align-items: center; 
+    justify-content: space-between;
+    background-color: #0A0A0A; 
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
+    padding: 0 2rem; 
+} 
+
+.barra_Logo { 
+    display: flex; 
+    align-items: center; 
+    margin-left: clamp(2rem, 5vw, 15rem); 
+    height: 100%;
+} 
+
+.barra_Imagem { 
+    height: 10rem; 
+    object-fit: contain;
+} 
+
+.barra_conteudo { 
+    display: flex; 
+    flex-direction: row; 
+    gap: 1rem; 
+    margin-right: clamp(2rem, 5vw, 15rem); 
+    flex-wrap: wrap;
+    justify-content: flex-end; 
+}
+ 
+.barra_botao { 
+  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.5vw, 1rem);
+  background-color: black;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.9px;
+  border: #e50914 1px solid;
+  font-size: clamp(1rem, 1.2vw, 1.6rem);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+} 
+
+.barra_botao:hover {
+  background-color: #e50914;
+}
+
+/* ── Botão hambúrguer ── */
+.barra_menu_btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  margin-right: 1.5rem;
+  transition: background 0.2s;
+}
+.barra_menu_btn:hover {
+  background: rgba(229, 9, 20, 0.1);
+}
+
+.barra_linha {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition:
+    transform  0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity    0.4s ease,
+    background 0.4s ease;
+  transform-origin: center;
+}
+
+.barra_menu_btn_aberto .barra_linha:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.barra_menu_btn_aberto .barra_linha:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  background-color: #e50914;
+}
+.barra_menu_btn_aberto .barra_linha:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: #e50914;
+}
+
+.home_conteudo {
+    display: flex;
+    width: 100%;
+    align-items: stretch;  
+}
+
+/* ── Sidebar ── */
+.home_margin1 {
+  background-color: #0A0A0A;
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 100;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home_margin1_inner {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  padding: 2rem;
+  transition: opacity 0.4s ease 0.2s;
+}
+
+.home_margin1_inner > :first-child {
+  align-self: center;
+}
+
+.home_margin1_aberto .home_margin1_inner {
+  opacity: 1;
+}
+
+.home_margin1_btn {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 1rem;
+  transition: background 0.2s;
+}
+
+.home_margin1_btn:hover {
+  background: rgba(229, 9, 20, 0.1);
+}
+
+.home_margin1_img {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.home_margin1_text {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.home_margin2 {
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.home_overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  animation: fadeOverlay 0.3s ease both;
+}
+
+/* ── home_box (container principal) ── */
+.home_box {
+  display: flex;
+  flex-direction: column;
+
+  border: #676767 1px solid;
+  border-radius: 3rem;
+  background-color: #0A0A0A;
+
+  width: 100%;
+  max-width: 140rem;
+
+  padding: 2.5rem;
+  gap: 2rem;
+
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ── Topbar: botão GERENCIAR + busca ── */
+.gs_topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.gs_btnGerenciar {
+  background: transparent;
+  color: white;
+  border: 2px solid #676767;
+  border-radius: 0.6rem;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.gs_btnGerenciar:hover {
+  background: rgba(74, 144, 217, 0.15);
+}
+
+.gs_buscaWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 50rem;
+}
+
+.gs_buscaInput {
+  width: 100%;
+  height: 4.5rem;
+  background: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  border-radius: 0.8rem;
+  color: white;
+  font-size: 1.6rem;
+  padding: 0 4.5rem 0 1.5rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.gs_buscaInput::placeholder {
+  color: #888;
+}
+
+.gs_buscaInput:focus {
+  border-color: #e50914;
+}
+
+.gs_buscaIcone {
+  position: absolute;
+  right: 1.4rem;
+  color: #888;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* ── Blocos de conteúdo ── */
+.gs_areaBlocos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.gs_bloco {
+  width: 100%;
+  height: 17rem;
+  background: #1a1a1a;
+  border: 1px solid #2e2e2e;
+  border-radius: 1.2rem;
+}
+
+/* ── Rodapé ── */
+.rodape_principal { 
+  border-top: #e50914 0.3rem solid;
+  width: 100%;
+  height: 9rem; 
+  background-color: #0A0A0A; 
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
+  padding: 0 2rem; 
+} 
+
+@keyframes pulseEntrada {
+  0%   { box-shadow: 0 0 0 0 rgba(229,9,20,0.5); transform: scale(0.95); }
+  50%  { box-shadow: 0 0 0 12px rgba(229,9,20,0); transform: scale(1.05); }
+  100% { box-shadow: 0 0 0 0 rgba(229,9,20,0); transform: scale(1); }
+}
+
+@keyframes fadeOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media screen and (max-width: 1024px) {
+  .barra_Principal { height: 7rem; } 
+  .barra_Imagem { height: 7rem; } 
+}
+
+@media screen and (max-width: 768px) {
+  .barra_Principal { height: 6rem; padding: 0 1rem; } 
+  .barra_Imagem { height: 5rem; } 
+  .barra_botao { padding: 0.4rem 0.8rem; font-size: 1.4rem; }
+  .gs_topbar { flex-direction: column; align-items: flex-start; }
+  .gs_buscaWrapper { max-width: 100%; }
+}
+    
+@media screen and (max-width: 480px) {
+  .barra_Principal { flex-wrap: wrap; height: auto; padding: 1rem; } 
+  .barra_Logo { margin-left: 0; justify-content: center; width: 100%; } 
+  .barra_conteudo { margin-right: 0; width: 100%; justify-content: center; gap: 0.5rem; } 
+  .barra_botao { font-size: 1.2rem; }
+}

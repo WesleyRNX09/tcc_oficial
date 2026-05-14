@@ -19,7 +19,6 @@ function Login01() {
 
         <div className={styles.barra_conteudo}>
           <Link to="/" className={styles.barra_botao}>Inicio</Link>
-          <Link to="/login_adm" className={styles.barra_botao}>Logar como Funcionarios</Link>
         </div>
       </div>
 
@@ -33,13 +32,20 @@ function Login01() {
           <div className={styles.login_boxs}>
 
            
-            <label className={styles.login_titulo}>Faça seu Login:</label>
+            <label className={styles.login_titulo}>Login Adiministrador:</label>
 
             <div className={styles.login_caixas}>
 
               <div className={styles.login_caixa01}>
 
-                <label className={styles.login_label}>E-mail:</label>
+                <label className={styles.login_label}>Codigo da Embresa :</label>
+                <input className={styles.login_textarea} placeholder="Digite aqui..."></input>
+
+              </div>
+
+              <div className={styles.login_caixa02}>
+
+                <label className={styles.login_label}>Usuario:</label>
                 <input className={styles.login_textarea} placeholder="Digite aqui..."></input>
 
               </div>
@@ -48,27 +54,19 @@ function Login01() {
 
                 <label className={styles.login_label}>Senha:</label>
                 <input className={styles.login_textarea} placeholder="Digite aqui..."></input>
-                <Link to="/login" className={styles.login_senha}>Esqueceu a Senha ?</Link>
 
               </div>
 
               <div className={styles.home_botoes}>
-                <Botao texto="Entrar" acao={'vermelho'} />
+                <Botao texto="Entrar" acao={'vermelho'} aoClicar={() => navigate("/home_adm")} />
               </div>
-
-              <div className={styles.login_linha}> </div>
-
-              <div className={styles.home_botoes2}>
-                <Botao texto="Criar uma Conta " acao={'Branco'} aoClicar={() => navigate("/cadastro")} />
-              </div>
-
             </div>
 
             
 
           </div>
 
-        </div>
+        </div>  
 
       </div>
       <div className={styles.rodape_principal}></div>
