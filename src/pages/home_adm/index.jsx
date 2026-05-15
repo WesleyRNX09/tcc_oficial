@@ -64,7 +64,7 @@ function Home() {
 
             <div className={styles.home_margin1_btn}>
               <img src={carro} className={styles.home_margin1_img} />
-              <Link to="/login" className={styles.home_margin1_text}>ATUALIZAR VEÍCULO</Link>
+              <Link to="/atualizar_veiculo" className={styles.home_margin1_text}>ATUALIZAR VEÍCULO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>

@@ -223,6 +223,13 @@
   flex-wrap: wrap;
 }
 
+.gs_seta{
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
 .gs_btnGerenciar {
   background: transparent;
   color: white;
@@ -238,7 +245,17 @@
 }
 
 .gs_btnGerenciar:hover {
-  background: rgba(74, 144, 217, 0.15);
+  background: #e50914;
+}
+
+.gs_letras{
+  display: flex;
+  flex-direction: column; 
+}
+
+.gs_letra02{
+  font-size: 1.5rem;
+  color: #676767;
 }
 
 .gs_buscaWrapper {
@@ -284,16 +301,60 @@
 .gs_areaBlocos {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  
   width: 100%;
+  
+  background: #333;
+  border: 1px solid #2e2e2e;
+  border-radius: 1.2rem;
 }
 
-.gs_bloco {
-  width: 100%;
-  height: 17rem;
+.gs_bloco { 
   background: #1a1a1a;
   border: 1px solid #2e2e2e;
   border-radius: 1.2rem;
+  margin: 0 2rem;
+  display: flex ;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gs_bloco_box{
+  margin: 2rem 0;
+}
+
+.gs_bloco_text{
+  margin: 0;
+  font-size: 2rem;
+}
+
+.gs_bloco_text02{
+  color: #888;
+}
+
+
+.gs_bloco_label{
+  margin: 2rem 2rem;
+  
+}
+
+.gs_bloco02{
+  background: #1a1a1a;
+  border: 1px solid #2e2e2e;
+  border-radius: 1.2rem;
+  margin: 2rem 2rem;
+}
+
+.gs_bloco_img{
+  display: flex;
+  width: 35vh;
+  height: 23vh;
+  border-radius: 2rem;
+}
+
+.gs_bloco_titulo{
+  font-size: 1.9rem;
+  margin: 2rem;
 }
 
 /* ── Rodapé ── */

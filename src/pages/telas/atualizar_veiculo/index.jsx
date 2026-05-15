@@ -8,6 +8,9 @@ import adicionarFuncionario from "../../../assets/adicionar_funcionario.png";
 import carro from "../../../assets/carro.png";
 import relatorio from "../../../assets/relatorio.png";
 
+import seta from "../../../assets/seta_esquerda1.png";
+import fiat from "../../../assets/punto_os.png";
+
 import { useNavigate } from "react-router-dom";
 
 import styles from './index.module.css';
@@ -85,7 +88,14 @@ function atualizar() {
 
             {/* ── Topbar: botão + busca ── */}
             <div className={styles.gs_topbar}>
-              <button className={styles.gs_btnGerenciar}>GERENCIAR SERVIÇOS</button>
+
+              <div className={styles.gs_seta}>
+                  <button className={styles.gs_btnGerenciar}><img src={seta}/></button>
+                  <div className={styles.gs_letras}>
+                      <h2 className={styles.gs_letra01}>ATUALIZAR VEÍCULO</h2>
+                      <p className={styles.gs_letra02}>Atualize  status e as informações do veículo em tempo real</p>
+                  </div>
+              </div>
 
               <div className={styles.gs_buscaWrapper}>
                 <input
@@ -106,8 +116,66 @@ function atualizar() {
 
             {/* ── Área de blocos ── */}
             <div className={styles.gs_areaBlocos}>
-              <div className={styles.gs_bloco}></div>
-              <div className={styles.gs_bloco}></div>
+
+              <h2 className={styles.gs_bloco_titulo}>DADOS DO VEÍCULO</h2>
+
+              <div className={styles.gs_bloco}>
+
+                <div className={styles.gs_bloco_label}>
+
+                  <div className={styles.gs_bloco_box}>
+                    <h1 className={styles.gs_bloco_text}>CLIENTE</h1>
+                    <p className={styles.gs_bloco_text02}>Guilherme Luiz</p>
+                  </div>
+
+                  <div className={styles.gs_bloco_box}>
+                      <h1 className={styles.gs_bloco_text}>VEÍCULO</h1>
+                      <p className={styles.gs_bloco_text02}>Jetta 2.0 TSI</p>
+                  </div>
+
+                  <div className={styles.gs_bloco_box}>
+                    <h1 className={styles.gs_bloco_text}>PLACA</h1>
+                    <p className={styles.gs_bloco_text02}>GLZ-2A08</p>
+                  </div>
+                </div>
+
+                <div className={styles.gs_bloco_label}>
+
+                  <div className={styles.gs_bloco_box}>
+                    <h1 className={styles.gs_bloco_text}>DATA DE ENTRADA</h1>
+                    <p className={styles.gs_bloco_text02}>27/07/2026</p>
+                  </div>
+
+                  <div className={styles.gs_bloco_box}>
+                      <h1 className={styles.gs_bloco_text}>PREVISÃO DE ENTREGA</h1>
+                      <p className={styles.gs_bloco_text02}>29/07/2026</p>
+                  </div>
+
+                  <div className={styles.gs_bloco_box}>
+                    <h1 className={styles.gs_bloco_text}>ORDEM DE SERVIÇO</h1>
+                    <p className={styles.gs_bloco_text02}>OS-000123</p>
+                  </div>
+                </div>
+
+                <div className={styles.gs_bloco_label}>
+                  <img src={fiat} className={styles.gs_bloco_img}/>
+                </div>
+                  
+              </div>
+
+              <div className={styles.gs_bloco02}>
+
+                <div>
+                  <h1>CLIENTE</h1>
+                  <p>Guilherme Luiz</p>
+                </div>
+
+                <div>
+                  <h1>CLIENTE</h1>
+                  <p>Guilherme Luiz</p>
+                </div>
+              </div>
+              
             </div>
 
           </div>

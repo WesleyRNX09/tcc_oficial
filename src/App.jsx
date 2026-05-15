@@ -19,7 +19,7 @@ function App() {
       <Route path="/cadastro" element={<Cadastro />} /> 
       <Route path="/login_adm" element={<Login_adm />} /> 
       <Route path="/Home_adm" element={<Home_adm />} />
-      <Route path="/atualizar_adm" element={<Atualizar_adm />} />
+      <Route path="/atualizar_veiculo" element={<Atualizar_adm />} />
     </Routes>
   )
 }
