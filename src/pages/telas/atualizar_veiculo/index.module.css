@@ -305,13 +305,13 @@
   width: 100%;
   
   background: #333;
-  border: 1px solid #2e2e2e;
+  border: 1px solid #676767;
   border-radius: 1.2rem;
 }
 
 .gs_bloco { 
   background: #1a1a1a;
-  border: 1px solid #2e2e2e;
+  border: 1px solid #676767;
   border-radius: 1.2rem;
   margin: 0 2rem;
   display: flex ;
@@ -321,6 +321,10 @@
 
 .gs_bloco_box{
   margin: 2rem 0;
+}
+
+.gs_bloco_box_img{
+  margin-right: 2rem;
 }
 
 .gs_bloco_text{
@@ -334,13 +338,13 @@
 
 
 .gs_bloco_label{
-  margin: 2rem 2rem;
+  margin: 2rem 4rem;
   
 }
 
 .gs_bloco02{
   background: #1a1a1a;
-  border: 1px solid #2e2e2e;
+  border: 1px solid #676767;
   border-radius: 1.2rem;
   margin: 2rem 2rem;
 }
@@ -348,13 +352,16 @@
 .gs_bloco_img{
   display: flex;
   width: 35vh;
-  height: 23vh;
-  border-radius: 2rem;
+  padding: 2rem;
+ 
+  border-radius: 4rem;
 }
 
 .gs_bloco_titulo{
   font-size: 1.9rem;
   margin: 2rem;
+  color: #e50914;
+  letter-spacing: 0.2rem;
 }
 
 /* ── Rodapé ── */

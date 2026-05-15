@@ -157,14 +157,18 @@ function atualizar() {
                   </div>
                 </div>
 
-                <div className={styles.gs_bloco_label}>
+                <div className={styles.gs_bloco_box_img}>
                   <img src={fiat} className={styles.gs_bloco_img}/>
                 </div>
                   
               </div>
 
+              
+
               <div className={styles.gs_bloco02}>
 
+                <h2 className={styles.gs_bloco_titulo}>STATUS DO SERVIÇO</h2>
+                
                 <div>
                   <h1>CLIENTE</h1>
                   <p>Guilherme Luiz</p>
