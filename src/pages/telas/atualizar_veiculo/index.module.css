@@ -364,6 +364,101 @@
   letter-spacing: 0.2rem;
 }
 
+.tempo_linha {
+    width: 80%;
+    position: relative;
+    margin: 5rem;
+
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 3rem;
+}
+
+/* LINHA */
+.tempo_linha::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    height: 3px;
+    background: #E0E0E0;
+
+    z-index: 1;
+}
+
+.tempo_etapa {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 2;
+}
+
+/* BOLINHAS */
+.tempo_bolinha {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    background: #E0E0E0;
+
+    position: absolute;
+    top: -3.5rem;
+
+    z-index: 3;
+}
+
+/* PRIMEIRA */
+.tempo_etapa:first-child .tempo_bolinha {
+    left: 0;
+}
+
+/* ÚLTIMA */
+.tempo_etapa:last-child .tempo_bolinha {
+    right: 0;
+}
+
+/* TODAS DO MEIO */
+.tempo_etapa:not(:first-child):not(:last-child) .tempo_bolinha {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tempo_linha_letras {
+    color: #E0E0E0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 0.05rem;
+    position: relative;
+}
+
+.tempo_etapa small {
+    color: #E0E0E0;
+    font-size: 1.1rem;
+
+}
+
+.ativo .tempo_bolinha {
+    background: #E0E0E0;
+}
+
+.progresso .tempo_bolinha {
+    background: #e50914;
+}
+
+.progresso .tempo_linha_letras {
+    color: #e50914;
+    font-weight: 700;
+}
+
 /* ── Rodapé ── */
 .rodape_principal { 
   border-top: #e50914 0.3rem solid;

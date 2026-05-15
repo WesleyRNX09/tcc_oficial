@@ -169,15 +169,35 @@ function atualizar() {
 
                 <h2 className={styles.gs_bloco_titulo}>STATUS DO SERVIÇO</h2>
                 
-                <div>
-                  <h1>CLIENTE</h1>
-                  <p>Guilherme Luiz</p>
-                </div>
+                      <div className={styles.tempo_linha}>
+                        <div className={`${styles.tempo_etapa} ${styles.ativo}`}>
 
-                <div>
-                  <h1>CLIENTE</h1>
-                  <p>Guilherme Luiz</p>
-                </div>
+                            <span className={styles.tempo_bolinha}></span>
+                            <p className={styles.tempo_linha_letras}>ENTRADA</p>
+                            <small>00/00/0000</small>
+                        </div>
+
+                        <div className={styles.tempo_etapa}>
+                            <span className={styles.tempo_bolinha}></span>
+                            <p className={styles.tempo_linha_letras}>EM ANÁLISE</p>
+                        </div>
+
+                        <div className={styles.tempo_etapa}>
+                            <span className={styles.tempo_bolinha}></span>
+                            <p className={styles.tempo_linha_letras}>DIAGNÓSTICO</p>
+                        </div>
+
+                        <div className={`${styles.tempo_etapa} ${styles.progresso}`}>
+                            <span className={styles.tempo_bolinha}></span>
+                            <p className={styles.tempo_linha_letras}>EM PROCESSO</p>
+                        </div>
+
+                        <div className={styles.tempo_etapa}>
+                            <span className={styles.tempo_bolinha}></span>
+                            <p className={styles.tempo_linha_letras}>FINALIZADO</p>
+                        </div>
+                      </div>                
+                
               </div>
               
             </div>
