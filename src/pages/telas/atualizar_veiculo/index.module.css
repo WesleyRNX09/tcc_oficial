@@ -364,6 +364,11 @@
   letter-spacing: 0.2rem;
 }
 
+.tempo_box_linha{
+  display: flex;
+  justify-content: center;
+}
+
 .tempo_linha {
     width: 80%;
     position: relative;
@@ -373,6 +378,8 @@
     justify-content: space-between;
 
     padding-top: 3rem;
+    display: flex;
+
 }
 
 /* LINHA */
@@ -412,6 +419,12 @@
     top: -3.5rem;
 
     z-index: 3;
+}
+.tempo_bolinha_img{
+  display: flex;
+  position: absolute;
+  width: 4vh;
+  top: -8rem;
 }
 
 /* PRIMEIRA */

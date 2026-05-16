@@ -10,6 +10,7 @@ import relatorio from "../../../assets/relatorio.png";
 
 import seta from "../../../assets/seta_esquerda1.png";
 import fiat from "../../../assets/punto_os.png";
+import pneu from "../../../assets/pneus.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -168,36 +169,44 @@ function atualizar() {
               <div className={styles.gs_bloco02}>
 
                 <h2 className={styles.gs_bloco_titulo}>STATUS DO SERVIÇO</h2>
-                
-                      <div className={styles.tempo_linha}>
-                        <div className={`${styles.tempo_etapa} ${styles.ativo}`}>
 
+                    <div className={styles.tempo_box_linha}>
+
+                      <div className={styles.tempo_linha}>
+
+                        <div className={`${styles.tempo_etapa} ${styles.ativo}`}>
+                            <img src={pneu} className={styles.tempo_bolinha_img} />
                             <span className={styles.tempo_bolinha}></span>
                             <p className={styles.tempo_linha_letras}>ENTRADA</p>
                             <small>00/00/0000</small>
                         </div>
 
                         <div className={styles.tempo_etapa}>
+                            <img src={pneu} className={styles.tempo_bolinha_img} />
                             <span className={styles.tempo_bolinha}></span>
                             <p className={styles.tempo_linha_letras}>EM ANÁLISE</p>
                         </div>
 
                         <div className={styles.tempo_etapa}>
+                            <img src={pneu} className={styles.tempo_bolinha_img} /> 
                             <span className={styles.tempo_bolinha}></span>
                             <p className={styles.tempo_linha_letras}>DIAGNÓSTICO</p>
                         </div>
 
                         <div className={`${styles.tempo_etapa} ${styles.progresso}`}>
+                            <img src={pneu} className={styles.tempo_bolinha_img} />
                             <span className={styles.tempo_bolinha}></span>
                             <p className={styles.tempo_linha_letras}>EM PROCESSO</p>
                         </div>
 
                         <div className={styles.tempo_etapa}>
+                            <img src={pneu} className={styles.tempo_bolinha_img} /> 
                             <span className={styles.tempo_bolinha}></span>
                             <p className={styles.tempo_linha_letras}>FINALIZADO</p>
                         </div>
-                      </div>                
-                
+                      </div>    
+
+                    </div>
               </div>
               
             </div>
