@@ -1,164 +1,99 @@
+import { useState } from 'react';
+import Botao from './botao'
+import { Link } from "react-router-dom";
+import logo from '../../../assets/logo.png';
+
+import ordemServiço from "../../../assets/historico_de_ordem.png";
+import adicionarFuncionario from "../../../assets/adicionar_funcionario.png";
+import carro from "../../../assets/carro.png";
+import relatorio from "../../../assets/relatorio.png";
+
+import seta from "../../../assets/seta_esquerda1.png";
+import fiat from "../../../assets/punto_os.png";
+import pneu from "../../../assets/pneus.png";
+
+import entrada from "../../../assets/entrada.png";
+import analise from "../../../assets/analise.png";
+import diagnostico from "../../../assets/diagnostico.png";
+import processo from "../../../assets/processo.png";
+import finalizado from "../../../assets/finalizado.png";
+
+import { useNavigate } from "react-router-dom";
+
 import styles from './index.module.css';
 
-function Financeiro() {
-  return (
+function atualizar() {
+  const navigate = useNavigate();
+  const [menuAberto, setMenuAberto] = useState(false);
+  const [busca, setBusca] = useState('');
 
+  return (
     <div className={styles.container}>
 
-      <aside className={styles.sidebar}>
-
-        <div className={styles.logo}>
-          <h2>MAXCAR</h2>
-          <p>OFICINA AUTOMOTIVA</p>
+      <div className={styles.barra_Principal}>
+        <div className={styles.barra_Logo}>
+          <button
+            className={`${styles.barra_menu_btn} ${menuAberto ? styles.barra_menu_btn_aberto : ''}`}
+            onClick={() => setMenuAberto(!menuAberto)}
+            aria-label="Abrir menu"
+          >
+            <span className={styles.barra_linha}></span>
+            <span className={styles.barra_linha}></span>
+            <span className={styles.barra_linha}></span>
+          </button>
+          <img src={logo} className={styles.barra_Imagem} />
         </div>
 
-        <button className={styles.btnFinanceiro}>
-          FINANCEIRO
-        </button>
+        <div className={styles.barra_conteudo}>
+          <Link to="/login" className={styles.barra_botao}>Serviços</Link>
+          <Link to="/" className={styles.barra_botao}>Acompanhar Veiculo</Link>
+          <Link to="/login" className={styles.barra_botao}>Fazer Login</Link>
+        </div>
+      </div>
 
-        <nav className={styles.menu}>
+      <div className={styles.home_conteudo}>
 
-          <a href="#">HISTÓRICO DE ORDEM DE SERVIÇO</a>
+        {menuAberto && (
+          <div className={styles.home_overlay} onClick={() => setMenuAberto(false)} />
+        )}
 
-          <a href="#">ADICIONAR FUNCIONÁRIO</a>
+        {/* Sidebar */}
+        <div className={`${styles.home_margin1} ${menuAberto ? styles.home_margin1_aberto : ''}`} style={{ width: menuAberto ? '50rem' : '0', minWidth: menuAberto ? '50rem' : '0' }}>
+          <div className={styles.home_margin1_inner}>
+            <Botao texto="FINANCEIRO" acao={'vermelho'} aoClicar={() => navigate("/cadastro")} />
 
-          <a href="#">ATUALIZAR VEÍCULO</a>
+            <div className={styles.home_margin1_btn}>
+              <img src={ordemServiço} className={styles.home_margin1_img} />
+              <Link to="/login" className={styles.home_margin1_text}>HISTORICO DE ORDEM DE SERVIÇO</Link>
+            </div>
 
-          <a href="#">CADASTRAR VEÍCULO</a>
+            <div className={styles.home_margin1_btn}>
+              <img src={adicionarFuncionario} className={styles.home_margin1_img} />
+              <Link to="/login" className={styles.home_margin1_text}>ADICIONAR FUNCIONARIO</Link>
+            </div>
 
-          <a href="#">RELATÓRIOS</a>
+            <div className={styles.home_margin1_btn}>
+              <img src={carro} className={styles.home_margin1_img} />
+              <Link to="/login" className={styles.home_margin1_text}>ATUALIZAR VEÍCULO</Link>
+            </div>
 
-        </nav>
+            <div className={styles.home_margin1_btn}>
+              <img src={carro} className={styles.home_margin1_img} />
+              <Link to="/login" className={styles.home_margin1_text}>CADASTRAR VEÍCULO</Link>
+            </div>
 
-      </aside>
-
-      <main className={styles.conteudo}>
-
-        <header className={styles.topbar}>
-
-          <nav className={styles.topMenu}>
-            <a href="#">INÍCIO</a>
-            <a href="#">SERVIÇOS</a>
-          </nav>
-
-          <div className={styles.usuario}>
-            <span>Admin</span>
+            <div className={styles.home_margin1_btn}>
+              <img src={relatorio} className={styles.home_margin1_img} />
+              <Link to="/login" className={styles.home_margin1_text}>RELATORIOS</Link>
+            </div>
           </div>
+        </div> 
+      </div>
 
-        </header>
-
-        <section className={styles.cards}>
-
-          <div className={styles.card}>
-            <h4>Peças</h4>
-            <h2>R$650,00</h2>
-            <p>Total de Peças</p>
-          </div>
-
-          <div className={styles.card}>
-            <h4>Mão de Obra</h4>
-            <h2>R$300,00</h2>
-            <p>Total de Mão de Obra</p>
-          </div>
-
-          <div className={styles.card}>
-            <h4>Total</h4>
-            <h2>R$950,00</h2>
-            <p>Total Geral</p>
-          </div>
-
-          <div className={styles.card}>
-            <h4>Ordens</h4>
-            <h2>8</h2>
-            <p>Este mês</p>
-          </div>
-
-        </section>
-
-        <section className={styles.filtros}>
-
-          <input
-            type="date"
-            className={styles.inputData}
-          />
-
-          <input
-            type="text"
-            placeholder="Buscar por cliente, serviço ou placa"
-            className={styles.inputBusca}
-          />
-
-        </section>
-
-        <section className={styles.tabela}>
-
-          <table>
-
-            <thead>
-
-              <tr>
-                <th>Data</th>
-                <th>Cliente</th>
-                <th>Veículo / Placa</th>
-                <th>Descrição</th>
-                <th>Pagamento</th>
-              </tr>
-
-            </thead>
-
-            <tbody>
-
-              <tr>
-                <td>13/03/2026</td>
-                <td>Guilherme Luz</td>
-                <td>BMW X1 LBD</td>
-                <td>Troca de Pneus</td>
-                <td>Pago</td>
-              </tr>
-
-              <tr>
-                <td>15/05/2026</td>
-                <td>Bruno Gil</td>
-                <td>Jetta GLI</td>
-                <td>Alinhamento</td>
-                <td>Pendente</td>
-              </tr>
-
-              <tr>
-                <td>24/02/2026</td>
-                <td>Caio Takasaki</td>
-                <td>911 GT3 RS</td>
-                <td>Reparo de Freios</td>
-                <td>Pago</td>
-              </tr>
-
-              <tr>
-                <td>18/09/2026</td>
-                <td>Matheus</td>
-                <td>Onix LT 2021</td>
-                <td>Troca de Filtros</td>
-                <td>Pendente</td>
-              </tr>
-
-              <tr>
-                <td>31/12/2026</td>
-                <td>José Pedro</td>
-                <td>Gol 2017</td>
-                <td>Troca de Óleo</td>
-                <td>Pago</td>
-              </tr>
-
-            </tbody>
-
-          </table>
-
-        </section>
-
-      </main>
-
+      <div className={styles.rodape_principal}></div>
+      
     </div>
-
   );
 }
 
-export default Financeiro;
+export default atualizar;
