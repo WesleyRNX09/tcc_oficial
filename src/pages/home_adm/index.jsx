@@ -50,7 +50,7 @@ function Home() {
         {/* Sidebar */}
         <div className={`${styles.home_margin1} ${menuAberto ? styles.home_margin1_aberto : ''}`} style={{ width: menuAberto ? '50rem' : '0', minWidth: menuAberto ? '50rem' : '0' }}>
           <div className={styles.home_margin1_inner}>
-            <Botao texto="FINANCEIRO" acao={'vermelho'} aoClicar={() => navigate("/cadastro")} />
+            <Botao texto="FINANCEIRO" acao={'vermelho'} aoClicar={() => navigate("/financeiro")} />
 
             <div className={styles.home_margin1_btn}>
               <img src={ordemServiço} className={styles.home_margin1_img} />
