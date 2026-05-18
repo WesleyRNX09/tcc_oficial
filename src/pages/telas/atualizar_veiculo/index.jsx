@@ -12,6 +12,12 @@ import seta from "../../../assets/seta_esquerda1.png";
 import fiat from "../../../assets/punto_os.png";
 import pneu from "../../../assets/pneus.png";
 
+import entrada from "../../../assets/entrada.png";
+import analise from "../../../assets/analise.png";
+import diagnostico from "../../../assets/diagnostico.png";
+import processo from "../../../assets/processo.png";
+import finalizado from "../../../assets/finalizado.png";
+
 import { useNavigate } from "react-router-dom";
 
 import styles from './index.module.css';
@@ -175,39 +181,113 @@ function atualizar() {
                       <div className={styles.tempo_linha}>
 
                         <div className={`${styles.tempo_etapa} ${styles.ativo}`}>
-                            <img src={pneu} className={styles.tempo_bolinha_img} />
+                            <img src={entrada} className={styles.tempo_bolinha_img} />
                             <span className={styles.tempo_bolinha}></span>
                             <p className={styles.tempo_linha_letras}>ENTRADA</p>
                             <small>00/00/0000</small>
                         </div>
 
                         <div className={styles.tempo_etapa}>
-                            <img src={pneu} className={styles.tempo_bolinha_img} />
+                            <img src={analise} className={styles.tempo_bolinha_img} />
                             <span className={styles.tempo_bolinha}></span>
                             <p className={styles.tempo_linha_letras}>EM ANÁLISE</p>
                         </div>
 
                         <div className={styles.tempo_etapa}>
-                            <img src={pneu} className={styles.tempo_bolinha_img} /> 
+                            <img src={diagnostico} className={styles.tempo_bolinha_img} /> 
                             <span className={styles.tempo_bolinha}></span>
                             <p className={styles.tempo_linha_letras}>DIAGNÓSTICO</p>
                         </div>
 
                         <div className={`${styles.tempo_etapa} ${styles.progresso}`}>
-                            <img src={pneu} className={styles.tempo_bolinha_img} />
+                            <img src={processo} className={styles.tempo_bolinha_img_processo} />
                             <span className={styles.tempo_bolinha}></span>
                             <p className={styles.tempo_linha_letras}>EM PROCESSO</p>
                         </div>
 
                         <div className={styles.tempo_etapa}>
-                            <img src={pneu} className={styles.tempo_bolinha_img} /> 
+                            <img src={finalizado} className={styles.tempo_bolinha_img} /> 
                             <span className={styles.tempo_bolinha}></span>
                             <p className={styles.tempo_linha_letras}>FINALIZADO</p>
                         </div>
                       </div>    
 
                     </div>
+
+                      <div className={styles.gs_atualizar_box}>
+
+                        <h2 className={styles.gs_bloco_titulo}>
+                          ATUALIZAR INFORMAÇÕES
+                        </h2>
+
+                        <div className={styles.gs_atualizar_conteudo}>
+
+                          {/* ESQUERDA */}
+                          <div className={styles.gs_atualizar_esquerda}>
+
+                            <div className={styles.gs_input_group}>
+                              <label className={styles.gs_label}>
+                                NOVO STATUS
+                              </label>
+
+                              <select className={styles.gs_select}>
+                                <option>EM PROCESSO</option>
+                                <option>EM ANÁLISE</option>
+                                <option>DIAGNÓSTICO</option>
+                                <option>FINALIZADO</option>
+                              </select>
+                            </div>
+
+                            <div className={styles.gs_input_group}>
+                              <label className={styles.gs_label}>
+                                DESCRIÇÃO / OBSERVAÇÕES
+                              </label>
+
+                              <textarea
+                                className={styles.gs_textarea}
+                              />
+                            </div>
+
+                          </div>
+
+                          {/* DIREITA */}
+                          <div className={styles.gs_atualizar_direita}>
+
+                            <label className={styles.gs_label}>
+                              ADICIONAR IMAGEM (OPCIONAL)
+                            </label>
+
+                            <div className={styles.gs_upload_box}>
+
+                              <div className={styles.gs_upload_icon}>
+                                +
+                              </div>
+
+                              <p className={styles.gs_upload_text}>
+                                Clique ou arraste a imagem aqui
+                              </p>
+
+                            </div>
+
+                            <div className={styles.gs_botoes}>
+                              <button className={styles.gs_btn_cancelar}>
+                                CANCELAR
+                              </button>
+
+                              <button className={styles.gs_btn_salvar}>
+                                SALVAR E ATUALIZAR
+                              </button>
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
               </div>
+
+
               
             </div>
 
