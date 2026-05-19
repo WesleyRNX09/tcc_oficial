@@ -1,109 +1,116 @@
+/* ==========================================================================
+   1. ESTRUTURA GLOBAL (Garante 100% da largura e altura da tela)
+   ========================================================================== */
 .container { 
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    width: 100%;
+    width: 100vw;
+    background-color: #0f0f13;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
+/* ── Barra Superior Principal ── */
 .barra_Principal { 
     border-bottom: #e50914 0.3rem solid; 
     width: 100%; 
     display: flex; 
-    height: 9rem; 
+    height: 8rem; 
     align-items: center; 
     justify-content: space-between;
     background-color: #0A0A0A; 
-    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
-    padding: 0 2rem; 
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.2); 
+    padding: 0 3rem; 
+    box-sizing: border-box;
 } 
 
 .barra_Logo { 
     display: flex; 
     align-items: center; 
-    margin-left: clamp(2rem, 5vw, 15rem); 
+    gap: 2rem;
     height: 100%;
 } 
 
 .barra_Imagem { 
-    height: 10rem; 
+    height: 4.5rem; 
     object-fit: contain;
 } 
 
 .barra_conteudo { 
     display: flex; 
     flex-direction: row; 
-    gap: 1rem; 
-    margin-right: clamp(2rem, 5vw, 15rem); 
-    flex-wrap: wrap;
-    justify-content: flex-end; 
+    gap: 2rem; 
+    align-items: center;
 }
  
 .barra_botao { 
-  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.5vw, 1rem);
-  background-color: black;
-  color: white;
-  border-radius: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  letter-spacing: 0.9px;
-  border: #e50914 1px solid;
-  font-size: clamp(1rem, 1.2vw, 1.6rem);
-  white-space: nowrap;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+    padding: 0.8rem 1.6rem;
+    background-color: transparent;
+    color: #e0e0e0;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: transparent 1px solid;
+    font-size: 1.4rem;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: all 0.2s ease;
 } 
 
 .barra_botao:hover {
-  background-color: #e50914;
+    color: #ffffff;
+    border-color: #e50914;
+    background-color: rgba(229, 9, 20, 0.05);
 }
 
-/* ── Botão hambúrguer ── */
+/* ── Botão Hambúrguer do Menu ── */
 .barra_menu_btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  width: 3.5rem;
-  height: 3.5rem;
-  padding: 0.5rem;
-  border-radius: 0.8rem;
-  margin-right: 1.5rem;
-  transition: background 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.8rem;
+    transition: background 0.2s;
 }
+
 .barra_menu_btn:hover {
-  background: rgba(229, 9, 20, 0.1);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .barra_linha {
-  display: block;
-  width: 26px;
-  height: 2px;
-  background-color: white;
-  border-radius: 2px;
-  transition:
-    transform  0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity    0.4s ease,
-    background 0.4s ease;
-  transform-origin: center;
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 
+/* Animação do ícone quando aberto */
 .barra_menu_btn_aberto .barra_linha:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
+    opacity: 0;
 }
 .barra_menu_btn_aberto .barra_linha:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-  background-color: #e50914;
+    transform: translateY(8px) rotate(45deg);
+    background-color: #e50914;
 }
 .barra_menu_btn_aberto .barra_linha:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-  background-color: #e50914;
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: #e50914;
 }
 
+/* ==========================================================================
+   2. LAYOUT DO CONTEÚDO (Sidebar + Painel ocupando o restante da tela)
+   ========================================================================== */
 .home_conteudo {
     display: flex;
     width: 100%;
@@ -111,622 +118,396 @@
     flex: 1;
 }
 
-/* ── Sidebar ── */
+/* Menu Lateral Retrátil */
 .home_margin1 {
-  background-color: #0A0A0A;
-  width: 0;
-  min-width: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 100;
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #0A0A0A;
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    z-index: 90;
+    border-right: 1px solid #1a1a1a;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Classe aplicada via React ao clicar */
+.home_margin1_aberto {
+    width: 32rem;
+    min-width: 32rem;
 }
 
 .home_margin1_inner {
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-  width: 100%;
-  padding: 2rem;
-  transition: opacity 0.4s ease 0.2s;
-}
-
-.home_margin1_inner > :first-child {
-  align-self: center;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 32rem;
+    padding: 2.5rem 1.5rem;
+    box-sizing: border-box;
+    transition: opacity 0.2s ease;
 }
 
 .home_margin1_aberto .home_margin1_inner {
-  opacity: 1;
+    opacity: 1;
+}
+
+/* Item Ativo (Financeiro) */
+.home_margin1_inner > :first-child {
+    background: linear-gradient(180deg, #e50914 0%, #99050b 100%);
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 1.4rem;
+    padding: 1.4rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
 }
 
 .home_margin1_btn {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.2rem 1.5rem;
-  width: 100%;
-  cursor: pointer;
-  border-radius: 1rem;
-  transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    transition: background 0.2s;
 }
 
 .home_margin1_btn:hover {
-  background: rgba(229, 9, 20, 0.1);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .home_margin1_img {
-  width: 4.5rem;
-  height: 4.5rem;
-  object-fit: contain;
-  flex-shrink: 0;
+    width: 2.2rem;
+    height: 2.2rem;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .home_margin1_text {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: white;
-  white-space: nowrap;
-  text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #9a9a9a;
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
 }
 
+.home_margin1_btn:hover .home_margin1_text {
+    color: white;
+}
+
+/* ==========================================================================
+   3. PAINEL CENTRAL (O segredo para preencher a tela inteira)
+   ========================================================================== */
 .home_margin2 {
-  min-height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2rem;
-  box-sizing: border-box;
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  z-index: 1;
+    flex: 1;               /* Ocupa todo o espaço restante na horizontal */
+    display: flex;
+    width: 100%;           /* Garante espalhamento total */
+    padding: 2.5rem;
+    box-sizing: border-box;
+    background-color: #0f0f13;
 }
 
-.home_overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 99;
-  animation: fadeOverlay 0.3s ease both;
-}
-
-/* ── home_box (container principal) ── */
+/* Container que envelopa o Dashboard interno */
 .home_box {
-  display: flex;
-  flex-direction: column;
-
-  border: #676767 1px solid;
-  border-radius: 3rem;
-  background-color: #0A0A0A;
-
-  width: 100%;
-  max-width: 140rem;
-
-  padding: 2.5rem;
-  gap: 2rem;
-
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-/* ── Topbar: botão GERENCIAR + busca ── */
-.gs_topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.gs_seta{
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.gs_btnGerenciar {
-  background: transparent;
-  color: white;
-  border: 2px solid #676767;
-  border-radius: 0.6rem;
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.2s;
-}
-
-.gs_btnGerenciar:hover {
-  background: #e50914;
-}
-
-.gs_letras{
-  display: flex;
-  flex-direction: column; 
-}
-
-.gs_letra02{
-  font-size: 1.5rem;
-  color: #676767;
-}
-
-.gs_buscaWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex: 1;
-  max-width: 50rem;
-}
-
-.gs_buscaInput {
-  width: 100%;
-  height: 4.5rem;
-  background: #1e1e1e;
-  border: 1px solid #3a3a3a;
-  border-radius: 0.8rem;
-  color: white;
-  font-size: 1.6rem;
-  padding: 0 4.5rem 0 1.5rem;
-  outline: none;
-  box-sizing: border-box;
-  transition: border-color 0.2s;
-}
-
-.gs_buscaInput::placeholder {
-  color: #888;
-}
-
-.gs_buscaInput:focus {
-  border-color: #e50914;
-}
-
-.gs_buscaIcone {
-  position: absolute;
-  right: 1.4rem;
-  color: #888;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-}
-
-/* ── Blocos de conteúdo ── */
-.gs_areaBlocos {
-  display: flex;
-  flex-direction: column;
-  
-  width: 100%;
-  
-  background: #333;
-  border: 1px solid #676767;
-  border-radius: 1.2rem;
-}
-
-.gs_bloco { 
-  background: #1a1a1a;
-  border: 1px solid #676767;
-  border-radius: 1.2rem;
-  margin: 0 2rem;
-  display: flex ;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.gs_bloco_box{
-  margin: 2rem 0;
-}
-
-.gs_bloco_box_img{
-  margin-right: 2rem;
-}
-
-.gs_bloco_text{
-  margin: 0;
-  font-size: 2rem;
-}
-
-.gs_bloco_text02{
-  color: #888;
-}
-
-
-.gs_bloco_label{
-  margin: 2rem 4rem;
-  
-}
-
-.gs_bloco02{
-  background: #1a1a1a;
-  border: 1px solid #676767;
-  border-radius: 1.2rem;
-  margin: 2rem 2rem;
-}
-
-.gs_bloco_img{
-  display: flex;
-  width: 35vh;
-  padding: 2rem;
- 
-  border-radius: 4rem;
-}
-
-.gs_bloco_titulo{
-  font-size: 1.9rem;
-  margin: 2rem ;
-  color: #e50914;
-  letter-spacing: 0.2rem;
-}
-
-.tempo_box_linha{
-  display: flex;
-  justify-content: center;
-  
-}
-
-.tempo_linha {
-    width: 80%;
-    position: relative;
-    margin: 8rem ;
-
-    display: flex;
-    justify-content: space-between;
-
-    padding-top: 3rem;
-    bottom: -3rem;
-    display: flex;
-
-}
-
-/* LINHA */
-.tempo_linha::before {
-    content: "";
-    position: absolute;
-    justify-content: center;
-    text-align: center;
-
-    top: 0.1rem;
-
-    left: 6%;
-    
-
-    height: 3px;
-    width: 88%;
-
-    background: #E0E0E0;
-
-    border-radius: 999px;
-    
-
-    z-index: 1;
-}
-
-.tempo_etapa {
-    position: relative;
-
     display: flex;
     flex-direction: column;
+    border: #1f1f27 1px solid;
+    border-radius: 2rem;
+    background-color: #141419; 
+    width: 100%;           /* Força a caixa cinza a ocupar 100% da largura disponível */
+    padding: 2.5rem;
+    gap: 2.5rem;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   4. CARDS INDICADORES (4 colunas perfeitamente alinhadas)
+   ========================================================================== */
+.cards_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Mantém os 4 cards lado a lado ocupando frações iguais */
+    gap: 2rem;
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .cards_container {
+        grid-template-columns: repeat(2, 1fr); /* Quebra para duas colunas em telas menores */
+    }
+}
+
+.card_item {
+    background-color: #1a1a22;
+    border: 1px solid #262631;
+    border-radius: 1.6rem;
+    padding: 2rem;
+    display: flex;
     align-items: center;
-
-    min-width: 12rem;
-
-    z-index: 2;
+    gap: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* BOLINHAS */
-.tempo_bolinha {
-    position: absolute;
-
-    width: 14px;
-    height: 14px;
-
-    background: #E0E0E0;
-
-    border-radius: 50%;
-
-    left: 50%;
-    transform: translateX(-50%);
-
-    top: -3.5rem;
-
-    z-index: 5;
-
-
+.card_icone {
+    width: 5.5rem;
+    height: 5.5rem;
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    flex-shrink: 0;
 }
 
-.tempo_bolinha_img{
-  position: absolute;
+.card_pecas .card_icone { background-color: rgba(229, 9, 20, 0.12); color: #ff333a; }
+.card_mao_obra .card_icone { background-color: rgba(21, 101, 192, 0.15); color: #2196f3; }
+.card_total .card_icone { background-color: rgba(46, 125, 50, 0.15); color: #4caf50; }
+.card_ordem .card_icone { background-color: rgba(123, 31, 162, 0.15); color: #ab47bc; }
 
-  width: 4rem;
-
-  left: 50%;
-  transform: translateX(-50%);
-
-  top: -8rem;
+.card_info {
+    display: flex;
+    flex-direction: column;
 }
 
-.tempo_bolinha_img_processo{
-  position: absolute;
-
-  width: 4rem;
-
-  left: 50%;
-  transform: translateX(-50%);
-
-  top: -8rem;
-
-  background-color: #e50914;
-  border-radius: 1rem;
-
-  padding: 0.3rem;
-}
-
-
-
-.tempo_linha_letras {
-    color: #E0E0E0;
-    font-size: 1.4rem;
+.card_label {
+    font-size: 1.3rem;
+    color: #8a8a9d;
     font-weight: 500;
-    text-transform: uppercase;
-    margin: 0;
-    letter-spacing: 0.05rem;
-    position: relative;
 }
 
-.tempo_etapa small {
-    color: #E0E0E0;
-    font-size: 1.1rem;
-
-}
-
-.ativo .tempo_bolinha {
-    background: #E0E0E0;
-}
-
-.progresso .tempo_bolinha {
-    background: #e50914;
-}
-
-.progresso .tempo_linha_letras {
-    color: #e50914;
+.card_valor {
+    font-size: 2.4rem;
     font-weight: 700;
+    color: white;
+    margin: 0.2rem 0;
 }
 
-/* ───────── ATUALIZAR INFORMAÇÕES ───────── */
-
-.gs_atualizar_box{
-  background: #1a1a1a;
-  border-radius: 1.2rem;
-
+.card_subtext {
+    font-size: 1.1rem;
+    color: #555566;
 }
 
-.gs_atualizar_conteudo{
-  display: flex;
-  justify-content: space-between;
-  gap: 4rem;
-
-  flex-wrap: wrap;
+/* ==========================================================================
+   5. BARRA DE FILTROS E BUSCA
+   ========================================================================== */
+.busca_container {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
 }
 
-.gs_atualizar_esquerda{
-  flex: 1;
-  min-width: 35rem;
-
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.input_data_wrapper { 
+    width: 26rem; 
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-.gs_atualizar_direita{
-  flex: 1;
-  min-width: 35rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.input_busca_wrapper { 
+    flex: 1; 
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-.gs_input_group{
-  display: flex;
-  flex-direction: column;
-  margin: 0 2rem;
+.input_data, .input_busca {
+    width: 100%;
+    height: 5rem;
+    background-color: #1a1a22;
+    border: 1px solid #262631;
+    border-radius: 1rem;
+    color: white;
+    font-size: 1.4rem;
+    padding: 0 1.5rem 0 4.2rem;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
 }
 
-.gs_label{
-  color: #888;
-  font-size: 1.2rem;
-  letter-spacing: 0.05rem;
+.input_data:focus, .input_busca:focus {
+    border-color: #e50914;
 }
 
-.gs_select{
-  width: 100%;
-  height: 4.5rem;
-
-  background: #111;
-  border: 1px solid #444;
-
-  border-radius: 0.6rem;
-
-  color: white;
-
-  padding: 0 1rem;
-
-  font-size: 1.4rem;
-
-  outline: none;
+.input_data::placeholder, .input_busca::placeholder {
+    color: #666677;
 }
 
-.gs_select:focus{
-  border-color: #e50914;
+.icone_calendario, .icone_lupa {
+    position: absolute;
+    left: 1.5rem;
+    color: #8a8a9d;
+    font-size: 1.6rem;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
 }
 
-.gs_textarea{
-  width: 100%;
-  height: 14rem;
-
-  resize: none;
-
-  background: #111;
-  border: 1px solid #444;
-
-  border-radius: 0.6rem;
-
-  color: white;
-
-  padding: 1rem;
-
-  font-size: 1.4rem;
-
-  outline: none;
+/* ==========================================================================
+   6. TABELA FINANCEIRA (Correção de cores e bordas)
+   ========================================================================== */
+.tabela_container {
+    width: 100%;
+    border: 1px solid #262631;
+    border-radius: 1.6rem;
+    background-color: #1a1a22;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    overflow-x: auto;
 }
 
-.gs_textarea:focus{
-  border-color: #e50914;
+.tabela_financeira {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
 }
 
-.gs_upload_box{
-  height: 14rem;
-
-  border: 1px solid #444;
-
-  border-radius: 0.8rem;
-
-  background: #111;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  gap: 1rem;
-
-  cursor: pointer;
-
-  transition: 0.2s;
+.tabela_financeira th {
+    padding: 1.8rem 1.5rem;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 700;
+    border-bottom: 2px solid #262631;
+    background-color: #1a1a22;
 }
 
-.gs_upload_box:hover{
-  border-color: #e50914;
+.tabela_financeira td {
+    padding: 1.8rem 1.5rem;
+    font-size: 1.4rem;
+    color: #c4c4cc;
+    border-bottom: 1px solid #262631;
+    vertical-align: middle;
+    background-color: #1a1a22;
 }
 
-.gs_upload_icon{
-  width: 5rem;
-  height: 5rem;
-
-  border: 2px solid white;
-  border-radius: 1rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 3rem;
-  color: white;
+.tabela_financeira tbody tr:hover td {
+    background-color: #22222d;
 }
 
-.gs_upload_text{
-  color: #888;
-  font-size: 1.3rem;
+/* Badges de Status de Pagamento */
+.badge_pagamento {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 0.8rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    width: 12rem;
+    box-sizing: border-box;
 }
 
-.gs_botoes{
-  display: flex;
-  justify-content: flex-end;
-  gap: 2rem;
-
-  margin: 2rem 2rem;
+.pago {
+    background-color: rgba(46, 125, 50, 0.25);
+    color: #4caf50;
+    border: 1px solid rgba(46, 125, 50, 0.4);
 }
 
-.gs_btn_cancelar{
-  width: 16rem;
-  height: 4.5rem;
-
-  border: none;
-
-  background: linear-gradient(#3a3a3a, #111);
-
-  color: white;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  border-radius: 0.4rem;
-
-  transition: 0.2s;
+.pendente {
+    background-color: rgba(230, 126, 34, 0.15);
+    color: #ff9800;
+    border: 1px solid rgba(230, 126, 34, 0.3);
 }
 
-.gs_btn_cancelar:hover{
-  opacity: 0.8;
+.coluna_total {
+    font-weight: 700;
+    color: white;
 }
 
-.gs_btn_salvar{
-  width: 20rem;
-  height: 4.5rem;
-
-  border: none;
-
-  background: #e50914;
-
-  color: white;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  border-radius: 0.4rem;
-
-  transition: 0.2s;
+.btn_acoes {
+    background: none;
+    border: none;
+    color: #8a8a9d;
+    cursor: pointer;
+    font-size: 1.8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.6rem;
+    transition: all 0.2s;
 }
 
-.gs_btn_salvar:hover{
-  background: #ff1e2d;
+.btn_acoes:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* ── Rodapé ── */
+/* ==========================================================================
+   7. PAGINAÇÃO DA TABELA
+   ========================================================================== */
+.paginacao_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #1a1a22;
+    border-top: 1px solid #262631;
+    border-radius: 0 0 1.6rem 1.6rem;
+}
+
+.paginacao_info {
+    font-size: 1.3rem;
+    color: #8a8a9d;
+}
+
+.paginacao_controles {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn_pag {
+    background-color: #262631;
+    border: 1px solid #333344;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn_pag:hover:not(:disabled) {
+    background-color: #333344;
+}
+
+.btn_pag_ativo {
+    background-color: #e50914;
+    border-color: #e50914;
+    cursor: default;
+}
+
+.btn_pag:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.select_pag {
+    background-color: #262631;
+    border: 1px solid #333344;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.6rem;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+/* ==========================================================================
+   8. RODAPÉ PRINCIPAL
+   ========================================================================== */
 .rodape_principal { 
-  border-top: #e50914 0.3rem solid;
-  width: 100%;
-  height: 9rem; 
-  background-color: #0A0A0A; 
-  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
-  padding: 0 2rem; 
-  margin-top: auto;
-}
-
-@keyframes pulseEntrada {
-  0%   { box-shadow: 0 0 0 0 rgba(229,9,20,0.5); transform: scale(0.95); }
-  50%  { box-shadow: 0 0 0 12px rgba(229,9,20,0); transform: scale(1.05); }
-  100% { box-shadow: 0 0 0 0 rgba(229,9,20,0); transform: scale(1); }
-}
-
-@keyframes fadeOverlay {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@media screen and (max-width: 1024px) {
-  .barra_Principal { height: 7rem; } 
-  .barra_Imagem { height: 7rem; } 
-}
-
-@media screen and (max-width: 768px) {
-  .barra_Principal { height: 6rem; padding: 0 1rem; } 
-  .barra_Imagem { height: 5rem; } 
-  .barra_botao { padding: 0.4rem 0.8rem; font-size: 1.4rem; }
-  .gs_topbar { flex-direction: column; align-items: flex-start; }
-  .gs_buscaWrapper { max-width: 100%; }
-}
-    
-@media screen and (max-width: 480px) {
-  .barra_Principal { flex-wrap: wrap; height: auto; padding: 1rem; } 
-  .barra_Logo { margin-left: 0; justify-content: center; width: 100%; } 
-  .barra_conteudo { margin-right: 0; width: 100%; justify-content: center; gap: 0.5rem; } 
-  .barra_botao { font-size: 1.2rem; }
+    border-top: #e50914 0.3rem solid;
+    width: 100%;
+    height: 4rem; 
+    background-color: #0A0A0A; 
+    margin-top: auto;
 }
