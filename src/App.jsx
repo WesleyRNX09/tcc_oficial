@@ -8,6 +8,7 @@ import Login_adm from './pages/telas/login_adm/index'
 import Home_adm from './pages/home_adm/index'
 import Atualizar_adm from './pages/telas/atualizar_veiculo/index'
 import Financeiro_adm from './pages/telas/financeiro/index'
+import OS_adm from './pages/telas/ordem_servico/index'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/home_adm" element={<Home_adm />} />
       <Route path="/atualizar_veiculo" element={<Atualizar_adm />} />
       <Route path="/financeiro" element={<Financeiro_adm />} />
+      <Route path="/OS" element={<OS_adm />} />
     </Routes>
   )
 }
