@@ -9,23 +9,25 @@ import carro from "../../../assets/carro.png";
 import relatorio from "../../../assets/relatorio.png";
 
 import seta from "../../../assets/seta_esquerda1.png";
-import fiat from "../../../assets/punto_os.png";
-import pneu from "../../../assets/pneus.png";
-
-import entrada from "../../../assets/entrada.png";
-import analise from "../../../assets/analise.png";
-import diagnostico from "../../../assets/diagnostico.png";
-import processo from "../../../assets/processo.png";
-import finalizado from "../../../assets/finalizado.png";
 
 import { useNavigate } from "react-router-dom";
-
 import styles from './index.module.css';
 
 function os() {
   const navigate = useNavigate();
   const [menuAberto, setMenuAberto] = useState(false);
   const [busca, setBusca] = useState('');
+
+  // Mock de dados para renderizar a tabela dinamicamente igual à imagem
+  const ordensServico = [
+    { data: '13/02/2026', os: 'OS-00001', cliente: 'Guilherme Luiz', veiculo: 'BMW M3 G80', servico: 'Troca de Pneus', status: 'Concluido' },
+    { data: '15/05/2026', os: 'OS-00002', cliente: 'Bruno Luan', veiculo: 'Jetta GLI', servico: 'Alinhamento', status: 'Pendente' },
+    { data: '24/02/2026', os: 'OS-00003', cliente: 'Cauã Takasaki', veiculo: '911 GT3 RS', servico: 'Reparo de Freios', status: 'Concluido' },
+    { data: '18/09/2026', os: 'OS-00004', cliente: 'Matheus', veiculo: 'Onix LT 2021', servico: 'Troca de Filtros', status: 'Concluido' },
+    { data: '31/12/2026', os: 'OS-00005', cliente: 'João Pedro', veiculo: 'Gol 2017', servico: 'Troca de Oleo', status: 'Pendente' },
+    { data: '29/05/2026', os: 'OS-00006', cliente: 'Wesley Beraldi', veiculo: 'Tracker 2022', servico: 'Balanceamento', status: 'Concluido' },
+    { data: '01/01/2026', os: 'OS-00007', cliente: 'Richard Guerra', veiculo: 'Peugot 206', servico: 'Troca de filtros', status: 'Concluido' },
+  ];
 
   return (
     <div className={styles.container}>
@@ -41,7 +43,7 @@ function os() {
             <span className={styles.barra_linha}></span>
             <span className={styles.barra_linha}></span>
           </button>
-          <img src={logo} className={styles.barra_Imagem} />
+          <img src={logo} className={styles.barra_Imagem} alt="Logo" />
         </div>
 
         <div className={styles.barra_conteudo}>
@@ -63,27 +65,27 @@ function os() {
             <Botao texto="FINANCEIRO" acao={'vermelho'} aoClicar={() => navigate("/cadastro")} />
 
             <div className={styles.home_margin1_btn}>
-              <img src={ordemServiço} className={styles.home_margin1_img} />
+              <img src={ordemServiço} className={styles.home_margin1_img} alt="" />
               <Link to="/login" className={styles.home_margin1_text}>HISTORICO DE ORDEM DE SERVIÇO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>
-              <img src={adicionarFuncionario} className={styles.home_margin1_img} />
+              <img src={adicionarFuncionario} className={styles.home_margin1_img} alt="" />
               <Link to="/login" className={styles.home_margin1_text}>ADICIONAR FUNCIONARIO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>
-              <img src={carro} className={styles.home_margin1_img} />
+              <img src={carro} className={styles.home_margin1_img} alt="" />
               <Link to="/login" className={styles.home_margin1_text}>ATUALIZAR VEÍCULO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>
-              <img src={carro} className={styles.home_margin1_img} />
+              <img src={carro} className={styles.home_margin1_img} alt="" />
               <Link to="/login" className={styles.home_margin1_text}>CADASTRAR VEÍCULO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>
-              <img src={relatorio} className={styles.home_margin1_img} />
+              <img src={relatorio} className={styles.home_margin1_img} alt="" />
               <Link to="/login" className={styles.home_margin1_text}>RELATORIOS</Link>
             </div>
           </div>
@@ -93,22 +95,21 @@ function os() {
         <div className={styles.home_margin2} style={{ width: menuAberto ? '75%' : '100%' }}>
           <div className={styles.home_box}>
 
-            {/* ── Topbar: botão + busca ── */}
+            {/* Topbar */}
             <div className={styles.gs_topbar}>
-
               <div className={styles.gs_seta}>
-                  <button className={styles.gs_btnGerenciar}><img src={seta}/></button>
-                  <div className={styles.gs_letras}>
-                      <h2 className={styles.gs_letra01}>ATUALIZAR VEÍCULO</h2>
-                      <p className={styles.gs_letra02}>Atualize  status e as informações do veículo em tempo real</p>
-                  </div>
+                <button className={styles.gs_btnGerenciar}><img src={seta} alt="Voltar" /></button>
+                <div className={styles.gs_letras}>
+                  <h2 className={styles.gs_letra01}>ATUALIZAR VEÍCULO</h2>
+                  <p className={styles.gs_letra02}>Atualize status e as informações do veículo em tempo real</p>
+                </div>
               </div>
 
               <div className={styles.gs_buscaWrapper}>
                 <input
                   type="text"
                   className={styles.gs_buscaInput}
-                  placeholder="Procurar por OS"
+                  placeholder="Buscar por cliente, serviço ou placa"
                   value={busca}
                   onChange={(e) => setBusca(e.target.value)}
                 />
@@ -119,178 +120,180 @@ function os() {
                   </svg>
                 </span>
               </div>
-              
             </div>
 
-            {/* ── Área de blocos ── */}
-            <div className={styles.gs_areaBlocos}>
+            {/* NOVO: Filtros Rápidos (Cards Superiores) */}
+            <div className={styles.gs_filtros_rapidos}>
+              <div className={styles.gs_card_filtro}></div>
+              <div className={styles.gs_card_filtro}></div>
+              <div className={styles.gs_card_filtro}></div>
+              <div className={styles.gs_card_filtro}></div>
+            </div>
 
-              <h2 className={styles.gs_bloco_titulo}>DADOS DO VEÍCULO</h2>
+            
+              {/* ── Área de Listagem com Sombra ── */}
+              <div className={styles.gs_areaBlocos}>
+                <h2 className={styles.gs_bloco_titulo}>DADOS DO VEÍCULO</h2>
+                
+                {/* ───────── NOVO CONTEÚDO DENTRO DA gs_areaBlocos ───────── */}
 
-              <div className={styles.gs_bloco}>
-
-                <div className={styles.gs_bloco_label}>
-
-                  <div className={styles.gs_bloco_box}>
-                    <h1 className={styles.gs_bloco_text}>CLIENTE</h1>
-                    <p className={styles.gs_bloco_text02}>Guilherme Luiz</p>
+                <div className={styles.os_header}>
+                  <div className={styles.os_data}>
+                    <span>📅</span>
+                    <p>01/01/2026 - 31/01/2026</p>
                   </div>
 
-                  <div className={styles.gs_bloco_box}>
-                      <h1 className={styles.gs_bloco_text}>VEÍCULO</h1>
-                      <p className={styles.gs_bloco_text02}>Jetta 2.0 TSI</p>
-                  </div>
+                  <div className={styles.os_busca}>
+                    <input
+                      type="text"
+                      placeholder="Buscar por cliente, serviço ou placa"
+                    />
 
-                  <div className={styles.gs_bloco_box}>
-                    <h1 className={styles.gs_bloco_text}>PLACA</h1>
-                    <p className={styles.gs_bloco_text02}>GLZ-2A08</p>
+                    <span className={styles.os_busca_icon}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                      </svg>
+                    </span>
                   </div>
                 </div>
 
-                <div className={styles.gs_bloco_label}>
-
-                  <div className={styles.gs_bloco_box}>
-                    <h1 className={styles.gs_bloco_text}>DATA DE ENTRADA</h1>
-                    <p className={styles.gs_bloco_text02}>27/07/2026</p>
-                  </div>
-
-                  <div className={styles.gs_bloco_box}>
-                      <h1 className={styles.gs_bloco_text}>PREVISÃO DE ENTREGA</h1>
-                      <p className={styles.gs_bloco_text02}>29/07/2026</p>
-                  </div>
-
-                  <div className={styles.gs_bloco_box}>
-                    <h1 className={styles.gs_bloco_text}>ORDEM DE SERVIÇO</h1>
-                    <p className={styles.gs_bloco_text02}>OS-000123</p>
-                  </div>
+                <div className={styles.os_cards}>
+                  <div className={`${styles.os_card} ${styles.os_card_ativo}`}></div>
+                  <div className={styles.os_card}></div>
+                  <div className={styles.os_card}></div>
+                  <div className={styles.os_card}></div>
                 </div>
 
-                <div className={styles.gs_bloco_box_img}>
-                  <img src={fiat} className={styles.gs_bloco_img}/>
-                </div>
-                  
-              </div>
+                <div className={styles.os_tabela}>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Data</th>
+                        <th>OS</th>
+                        <th>Cliente</th>
+                        <th>Veículo / Placa</th>
+                        <th>Serviço</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
 
-              
+                    <tbody>
+                      <tr>
+                        <td>13/02/2026</td>
+                        <td className={styles.os_codigo}>OS-00001</td>
+                        <td>Guilherme Luiz</td>
+                        <td>BMW M3 G80</td>
+                        <td>Troca de Pneus</td>
+                        <td>
+                          <span className={styles.status_concluido}>
+                            ✓ Concluído
+                          </span>
+                        </td>
+                      </tr>
 
-              <div className={styles.gs_bloco02}>
+                      <tr>
+                        <td>15/05/2026</td>
+                        <td className={styles.os_codigo}>OS-00002</td>
+                        <td>Bruno Luan</td>
+                        <td>Jetta GLI</td>
+                        <td>Alinhamento</td>
+                        <td>
+                          <span className={styles.status_andamento}></span>
+                        </td>
+                      </tr>
 
-                <h2 className={styles.gs_bloco_titulo}>STATUS DO SERVIÇO</h2>
+                      <tr>
+                        <td>24/02/2026</td>
+                        <td className={styles.os_codigo}>OS-00003</td>
+                        <td>Cauã Takasaki</td>
+                        <td>911 GT3 RS</td>
+                        <td>Reparo de Freios</td>
+                        <td>
+                          <span className={styles.status_concluido}>
+                            ✓ Concluído
+                          </span>
+                        </td>
+                      </tr>
 
-                    <div className={styles.tempo_box_linha}>
+                      <tr>
+                        <td>18/09/2026</td>
+                        <td className={styles.os_codigo}>OS-00004</td>
+                        <td>Matheus</td>
+                        <td>Onix LT 2021</td>
+                        <td>Troca de Filtros</td>
+                        <td>
+                          <span className={styles.status_concluido}>
+                            ✓ Concluído
+                          </span>
+                        </td>
+                      </tr>
 
-                      <div className={styles.tempo_linha}>
+                      <tr>
+                        <td>31/12/2026</td>
+                        <td className={styles.os_codigo}>OS-00005</td>
+                        <td>João Pedro</td>
+                        <td>Gol 2017</td>
+                        <td>Troca de Óleo</td>
+                        <td>
+                          <span className={styles.status_andamento}></span>
+                        </td>
+                      </tr>
 
-                        <div className={`${styles.tempo_etapa} ${styles.ativo}`}>
-                            <img src={entrada} className={styles.tempo_bolinha_img} />
-                            <span className={styles.tempo_bolinha}></span>
-                            <p className={styles.tempo_linha_letras}>ENTRADA</p>
-                            <small>00/00/0000</small>
-                        </div>
+                      <tr>
+                        <td>29/05/2026</td>
+                        <td className={styles.os_codigo}>OS-00006</td>
+                        <td>Wesley Beraldi</td>
+                        <td>Tracker 2022</td>
+                        <td>Balanceamento</td>
+                        <td>
+                          <span className={styles.status_concluido}>
+                            ✓ Concluído
+                          </span>
+                        </td>
+                      </tr>
 
-                        <div className={styles.tempo_etapa}>
-                            <img src={analise} className={styles.tempo_bolinha_img} />
-                            <span className={styles.tempo_bolinha}></span>
-                            <p className={styles.tempo_linha_letras}>EM ANÁLISE</p>
-                        </div>
+                      <tr>
+                        <td>01/01/2026</td>
+                        <td className={styles.os_codigo}>OS-00007</td>
+                        <td>Richard Guerra</td>
+                        <td>Peugeot 206</td>
+                        <td>Troca de filtros</td>
+                        <td>
+                          <span className={styles.status_concluido}>
+                            ✓ Concluído
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
 
-                        <div className={styles.tempo_etapa}>
-                            <img src={diagnostico} className={styles.tempo_bolinha_img} /> 
-                            <span className={styles.tempo_bolinha}></span>
-                            <p className={styles.tempo_linha_letras}>DIAGNÓSTICO</p>
-                        </div>
+                  <div className={styles.os_footer}>
+                    <p>Mostando 1 a 7 de 8 registros</p>
 
-                        <div className={`${styles.tempo_etapa} ${styles.progresso}`}>
-                            <img src={processo} className={styles.tempo_bolinha_img_processo} />
-                            <span className={styles.tempo_bolinha}></span>
-                            <p className={styles.tempo_linha_letras}>EM PROCESSO</p>
-                        </div>
-
-                        <div className={styles.tempo_etapa}>
-                            <img src={finalizado} className={styles.tempo_bolinha_img} /> 
-                            <span className={styles.tempo_bolinha}></span>
-                            <p className={styles.tempo_linha_letras}>FINALIZADO</p>
-                        </div>
-                      </div>    
-
+                    <div className={styles.os_paginacao}>
+                      <button>{'<'}</button>
+                      <button className={styles.os_pagina_ativa}>1</button>
+                      <button>2</button>
+                      <button>{'>'}</button>
                     </div>
 
-                      <div className={styles.gs_atualizar_box}>
-
-                        <h2 className={styles.gs_bloco_titulo}>
-                          ATUALIZAR INFORMAÇÕES
-                        </h2>
-
-                        <div className={styles.gs_atualizar_conteudo}>
-
-                          {/* ESQUERDA */}
-                          <div className={styles.gs_atualizar_esquerda}>
-
-                            <div className={styles.gs_input_group}>
-                              <label className={styles.gs_label}>
-                                NOVO STATUS
-                              </label>
-
-                              <select className={styles.gs_select}>
-                                <option>EM PROCESSO</option>
-                                <option>EM ANÁLISE</option>
-                                <option>DIAGNÓSTICO</option>
-                                <option>FINALIZADO</option>
-                              </select>
-                            </div>
-
-                            <div className={styles.gs_input_group}>
-                              <label className={styles.gs_label}>
-                                DESCRIÇÃO / OBSERVAÇÕES
-                              </label>
-
-                              <textarea
-                                className={styles.gs_textarea}
-                              />
-                            </div>
-
-                          </div>
-
-                          {/* DIREITA */}
-                          <div className={styles.gs_atualizar_direita}>
-
-                            <label className={styles.gs_label}>
-                              ADICIONAR IMAGEM (OPCIONAL)
-                            </label>
-
-                            <div className={styles.gs_upload_box}>
-
-                              <div className={styles.gs_upload_icon}>
-                                +
-                              </div>
-
-                              <p className={styles.gs_upload_text}>
-                                Clique ou arraste a imagem aqui
-                              </p>
-
-                            </div>
-
-                            <div className={styles.gs_botoes}>
-                              <button className={styles.gs_btn_cancelar}>
-                                CANCELAR
-                              </button>
-
-                              <button className={styles.gs_btn_salvar}>
-                                SALVAR E ATUALIZAR
-                              </button>
-                            </div>
-
-                          </div>
-
-                        </div>
-
-                      </div>
-
+                    <select>
+                      <option>10</option>
+                    </select>
+                  </div>
+                </div>
               </div>
 
-
-              
-            </div>
+            
 
           </div>
         </div>
