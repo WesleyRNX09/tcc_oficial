@@ -167,7 +167,7 @@ function os() {
                 </div>
 
                 <div className={styles.os_cards}>
-                  <div className={`${styles.os_card} ${styles.os_card_ativo}`}></div>
+                  <div className={styles.os_card}></div>
                   <div className={styles.os_card}></div>
                   <div className={styles.os_card}></div>
                   <div className={styles.os_card}></div>
@@ -195,7 +195,11 @@ function os() {
                         <td>Troca de Pneus</td>
                         <td>
                           <span className={styles.status_concluido}>
-                            ✓ Concluído
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
+                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            Concluido
                           </span>
                         </td>
                       </tr>
@@ -207,7 +211,7 @@ function os() {
                         <td>Jetta GLI</td>
                         <td>Alinhamento</td>
                         <td>
-                          <span className={styles.status_andamento}></span>
+                          <span className={styles.status_andamento}>Em andamento</span>
                         </td>
                       </tr>
 
@@ -219,7 +223,11 @@ function os() {
                         <td>Reparo de Freios</td>
                         <td>
                           <span className={styles.status_concluido}>
-                            ✓ Concluído
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
+                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            Concluido
                           </span>
                         </td>
                       </tr>
@@ -232,7 +240,11 @@ function os() {
                         <td>Troca de Filtros</td>
                         <td>
                           <span className={styles.status_concluido}>
-                            ✓ Concluído
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
+                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            Concluido
                           </span>
                         </td>
                       </tr>
@@ -244,7 +256,7 @@ function os() {
                         <td>Gol 2017</td>
                         <td>Troca de Óleo</td>
                         <td>
-                          <span className={styles.status_andamento}></span>
+                          <span className={styles.status_andamento}>Em andamento</span>
                         </td>
                       </tr>
 
@@ -256,7 +268,11 @@ function os() {
                         <td>Balanceamento</td>
                         <td>
                           <span className={styles.status_concluido}>
-                            ✓ Concluído
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
+                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            Concluido
                           </span>
                         </td>
                       </tr>
@@ -269,7 +285,11 @@ function os() {
                         <td>Troca de filtros</td>
                         <td>
                           <span className={styles.status_concluido}>
-                            ✓ Concluído
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
+                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            Concluido
                           </span>
                         </td>
                       </tr>

@@ -10,76 +10,102 @@
 /* ───────── NAVBAR ───────── */
 
 .barra_Principal { 
-    border-bottom: #e50914 0.25rem solid; 
+    border-bottom: #e50914 0.3rem solid; 
     width: 100%; 
     display: flex; 
-    height: 8rem; 
+    height: 9rem; 
     align-items: center; 
     justify-content: space-between;
-    background-color: #050505; 
-    padding: 0 3rem; 
-}
+    background-color: #0A0A0A; 
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
+    padding: 0 2rem; 
+} 
 
 .barra_Logo { 
     display: flex; 
-    align-items: center;
-    gap: 2rem;
-}
+    align-items: center; 
+    margin-left: clamp(2rem, 5vw, 15rem); 
+    height: 100%;
+} 
 
 .barra_Imagem { 
-    height: 7rem; 
+    height: 10rem; 
     object-fit: contain;
 } 
 
 .barra_conteudo { 
     display: flex; 
-    align-items: center;
-    gap: 2rem;
+    flex-direction: row; 
+    gap: 1rem; 
+    margin-right: clamp(2rem, 5vw, 15rem); 
+    flex-wrap: wrap;
+    justify-content: flex-end; 
 }
-
+ 
 .barra_botao { 
-    color: #d9d9d9;
-    text-decoration: none;
-    font-size: 1.4rem;
-    transition: 0.2s;
-}
+  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.5vw, 1rem);
+  background-color: black;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.9px;
+  border: #e50914 1px solid;
+  font-size: clamp(1rem, 1.2vw, 1.6rem);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+} 
 
 .barra_botao:hover {
-    color: #e50914;
+  background-color: #e50914;
 }
 
-/* ───────── MENU HAMBURGUER ───────── */
-
+/* ── Botão hambúrguer ── */
 .barra_menu_btn {
-    background: transparent;
-    border: none;
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.5rem;
-    cursor: pointer;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  margin-right: 1.5rem;
+  transition: background 0.2s;
+}
+.barra_menu_btn:hover {
+  background: rgba(229, 9, 20, 0.1);
 }
 
 .barra_linha {
-    width: 100%;
-    height: 0.2rem;
-    background: white;
-    border-radius: 2rem;
-    transition: 0.3s;
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition:
+    transform  0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity    0.4s ease,
+    background 0.4s ease;
+  transform-origin: center;
 }
 
-.barra_menu_btn_aberto .barra_linha:nth-child(1){
-    transform: rotate(45deg) translateY(1rem);
+.barra_menu_btn_aberto .barra_linha:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
 }
-
-.barra_menu_btn_aberto .barra_linha:nth-child(2){
-    opacity: 0;
+.barra_menu_btn_aberto .barra_linha:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  background-color: #e50914;
 }
-
-.barra_menu_btn_aberto .barra_linha:nth-child(3){
-    transform: rotate(-45deg) translateY(-1rem);
+.barra_menu_btn_aberto .barra_linha:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: #e50914;
 }
 
 /* ───────── CONTEÚDO ───────── */
@@ -326,65 +352,82 @@
 
 .os_tabela{
     width: 100%;
-    border: 1px solid #3a3a3a;
+    border: 1px solid #2a2a2a;
     border-radius: 1rem;
     overflow: hidden;
-    background: #161616;
+    background: #111;
 }
 
 .os_tabela table{
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .os_tabela thead{
-    background: #181818;
+    background: #1a1a1a !important;
 }
 
 .os_tabela th{
-    color: white;
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 700;
     text-align: left;
-    padding: 1.8rem 2rem;
-    border-bottom: 1px solid #3a3a3a;
+    padding: 1.4rem 1.8rem;
+    border-bottom: 1px solid #2a2a2a;
+    color: #ffffff !important;
+    background: #1a1a1a !important;
+}
+.os_tabela td,
+.os_tabela th {
+    border-left: none !important;
+    border-right: none !important;
+    border-top  : none !important;
 }
 
 .os_tabela td{
-    padding: 1.8rem 2rem;
-    color: #d8d8d8;
-    font-size: 1.35rem;
-    border-bottom: 1px solid #2f2f2f;
+    padding: 1.4rem 1.8rem;
+    font-size: 1.3rem;
+    color: #d4d4d4;
+    border-bottom: 1px solid #1e1e1e;
+}
+
+.os_tabela tr:last-child td{
+    border-bottom: none;
 }
 
 .os_tabela tr:hover{
-    background: #1d1d1d;
+    background: #181818;
 }
 
 .os_codigo{
-    color: #ff1e1e !important;
+    color: #e03030 !important;
     font-weight: bold;
 }
 
 /* ───────── STATUS ───────── */
 
 .status_concluido{
-    background: #157c22;
-    color: #71ff83;
-    padding: 0.8rem 1.5rem;
-    border-radius: 0.7rem;
-    font-size: 1.3rem;
+    background: #1a5c24;
+    color: #5de86e;
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.7rem;
+    gap: 0.6rem;
+    white-space: nowrap;
 }
 
 .status_andamento{
-    width: 11rem;
-    height: 3.5rem;
-    background: #9d5b08;
-    border-radius: 0.7rem;
-    display: inline-block;
+    background: #7a4010;
+    color: transparent; /* sem texto visível como na imagem 2 */
+    padding: 0.6rem 3rem;
+    border-radius: 0.6rem;
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    min-width: 8rem;
+    min-height: 3rem;
 }
 
 /* ───────── FOOTER DA TABELA ───────── */
@@ -407,6 +450,7 @@
     display: flex;
     align-items: center;
     gap: 0.8rem;
+    justify-content: center;
 }
 
 .os_paginacao button{
@@ -418,6 +462,9 @@
     border-radius: 0.6rem;
     cursor: pointer;
     transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .os_paginacao button:hover{
