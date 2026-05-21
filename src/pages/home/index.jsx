@@ -39,7 +39,7 @@ function Home() {
 
         <div className={styles.barra_conteudo}>
           <Link to="/login" className={styles.barra_botao}>Serviços</Link>
-          <Link to="/" className={styles.barra_botao}>Acompanhar Veiculo</Link>
+          <Link   className={styles.barra_botao} onClick={() => setModalAberto(true)}>Acompanhar Veiculo</Link>
           <Link to="/login" className={styles.barra_botao}>Fazer Login</Link>
         </div>
       </div>

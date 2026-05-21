@@ -19,6 +19,8 @@ function os() {
   const [menuAberto, setMenuAberto] = useState(false);
   const [busca, setBusca] = useState('');
 
+ 
+
   // Mock de dados para renderizar a tabela dinamicamente igual à imagem
   const ordensServico = [
     { data: '13/02/2026', os: 'OS-00001', cliente: 'Guilherme Luiz', veiculo: 'BMW M3 G80', servico: 'Troca de Pneus', status: 'Concluido' },
@@ -34,8 +36,6 @@ function os() {
     <div className={styles.container}>
 
       <div className={styles.barra_Principal}>
-
-        <div className={styles.barra_Principal}>
           <div className={styles.barra_Logo}>
             <button
               className={`${styles.barra_menu_btn} ${menuAberto ? styles.barra_menu_btn_aberto : ''}`}
@@ -87,11 +87,6 @@ function os() {
 
         </div>
 
-          
-        </div>        
-        
-
-        {/* ── DIREITA: Sino + Perfil Admin ── */}
         
       </div>
 
@@ -151,13 +146,14 @@ function os() {
             
               {/* ── Área de Listagem com Sombra ── */}
               <div className={styles.gs_areaBlocos}>
-                <h2 className={styles.gs_bloco_titulo}>DADOS DO VEÍCULO</h2>
+                <h2 className={styles.gs_bloco_titulo}>HISTÓRICO DE OS</h2>
                 
                 {/* ───────── NOVO CONTEÚDO DENTRO DA gs_areaBlocos ───────── */}
 
                 <div className={styles.os_header}>
                   <div className={styles.os_data}>
                     <span>📅</span>
+                    <p>Data:</p>
                     <p>01/01/2026 - 31/01/2026</p>
                   </div>
 
@@ -185,10 +181,44 @@ function os() {
                 </div>
 
                 <div className={styles.os_cards}>
-                  <div className={styles.os_card}></div>
-                  <div className={styles.os_card}></div>
-                  <div className={styles.os_card}></div>
-                  <div className={styles.os_card}></div>
+                  <div className={styles.os_card}>
+                    <div className={styles.os_card_icone} style={{ background: '#2a2a2a' }}>📋</div>
+                    <div className={styles.os_card_info}>
+                      <span className={styles.os_card_label}>Total de Ordens</span>
+                      <span className={styles.os_card_valor}>{ordensServico.length}</span>
+                      <span className={styles.os_card_sub}>No período selecionado</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.os_card}>
+                    <div className={styles.os_card_icone} style={{ background: '#1a5c24' }}>✅</div>
+                    <div className={styles.os_card_info}>
+                      <span className={styles.os_card_label}>Concluídas</span>
+                      <span className={styles.os_card_valor}>
+                        {ordensServico.filter(o => o.status === 'Concluido').length}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className={styles.os_card}>
+                    <div className={styles.os_card_icone} style={{ background: '#7a4010' }}>🕐</div>
+                    <div className={styles.os_card_info}>
+                      <span className={styles.os_card_label}>Em Espera</span>
+                      <span className={styles.os_card_valor}>
+                        {ordensServico.filter(o => o.status === 'Pendente').length}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className={styles.os_card}>
+                    <div className={styles.os_card_icone} style={{ background: '#6b0000' }}>🔧</div>
+                    <div className={styles.os_card_info}>
+                      <span className={styles.os_card_label}>Em Manutenção</span>
+                      <span className={styles.os_card_valor}>
+                        {ordensServico.filter(o => o.status === 'Em andamento').length}
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
                 <div className={styles.os_tabela}>
