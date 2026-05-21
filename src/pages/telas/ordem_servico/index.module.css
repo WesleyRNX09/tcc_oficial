@@ -9,6 +9,8 @@
 
 /* ───────── NAVBAR ───────── */
 
+/* ───────── NAVBAR (nova versão — imagem 1) ───────── */
+
 .barra_Principal { 
     border-bottom: #e50914 0.3rem solid; 
     width: 100%; 
@@ -17,9 +19,11 @@
     align-items: center; 
     justify-content: space-between;
     background-color: #0A0A0A; 
-    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
-    padding: 0 2rem; 
-} 
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3);
+    overflow: visible; /* ← ADICIONE ISSO */
+    position: relative; /* ← ADICIONE ISSO */
+    z-index: 10;        /* ← ADICIONE ISSO */
+}
 
 .barra_Logo { 
     display: flex; 
@@ -108,6 +112,132 @@
   background-color: #e50914;
 }
 
+.barra_menu_btn_aberto .barra_linha:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.barra_menu_btn_aberto .barra_linha:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  background-color: #e50914;
+}
+.barra_menu_btn_aberto .barra_linha:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: #e50914;
+}
+
+/* ───────── BARRA DIREITA ───────── */
+
+.barra_direita {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-right: 3rem;
+  /* REMOVA o ::before completamente */
+}
+
+/* Separador vertical */
+.barra_direita::before {
+  content: '';
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(to bottom, transparent, #333, transparent);
+  margin-right: 1rem;
+}
+
+/* Sino */
+.barra_sino {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 0.8rem;
+  transition: background 0.2s;
+  position: relative;
+}
+.barra_sino:hover {
+  background: rgba(229, 9, 20, 0.12);
+}
+.barra_sino svg {
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.barra_sino:hover svg {
+  opacity: 1;
+}
+
+/* Card de perfil */
+.barra_perfil {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 1rem;
+  padding: 0.6rem 1.2rem 0.6rem 0.6rem;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  margin-left: 0.5rem;
+}
+.barra_perfil:hover {
+  border-color: #e50914;
+  background: #1a1a1a;
+  box-shadow: 0 0 14px rgba(229, 9, 20, 0.15);
+}
+
+/* Ícone circular com gradiente vermelho */
+.barra_perfil_icone {
+  width: 3.6rem;
+  height: 3.6rem;
+  background: linear-gradient(135deg, #3a0000, #1a1a1a);
+  border: 1px solid #e50914;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  /* COLOQUE SUA IMAGEM DE PERFIL AQUI — adicione overflow: hidden */
+}
+.barra_perfil_icone svg {
+  opacity: 0.9;
+}
+
+/* Textos */
+.barra_perfil_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.barra_perfil_nome {
+  color: #f0f0f0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.3px;
+}
+.barra_perfil_cargo {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Seta */
+.barra_seta {
+  opacity: 0.4;
+  flex-shrink: 0;
+  margin-left: 0.4rem;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.barra_perfil:hover .barra_seta {
+  opacity: 0.8;
+  transform: translateY(2px);
+}
+
 /* ───────── CONTEÚDO ───────── */
 
 .home_conteudo {
@@ -117,55 +247,87 @@
 }
 
 /* ───────── SIDEBAR ───────── */
-
 .home_margin1 {
-    background: #000;
-    overflow: hidden;
-    transition: 0.4s;
-    min-height: 100%;
-    border-right: 1px solid #181818;
+  background-color: #0A0A0A;
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 100;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .home_margin1_inner {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 2rem 0;
-    width: 100%;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 2rem;
+  transition: opacity 0.4s ease 0.2s;
+}
+
+.home_margin1_inner > :first-child {
+  align-self: center;
+}
+
+.home_margin1_aberto .home_margin1_inner {
+  opacity: 1;
 }
 
 .home_margin1_btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.6rem 2rem;
-    transition: 0.2s;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 1rem;
+  transition: background 0.2s;
 }
 
 .home_margin1_btn:hover {
-    background: #111;
+  background: rgba(229, 9, 20, 0.1);
 }
 
 .home_margin1_img {
-    width: 3rem;
-    height: 3rem;
-    object-fit: contain;
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .home_margin1_text {
-    color: white;
-    text-decoration: none;
-    font-size: 1.4rem;
-    font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  text-decoration: none;
 }
 
-.home_overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 10;
+.home_margin1_btn_os{
+    background-color: #970000;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.home_margin1_text_os{
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    text-decoration: none;
 }
 
 /* ───────── MAIN ───────── */
@@ -211,6 +373,9 @@
     background: #111;
     cursor: pointer;
     transition: 0.2s;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .gs_btnGerenciar:hover{

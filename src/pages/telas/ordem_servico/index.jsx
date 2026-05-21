@@ -7,6 +7,7 @@ import ordemServiço from "../../../assets/historico_de_ordem.png";
 import adicionarFuncionario from "../../../assets/adicionar_funcionario.png";
 import carro from "../../../assets/carro.png";
 import relatorio from "../../../assets/relatorio.png";
+import notificacao from "../../../assets/notificacao.png";
 
 import seta from "../../../assets/seta_esquerda1.png";
 
@@ -33,25 +34,64 @@ function os() {
     <div className={styles.container}>
 
       <div className={styles.barra_Principal}>
-        <div className={styles.barra_Logo}>
-          <button
-            className={`${styles.barra_menu_btn} ${menuAberto ? styles.barra_menu_btn_aberto : ''}`}
-            onClick={() => setMenuAberto(!menuAberto)}
-            aria-label="Abrir menu"
-          >
-            <span className={styles.barra_linha}></span>
-            <span className={styles.barra_linha}></span>
-            <span className={styles.barra_linha}></span>
-          </button>
-          <img src={logo} className={styles.barra_Imagem} alt="Logo" />
-        </div>
 
-        <div className={styles.barra_conteudo}>
-          <Link to="/login" className={styles.barra_botao}>Serviços</Link>
-          <Link to="/" className={styles.barra_botao}>Acompanhar Veiculo</Link>
-          <Link to="/login" className={styles.barra_botao}>Fazer Login</Link>
+        <div className={styles.barra_Principal}>
+          <div className={styles.barra_Logo}>
+            <button
+              className={`${styles.barra_menu_btn} ${menuAberto ? styles.barra_menu_btn_aberto : ''}`}
+              onClick={() => setMenuAberto(!menuAberto)}
+              aria-label="Abrir menu"
+            >
+              <span className={styles.barra_linha}></span>
+              <span className={styles.barra_linha}></span>
+              <span className={styles.barra_linha}></span>
+            </button>
+            <img src={logo} className={styles.barra_Imagem} />
+          </div>
+
+          <div className={styles.barra_conteudo}>
+            <Link to="/login" className={styles.barra_botao}>Serviços</Link>
+            <Link to="/" className={styles.barra_botao}>Acompanhar Veiculo</Link>
+            <Link to="/login" className={styles.barra_botao}>Fazer Login</Link>
+          </div>
+        </div>        
+        
+
+        {/* ── DIREITA: Sino + Perfil Admin ── */}
+        <div className={styles.barra_direita}>
+
+          {/* Ícone de notificação — COLOQUE SEU ÍCONE/IMAGEM AQUI se quiser */}
+          <button className={styles.barra_sino} aria-label="Notificações">
+            {/* <img src={iconeSino} alt="Notificações" /> */}
+            <img src={notificacao}></img>
+          </button>
+
+          {/* Card de perfil */}
+          <div className={styles.barra_perfil}>
+            {/* ÍCONE DO USUÁRIO — troque por <img src={iconePerfil} /> se tiver */}
+            <div className={styles.barra_perfil_icone}>
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={1.8}>
+                <circle cx="12" cy="8" r="4"/>
+                <path strokeLinecap="round" d="M4 20c0-4 3.582-7 8-7s8 3 8 7"/>
+              </svg>
+            </div>
+
+            <div className={styles.barra_perfil_info}>
+              <span className={styles.barra_perfil_nome}>Admin</span>
+              <span className={styles.barra_perfil_cargo}>Administrador</span>
+            </div>
+
+            {/* Seta dropdown — troque por <img src={setaDropdown} /> se quiser */}
+            <svg className={styles.barra_seta} src={notificacao} width="16" height="16" fill="none"
+                viewBox="0 0 24 24" stroke="white" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </div>
+
         </div>
       </div>
+
+      
 
       <div className={styles.home_conteudo}>
 
@@ -64,9 +104,9 @@ function os() {
           <div className={styles.home_margin1_inner}>
             <Botao texto="FINANCEIRO" acao={'vermelho'} aoClicar={() => navigate("/cadastro")} />
 
-            <div className={styles.home_margin1_btn}>
+            <div className={styles.home_margin1_btn_os}>
               <img src={ordemServiço} className={styles.home_margin1_img} alt="" />
-              <Link to="/login" className={styles.home_margin1_text}>HISTORICO DE ORDEM DE SERVIÇO</Link>
+              <Link to="/login" className={styles.home_margin1_text_os}>HISTORICO DE ORDEM DE SERVIÇO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>
@@ -95,33 +135,7 @@ function os() {
         <div className={styles.home_margin2} style={{ width: menuAberto ? '75%' : '100%' }}>
           <div className={styles.home_box}>
 
-            {/* Topbar */}
-            <div className={styles.gs_topbar}>
-              <div className={styles.gs_seta}>
-                <button className={styles.gs_btnGerenciar}><img src={seta} alt="Voltar" /></button>
-                <div className={styles.gs_letras}>
-                  <h2 className={styles.gs_letra01}>ATUALIZAR VEÍCULO</h2>
-                  <p className={styles.gs_letra02}>Atualize status e as informações do veículo em tempo real</p>
-                </div>
-              </div>
-
-              <div className={styles.gs_buscaWrapper}>
-                <input
-                  type="text"
-                  className={styles.gs_buscaInput}
-                  placeholder="Buscar por cliente, serviço ou placa"
-                  value={busca}
-                  onChange={(e) => setBusca(e.target.value)}
-                />
-                <span className={styles.gs_buscaIcone}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  </svg>
-                </span>
-              </div>
-            </div>
-
+          
             {/* NOVO: Filtros Rápidos (Cards Superiores) */}
             <div className={styles.gs_filtros_rapidos}>
               <div className={styles.gs_card_filtro}></div>
