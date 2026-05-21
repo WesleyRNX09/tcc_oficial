@@ -1,21 +1,24 @@
 /* ==========================================================================
-   1. ESTRUTURA GLOBAL (Garante 100% da largura e altura da tela)
+   1. ESTRUTURA GLOBAL (Força 100% da tela sem travas)
    ========================================================================== */
 .container { 
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    width: 100vw;
+    width: 100% !important;
+    max-width: none !important;
     background-color: #0f0f13;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     box-sizing: border-box;
     overflow-x: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* ── Barra Superior Principal ── */
+/* ── Barra Superior ── */
 .barra_Principal { 
     border-bottom: #e50914 0.3rem solid; 
-    width: 100%; 
+    width: 100% !important; 
     display: flex; 
     height: 8rem; 
     align-items: center; 
@@ -66,7 +69,7 @@
     background-color: rgba(229, 9, 20, 0.05);
 }
 
-/* ── Botão Hambúrguer do Menu ── */
+/* Botão Hambúrguer */
 .barra_menu_btn {
     background: none;
     border: none;
@@ -95,7 +98,6 @@
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 
-/* Animação do ícone quando aberto */
 .barra_menu_btn_aberto .barra_linha:nth-child(2) {
     opacity: 0;
 }
@@ -109,33 +111,41 @@
 }
 
 /* ==========================================================================
-   2. LAYOUT DO CONTEÚDO (Sidebar + Painel ocupando o restante da tela)
+   2. ÁREA DE CONTEÚDO (Sidebar + Painel)
    ========================================================================== */
 .home_conteudo {
     display: flex;
-    width: 100%;
+    width: 100% !important;
+    max-width: none !important;
     align-items: stretch;
     flex: 1;
+    padding: 2.5rem; /* Margem elegante em volta do painel */
+    box-sizing: border-box;
+    gap: 2.5rem;
+}
+
+/* Overlay do Menu Mobile */
+.home_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 80;
 }
 
 /* Menu Lateral Retrátil */
 .home_margin1 {
     background-color: #0A0A0A;
-    width: 0;
-    min-width: 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
     z-index: 90;
     border-right: 1px solid #1a1a1a;
+    border-radius: 2rem;
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Classe aplicada via React ao clicar */
-.home_margin1_aberto {
-    width: 32rem;
-    min-width: 32rem;
 }
 
 .home_margin1_inner {
@@ -143,7 +153,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
-    width: 32rem;
+    width: 100%;
     padding: 2.5rem 1.5rem;
     box-sizing: border-box;
     transition: opacity 0.2s ease;
@@ -153,18 +163,7 @@
     opacity: 1;
 }
 
-/* Item Ativo (Financeiro) */
 .home_margin1_inner > :first-child {
-    background: linear-gradient(180deg, #e50914 0%, #99050b 100%);
-    color: white;
-    border: none;
-    font-weight: bold;
-    font-size: 1.4rem;
-    padding: 1.4rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
-    text-align: center;
-    letter-spacing: 1px;
     margin-bottom: 1.5rem;
 }
 
@@ -205,44 +204,42 @@
 }
 
 /* ==========================================================================
-   3. PAINEL CENTRAL (O segredo para preencher a tela inteira)
+   3. PAINEL FINANCEIRO CENTRAL (Ajustado para os nomes do seu Index)
    ========================================================================== */
-.home_margin2 {
-    flex: 1;               /* Ocupa todo o espaço restante na horizontal */
-    display: flex;
-    width: 100%;           /* Garante espalhamento total */
-    padding: 2.5rem;
-    box-sizing: border-box;
-    background-color: #0f0f13;
-}
-
-/* Container que envelopa o Dashboard interno */
-.home_box {
+.painel_financeiro {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    border: #1f1f27 1px solid;
+    width: 100% !important;
+    max-width: none !important; /* Padrão: Sem travas laterais */
+    background: #141419;
+    border: 1px solid #1f1f27;
     border-radius: 2rem;
-    background-color: #141419; 
-    width: 100%;           /* Força a caixa cinza a ocupar 100% da largura disponível */
-    padding: 2.5rem;
-    gap: 2.5rem;
+    padding: 3.5rem;
+    gap: 3rem;
     box-sizing: border-box;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: max-width 0.3s ease, margin 0.3s ease;
+}
+
+/* ── ESTADO DINÂMICO: Se o Menu abrir, limita a largura e centraliza perfeitamente ── */
+.home_margin1_aberto + .painel_financeiro {
+    max-width: 1240px !important; 
+    margin: 0 auto;
 }
 
 /* ==========================================================================
-   4. CARDS INDICADORES (4 colunas perfeitamente alinhadas)
+   4. CARDS INDICADORES
    ========================================================================== */
 .cards_container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Mantém os 4 cards lado a lado ocupando frações iguais */
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     width: 100%;
 }
 
 @media (max-width: 1200px) {
     .cards_container {
-        grid-template-columns: repeat(2, 1fr); /* Quebra para duas colunas em telas menores */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -297,7 +294,7 @@
 }
 
 /* ==========================================================================
-   5. BARRA DE FILTROS E BUSCA
+   5. FILTROS E BUSCA
    ========================================================================== */
 .busca_container {
     display: flex;
@@ -352,7 +349,7 @@
 }
 
 /* ==========================================================================
-   6. TABELA FINANCEIRA (Correção de cores e bordas)
+   6. TABELA FINANCEIRA
    ========================================================================== */
 .tabela_container {
     width: 100%;
@@ -368,6 +365,7 @@
     width: 100%;
     border-collapse: collapse;
     text-align: left;
+    background-color: #1a1a22;
 }
 
 .tabela_financeira th {
@@ -376,7 +374,7 @@
     color: white;
     font-weight: 700;
     border-bottom: 2px solid #262631;
-    background-color: #1a1a22;
+    background-color: #1a1a22 !important;
 }
 
 .tabela_financeira td {
@@ -392,7 +390,6 @@
     background-color: #22222d;
 }
 
-/* Badges de Status de Pagamento */
 .badge_pagamento {
     display: inline-flex;
     align-items: center;
@@ -440,7 +437,7 @@
 }
 
 /* ==========================================================================
-   7. PAGINAÇÃO DA TABELA
+   7. PAGINAÇÃO
    ========================================================================== */
 .paginacao_container {
     display: flex;
@@ -490,6 +487,11 @@
     cursor: not-allowed;
 }
 
+.seletor_itens {
+    display: flex;
+    align-items: center;
+}
+
 .select_pag {
     background-color: #262631;
     border: 1px solid #333344;
@@ -502,7 +504,7 @@
 }
 
 /* ==========================================================================
-   8. RODAPÉ PRINCIPAL
+   8. RODAPÉ
    ========================================================================== */
 .rodape_principal { 
     border-top: #e50914 0.3rem solid;
