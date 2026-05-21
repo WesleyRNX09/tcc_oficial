@@ -54,11 +54,8 @@ function os() {
             <Link to="/" className={styles.barra_botao}>Acompanhar Veiculo</Link>
             <Link to="/login" className={styles.barra_botao}>Fazer Login</Link>
           </div>
-        </div>        
-        
 
-        {/* ── DIREITA: Sino + Perfil Admin ── */}
-        <div className={styles.barra_direita}>
+          <div className={styles.barra_direita}>
 
           {/* Ícone de notificação — COLOQUE SEU ÍCONE/IMAGEM AQUI se quiser */}
           <button className={styles.barra_sino} aria-label="Notificações">
@@ -89,6 +86,13 @@ function os() {
           </div>
 
         </div>
+
+          
+        </div>        
+        
+
+        {/* ── DIREITA: Sino + Perfil Admin ── */}
+        
       </div>
 
       

@@ -44,6 +44,8 @@
     margin-right: clamp(2rem, 5vw, 15rem); 
     flex-wrap: wrap;
     justify-content: flex-end; 
+    position: absolute;
+    right: 20rem;
 }
  
 .barra_botao { 
