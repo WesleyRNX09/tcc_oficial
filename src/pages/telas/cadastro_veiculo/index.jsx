@@ -37,19 +37,19 @@ function Cadastro() {
 
             {/* ── COL 1 ── */}
             <div className={styles.inputGroup}>
-              <label>Placa:</label>
+              <label className={styles.inputText}>Placa:</label>
               <input type="text" />
             </div>
 
             {/* ── COL 2 ── */}
             <div className={styles.inputGroup}>
-              <label>Telefone Cliente:</label>
+              <label className={styles.inputText}>Telefone Cliente:</label>
               <input type="text" />
             </div>
 
             {/* ── COL 1 ── */}
             <div className={styles.inputGroup}>
-              <label>Marca:</label>
+              <label className={styles.inputText}>Marca:</label>
               <select>
                 <option value=""></option>
                 <option>Volkswagen</option>
@@ -65,25 +65,25 @@ function Cadastro() {
 
             {/* ── COL 2 ── */}
             <div className={styles.inputGroup}>
-              <label>CPF Cliente:</label>
+              <label className={styles.inputText}>CPF Cliente:</label>
               <input type="text" />
             </div>
 
             {/* ── COL 1 ── */}
             <div className={styles.inputGroup}>
-              <label>Modelo:</label>
+              <label className={styles.inputText}>Modelo:</label>
               <input type="text" />
             </div>
 
             {/* ── COL 2 ── */}
             <div className={styles.inputGroup}>
-              <label>Reparo:</label>
+              <label className={styles.inputText}>Reparo:</label>
               <input type="text" />
             </div>
 
             {/* Nome do Cliente — só col 1 (metade da largura) */}
             <div className={styles.inputGroupFull}>
-              <label>Nome do Cliente:</label>
+              <label className={styles.inputText}>Nome do Cliente:</label>
               <input type="text" />
             </div>
 

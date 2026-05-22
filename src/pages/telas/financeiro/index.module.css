@@ -1,515 +1,839 @@
-/* ==========================================================================
-   1. ESTRUTURA GLOBAL (Força 100% da tela sem travas)
-   ========================================================================== */
 .container { 
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    width: 100% !important;
-    max-width: none !important;
-    background-color: #0f0f13;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    box-sizing: border-box;
+    width: 100%;
+    background: #050505;
     overflow-x: hidden;
-    margin: 0 !important;
-    padding: 0 !important;
 }
 
-/* ── Barra Superior ── */
+/* ───────── NAVBAR ───────── */
+
+/* ───────── NAVBAR (nova versão — imagem 1) ───────── */
+
 .barra_Principal { 
     border-bottom: #e50914 0.3rem solid; 
-    width: 100% !important; 
+    width: 100%; 
     display: flex; 
-    height: 8rem; 
+    height: 9rem; 
     align-items: center; 
     justify-content: space-between;
     background-color: #0A0A0A; 
-    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.2); 
-    padding: 0 3rem; 
-    box-sizing: border-box;
-} 
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3);
+    overflow: visible; /* ← ADICIONE ISSO */
+    position: relative; /* ← ADICIONE ISSO */
+    z-index: 10;        /* ← ADICIONE ISSO */
+}
 
 .barra_Logo { 
     display: flex; 
     align-items: center; 
-    gap: 2rem;
+    margin-left: clamp(2rem, 5vw, 15rem); 
     height: 100%;
 } 
 
 .barra_Imagem { 
-    height: 4.5rem; 
+    height: 10rem; 
     object-fit: contain;
 } 
 
 .barra_conteudo { 
     display: flex; 
     flex-direction: row; 
-    gap: 2rem; 
-    align-items: center;
+    gap: 1rem; 
+    margin-right: clamp(2rem, 5vw, 15rem); 
+    flex-wrap: wrap;
+    justify-content: flex-end; 
+    position: absolute;
+    right: 20rem;
 }
  
 .barra_botao { 
-    padding: 0.8rem 1.6rem;
-    background-color: transparent;
-    color: #e0e0e0;
-    border-radius: 0.8rem;
-    cursor: pointer;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    border: transparent 1px solid;
-    font-size: 1.4rem;
-    white-space: nowrap;
-    text-decoration: none;
-    transition: all 0.2s ease;
+  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.5vw, 1rem);
+  background-color: black;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.9px;
+  border: #e50914 1px solid;
+  font-size: clamp(1rem, 1.2vw, 1.6rem);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
 } 
 
 .barra_botao:hover {
-    color: #ffffff;
-    border-color: #e50914;
-    background-color: rgba(229, 9, 20, 0.05);
+  background-color: #e50914;
 }
 
-/* Botão Hambúrguer */
+/* ── Botão hambúrguer ── */
 .barra_menu_btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 0.8rem;
-    transition: background 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  margin-right: 1.5rem;
+  transition: background 0.2s;
 }
-
 .barra_menu_btn:hover {
-    background: rgba(255, 255, 255, 0.05);
+  background: rgba(229, 9, 20, 0.1);
 }
 
 .barra_linha {
-    display: block;
-    width: 26px;
-    height: 2px;
-    background-color: white;
-    border-radius: 2px;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition:
+    transform  0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity    0.4s ease,
+    background 0.4s ease;
+  transform-origin: center;
 }
 
 .barra_menu_btn_aberto .barra_linha:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
+  transform: scaleX(0);
 }
 .barra_menu_btn_aberto .barra_linha:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-    background-color: #e50914;
+  transform: translateY(8px) rotate(45deg);
+  background-color: #e50914;
 }
 .barra_menu_btn_aberto .barra_linha:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-    background-color: #e50914;
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: #e50914;
 }
 
-/* ==========================================================================
-   2. ÁREA DE CONTEÚDO (Sidebar + Painel)
-   ========================================================================== */
+.barra_menu_btn_aberto .barra_linha:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.barra_menu_btn_aberto .barra_linha:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  background-color: #e50914;
+}
+.barra_menu_btn_aberto .barra_linha:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: #e50914;
+}
+
+/* ───────── BARRA DIREITA ───────── */
+
+.barra_direita {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-right: 3rem;
+  /* REMOVA o ::before completamente */
+}
+
+/* Separador vertical */
+.barra_direita::before {
+  content: '';
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(to bottom, transparent, #333, transparent);
+  margin-right: 1rem;
+}
+
+/* Sino */
+.barra_sino {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 0.8rem;
+  transition: background 0.2s;
+  position: relative;
+}
+.barra_sino:hover {
+  background: rgba(229, 9, 20, 0.12);
+}
+.barra_sino svg {
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.barra_sino:hover svg {
+  opacity: 1;
+}
+
+/* Card de perfil */
+.barra_perfil {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 1rem;
+  padding: 0.6rem 1.2rem 0.6rem 0.6rem;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  margin-left: 0.5rem;
+}
+.barra_perfil:hover {
+  border-color: #e50914;
+  background: #1a1a1a;
+  box-shadow: 0 0 14px rgba(229, 9, 20, 0.15);
+}
+
+/* Ícone circular com gradiente vermelho */
+.barra_perfil_icone {
+  width: 3.6rem;
+  height: 3.6rem;
+  background: linear-gradient(135deg, #3a0000, #1a1a1a);
+  border: 1px solid #e50914;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  /* COLOQUE SUA IMAGEM DE PERFIL AQUI — adicione overflow: hidden */
+}
+.barra_perfil_icone svg {
+  opacity: 0.9;
+}
+
+/* Textos */
+.barra_perfil_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.barra_perfil_nome {
+  color: #f0f0f0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.3px;
+}
+.barra_perfil_cargo {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Seta */
+.barra_seta {
+  opacity: 0.4;
+  flex-shrink: 0;
+  margin-left: 0.4rem;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.barra_perfil:hover .barra_seta {
+  opacity: 0.8;
+  transform: translateY(2px);
+}
+
+/* ───────── CONTEÚDO ───────── */
+
 .home_conteudo {
     display: flex;
-    width: 100% !important;
-    max-width: none !important;
-    align-items: stretch;
+    width: 100%;
     flex: 1;
-    padding: 2.5rem; /* Margem elegante em volta do painel */
-    box-sizing: border-box;
-    gap: 2.5rem;
 }
 
-/* Overlay do Menu Mobile */
-.home_overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 80;
-}
-
-/* Menu Lateral Retrátil */
+/* ───────── SIDEBAR ───────── */
 .home_margin1 {
-    background-color: #0A0A0A;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    z-index: 90;
-    border-right: 1px solid #1a1a1a;
-    border-radius: 2rem;
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #0A0A0A;
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 100;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .home_margin1_inner {
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    width: 100%;
-    padding: 2.5rem 1.5rem;
-    box-sizing: border-box;
-    transition: opacity 0.2s ease;
-}
-
-.home_margin1_aberto .home_margin1_inner {
-    opacity: 1;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 2rem;
+  transition: opacity 0.4s ease 0.2s;
 }
 
 .home_margin1_inner > :first-child {
-    margin-bottom: 1.5rem;
+  align-self: center;
+}
+
+.home_margin1_aberto .home_margin1_inner {
+  opacity: 1;
 }
 
 .home_margin1_btn {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 1rem;
+  transition: background 0.2s;
+}
+
+.home_margin1_btn:hover {
+  background: rgba(229, 9, 20, 0.1);
+}
+
+.home_margin1_img {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.home_margin1_text {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.home_margin1_btn_os{
+    background-color: #970000;
     display: flex;
     align-items: center;
     gap: 1.5rem;
     padding: 1.2rem 1.5rem;
     width: 100%;
     cursor: pointer;
-    border-radius: 1rem;
-    box-sizing: border-box;
     transition: background 0.2s;
 }
 
-.home_margin1_btn:hover {
-    background: rgba(255, 255, 255, 0.04);
-}
-
-.home_margin1_img {
-    width: 2.2rem;
-    height: 2.2rem;
-    object-fit: contain;
-    flex-shrink: 0;
-}
-
-.home_margin1_text {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #9a9a9a;
-    text-decoration: none;
-    white-space: nowrap;
-    letter-spacing: 0.5px;
-}
-
-.home_margin1_btn:hover .home_margin1_text {
+.home_margin1_text_os{
+    font-size: 1.6rem;
+    font-weight: bold;
     color: white;
+    white-space: nowrap;
+    text-decoration: none;
 }
 
-/* ==========================================================================
-   3. PAINEL FINANCEIRO CENTRAL (Ajustado para os nomes do seu Index)
-   ========================================================================== */
-.painel_financeiro {
+/* ───────── MAIN ───────── */
+
+.home_margin2 {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    width: 100% !important;
-    max-width: none !important; /* Padrão: Sem travas laterais */
-    background: #141419;
-    border: 1px solid #1f1f27;
-    border-radius: 2rem;
-    padding: 3.5rem;
-    gap: 3rem;
-    box-sizing: border-box;
-    transition: max-width 0.3s ease, margin 0.3s ease;
-}
-
-/* ── ESTADO DINÂMICO: Se o Menu abrir, limita a largura e centraliza perfeitamente ── */
-.home_margin1_aberto + .painel_financeiro {
-    max-width: 1240px !important; 
-    margin: 0 auto;
-}
-
-/* ==========================================================================
-   4. CARDS INDICADORES
-   ========================================================================== */
-.cards_container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    width: 100%;
-}
-
-@media (max-width: 1200px) {
-    .cards_container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.card_item {
-    background-color: #1a1a22;
-    border: 1px solid #262631;
-    border-radius: 1.6rem;
     padding: 2rem;
     display: flex;
-    align-items: center;
-    gap: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.card_icone {
-    width: 5.5rem;
-    height: 5.5rem;
-    border-radius: 1.2rem;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 2.2rem;
-    flex-shrink: 0;
 }
 
-.card_pecas .card_icone { background-color: rgba(229, 9, 20, 0.12); color: #ff333a; }
-.card_mao_obra .card_icone { background-color: rgba(21, 101, 192, 0.15); color: #2196f3; }
-.card_total .card_icone { background-color: rgba(46, 125, 50, 0.15); color: #4caf50; }
-.card_ordem .card_icone { background-color: rgba(123, 31, 162, 0.15); color: #ab47bc; }
-
-.card_info {
-    display: flex;
-    flex-direction: column;
-}
-
-.card_label {
-    font-size: 1.3rem;
-    color: #8a8a9d;
-    font-weight: 500;
-}
-
-.card_valor {
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: white;
-    margin: 0.2rem 0;
-}
-
-.card_subtext {
-    font-size: 1.1rem;
-    color: #555566;
-}
-
-/* ==========================================================================
-   5. FILTROS E BUSCA
-   ========================================================================== */
-.busca_container {
-    display: flex;
-    gap: 1.5rem;
+.home_box {
     width: 100%;
+    max-width: 150rem;
+    background: linear-gradient(90deg,#141414,#0f0f0f);
+    border-radius: 1.5rem;
+    border: 1px solid #232323;
+    padding: 2rem;
 }
 
-.input_data_wrapper { 
-    width: 26rem; 
-    position: relative;
-    display: flex;
-    align-items: center;
-}
+/* ───────── TOPBAR ───────── */
 
-.input_busca_wrapper { 
-    flex: 1; 
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input_data, .input_busca {
-    width: 100%;
-    height: 5rem;
-    background-color: #1a1a22;
-    border: 1px solid #262631;
-    border-radius: 1rem;
-    color: white;
-    font-size: 1.4rem;
-    padding: 0 1.5rem 0 4.2rem;
-    outline: none;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-}
-
-.input_data:focus, .input_busca:focus {
-    border-color: #e50914;
-}
-
-.input_data::placeholder, .input_busca::placeholder {
-    color: #666677;
-}
-
-.icone_calendario, .icone_lupa {
-    position: absolute;
-    left: 1.5rem;
-    color: #8a8a9d;
-    font-size: 1.6rem;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-}
-
-/* ==========================================================================
-   6. TABELA FINANCEIRA
-   ========================================================================== */
-.tabela_container {
-    width: 100%;
-    border: 1px solid #262631;
-    border-radius: 1.6rem;
-    background-color: #1a1a22;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    overflow-x: auto;
-}
-
-.tabela_financeira {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    background-color: #1a1a22;
-}
-
-.tabela_financeira th {
-    padding: 1.8rem 1.5rem;
-    font-size: 1.4rem;
-    color: white;
-    font-weight: 700;
-    border-bottom: 2px solid #262631;
-    background-color: #1a1a22 !important;
-}
-
-.tabela_financeira td {
-    padding: 1.8rem 1.5rem;
-    font-size: 1.4rem;
-    color: #c4c4cc;
-    border-bottom: 1px solid #262631;
-    vertical-align: middle;
-    background-color: #1a1a22;
-}
-
-.tabela_financeira tbody tr:hover td {
-    background-color: #22222d;
-}
-
-.badge_pagamento {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    padding: 0.6rem 1.4rem;
-    border-radius: 0.8rem;
-    font-size: 1.3rem;
-    font-weight: 600;
-    width: 12rem;
-    box-sizing: border-box;
-}
-
-.pago {
-    background-color: rgba(46, 125, 50, 0.25);
-    color: #4caf50;
-    border: 1px solid rgba(46, 125, 50, 0.4);
-}
-
-.pendente {
-    background-color: rgba(230, 126, 34, 0.15);
-    color: #ff9800;
-    border: 1px solid rgba(230, 126, 34, 0.3);
-}
-
-.coluna_total {
-    font-weight: 700;
-    color: white;
-}
-
-.btn_acoes {
-    background: none;
-    border: none;
-    color: #8a8a9d;
-    cursor: pointer;
-    font-size: 1.8rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.6rem;
-    transition: all 0.2s;
-}
-
-.btn_acoes:hover {
-    color: white;
-    background-color: rgba(255, 255, 255, 0.08);
-}
-
-/* ==========================================================================
-   7. PAGINAÇÃO
-   ========================================================================== */
-.paginacao_container {
+.gs_topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
-    background-color: #1a1a22;
-    border-top: 1px solid #262631;
-    border-radius: 0 0 1.6rem 1.6rem;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
 }
 
-.paginacao_info {
-    font-size: 1.3rem;
-    color: #8a8a9d;
-}
-
-.paginacao_controles {
+.gs_seta {
     display: flex;
     align-items: center;
+    gap: 2rem;
+}
+
+.gs_btnGerenciar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1rem;
+    border: 1px solid #393939;
+    background: #111;
+    cursor: pointer;
+    transition: 0.2s;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.gs_btnGerenciar:hover{
+    border-color: #e50914;
+}
+
+.gs_btnGerenciar img{
+    width: 2rem;
+}
+
+.gs_letras{
+    display: flex;
+    flex-direction: column;
     gap: 0.5rem;
 }
 
-.btn_pag {
-    background-color: #262631;
-    border: 1px solid #333344;
+.gs_letra01{
     color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 0.6rem;
-    cursor: pointer;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.gs_letra02{
+    color: #8d8d8d;
     font-size: 1.3rem;
-    font-weight: 600;
-    transition: background 0.2s;
+    margin: 0;
 }
 
-.btn_pag:hover:not(:disabled) {
-    background-color: #333344;
+.gs_buscaWrapper{
+    width: 40rem;
+    position: relative;
 }
 
-.btn_pag_ativo {
-    background-color: #e50914;
-    border-color: #e50914;
-    cursor: default;
+.gs_buscaInput{
+    width: 100%;
+    height: 5rem;
+    background: #2e2e2e;
+    border: 1px solid #444;
+    border-radius: 1rem;
+    padding: 0 5rem 0 1.5rem;
+    color: white;
+    outline: none;
+    font-size: 1.4rem;
 }
 
-.btn_pag:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
+.gs_buscaInput::placeholder{
+    color: #b5b5b5;
 }
 
-.seletor_itens {
+.gs_buscaIcone{
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #c9c9c9;
+}
+
+/* ───────── ÁREA PRINCIPAL ───────── */
+
+.gs_areaBlocos{
+    background: linear-gradient(90deg,#1a1a1a,#111);
+    border-radius: 1.5rem;
+    border: 1px solid #2d2d2d;
+    padding: 2rem;
+}
+
+/* ───────── HEADER DA TABELA ───────── */
+
+/* ───────── OS HEADER FINANCEIRO ───────── */
+
+.os_cards_financeiros {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.os_card_fin {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  height: 9rem;
+  border-radius: 1rem;
+  padding: 0 2rem;
+  border: 1px solid #2a2a2a;
+  transition: border-color 0.2s;
+}
+
+.os_card_fin:hover {
+  border-color: #e50914;
+}
+
+.os_card_fin_icone {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.os_card_fin_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.os_card_fin_label {
+  color: #c0c0c0;
+  font-size: 1.3rem;
+}
+
+.os_card_fin_valor {
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.os_card_fin_sub {
+  color: #777;
+  font-size: 1rem;
+}
+
+/* ── linha data + busca ── */
+.os_header_bottom {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.os_header_bottom .os_data {
+  flex-shrink: 0;
+}
+
+.os_header_bottom .os_busca {
+  flex: 1;
+}
+
+.os_header{
     display: flex;
     align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
-.select_pag {
-    background-color: #262631;
-    border: 1px solid #333344;
+.os_data{
+    height: 5rem;
+    min-width: 28rem;
+    background: #3b3b3b;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1.5rem;
     color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 0.6rem;
+    font-size: 1.4rem;
+}
+
+.os_busca{
+    flex: 1;
+    position: relative;
+}
+
+.os_busca input{
+    width: 100%;
+    height: 5rem;
+    border: none;
     outline: none;
-    cursor: pointer;
+    border-radius: 1rem;
+    background: #3b3b3b;
+    color: white;
+    padding: 0 5rem 0 1.5rem;
+    font-size: 1.4rem;
+}
+
+.os_busca input::placeholder{
+    color: #bdbdbd;
+}
+
+.os_busca_icon{
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #cfcfcf;
+}
+/* ───────── CARDS ───────── */
+
+.os_cards {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.os_card {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 1.5rem;
+  height: 10rem;
+  background: #3a3a3a;
+  border-radius: 1rem;
+  padding: 0 2rem;
+  border: 1px solid #444;
+  transition: border-color 0.2s;
+  min-width: 0;
+}
+
+.os_card:hover {
+  border-color: #e50914;
+}
+
+.os_card_icone {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.os_card_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.os_card_label {
+  color: #c0c0c0;
+  font-size: 1.3rem;
+}
+
+.os_card_valor {
+  color: white;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.os_card_sub {
+  color: #777;
+  font-size: 1rem;
+}
+
+/* ───────── TABELA ───────── */
+
+.os_tabela{
+    width: 100%;
+    border: 1px solid #2a2a2a;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #111;
+}
+
+.os_tabela table{
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.os_tabela thead{
+    background: #1a1a1a !important;
+}
+
+.os_tabela th{
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: left;
+    padding: 1.4rem 1.8rem;
+    border-bottom: 1px solid #2a2a2a;
+    color: #ffffff !important;
+    background: #1a1a1a !important;
+}
+.os_tabela td,
+.os_tabela th {
+    border-left: none !important;
+    border-right: none !important;
+    border-top  : none !important;
+}
+
+.os_tabela td{
+    padding: 1.4rem 1.8rem;
+    font-size: 1.3rem;
+    color: #d4d4d4;
+    border-bottom: 1px solid #1e1e1e;
+}
+
+.os_tabela tr:last-child td{
+    border-bottom: none;
+}
+
+.os_tabela tr:hover{
+    background: #181818;
+}
+
+.os_codigo{
+    color: #e03030 !important;
+    font-weight: bold;
+}
+
+/* ───────── STATUS ───────── */
+
+.status_concluido{
+    background: #1a5c24;
+    color: #5de86e;
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    white-space: nowrap;
+}
+
+.status_andamento{
+    background: #7a4010;
+    color: transparent; /* sem texto visível como na imagem 2 */
+    padding: 0.6rem 3rem;
+    border-radius: 0.6rem;
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    min-width: 8rem;
+    min-height: 3rem;
+}
+
+/* ───────── FOOTER DA TABELA ───────── */
+
+.os_footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.os_footer p{
+    color: #9f9f9f;
     font-size: 1.3rem;
 }
 
-/* ==========================================================================
-   8. RODAPÉ
-   ========================================================================== */
+.os_paginacao{
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.os_paginacao button{
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 1px solid #444;
+    background: #1b1b1b;
+    color: white;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.os_paginacao button:hover{
+    border-color: #e50914;
+}
+
+.os_pagina_ativa{
+    background: #c40000 !important;
+    border: none !important;
+}
+
+.os_footer select{
+    width: 10rem;
+    height: 3.8rem;
+    background: #1b1b1b;
+    border: 1px solid #444;
+    border-radius: 0.7rem;
+    color: white;
+    padding: 0 1rem;
+    outline: none;
+}
+
+/* ───────── RODAPÉ ───────── */
+
 .rodape_principal { 
-    border-top: #e50914 0.3rem solid;
+    border-top: #e50914 0.25rem solid;
     width: 100%;
-    height: 4rem; 
-    background-color: #0A0A0A; 
-    margin-top: auto;
+    height: 7rem; 
+    background-color: #050505;
+}
+
+/* ───────── RESPONSIVO ───────── */
+
+@media screen and (max-width: 1200px){
+
+    .os_cards{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .os_tabela{
+        overflow-x: auto;
+    }
+
+    .os_tabela table{
+        min-width: 90rem;
+    }
+}
+
+@media screen and (max-width: 768px){
+
+    .barra_Principal{
+        flex-direction: column;
+        height: auto;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .gs_topbar{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gs_buscaWrapper{
+        width: 100%;
+    }
+
+    .os_cards{
+        grid-template-columns: 1fr;
+    }
+
+    .os_header{
+        flex-direction: column;
+    }
+
+    .os_data{
+        width: 100%;
+    }
+
+    .os_busca{
+        width: 100%;
+    }
+
+    .os_footer{
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

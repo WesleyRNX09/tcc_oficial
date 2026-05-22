@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Botao from './botao';
+import Botao from './botao'
 import { Link } from "react-router-dom";
 import logo from '../../../assets/logo.png';
 
@@ -7,67 +7,91 @@ import ordemServiço from "../../../assets/historico_de_ordem.png";
 import adicionarFuncionario from "../../../assets/adicionar_funcionario.png";
 import carro from "../../../assets/carro.png";
 import relatorio from "../../../assets/relatorio.png";
+import notificacao from "../../../assets/notificacao.png";
 
-// Se você tiver os ícones dos cards financeiros, pode importá-los aqui:
-// import iconePecas from "../../../assets/icone_pecas.png";
-// import iconeMaoObra from "../../../assets/icone_chave.png";
-// import iconeTotal from "../../../assets/icone_cifrao.png";
-// import iconeOrdem from "../../../assets/icone_ordem.png";
+import seta from "../../../assets/seta_esquerda1.png";
 
 import { useNavigate } from "react-router-dom";
 import styles from './index.module.css';
 
-function Atualizar() {
+function os() {
   const navigate = useNavigate();
   const [menuAberto, setMenuAberto] = useState(false);
   const [busca, setBusca] = useState('');
-  const [periodoData, setPeriodoData] = useState('01/01/2026 - 31/01/2026');
-  const [itensPorPagina, setItensPorPagina] = useState(10);
 
-  // Mock dos dados exibidos na tabela conforme a imagem
-  const dadosTabela = [
-    { data: '13/02/2026', cliente: 'Guilherme Luiz', veiculo: 'BMW M3 G80', descricao: 'Troca de Pneus', pagamento: 'Pago', total: 'R$120,00' },
-    { data: '15/05/2026', cliente: 'Bruno Luan', veiculo: 'Jetta GLI', descricao: 'Alinhamento', pagamento: 'Pendente', total: 'R$120,00' },
-    { data: '24/02/2026', cliente: 'Cauã Takasaki', veiculo: '911 GT3 RS', descricao: 'Reparo de Freios', pagamento: 'Pago', total: 'R$120,00' },
-    { data: '18/09/2026', cliente: 'Matheus', veiculo: 'Onix LT 2021', descricao: 'Troca de Filtros', pagamento: 'Pago', total: 'R$120,00' },
-    { data: '31/12/2026', cliente: 'João Pedro', veiculo: 'Gol 2017', descricao: 'Troca de Oleo', pagamento: 'Pendente', total: 'R$120,00' },
-    { data: '29/05/2026', cliente: 'Wesley Beraldi', veiculo: 'Tracker 2022', descricao: 'Balanceamento', pagamento: 'Pendente', total: 'R$120,00' },
-    { data: '01/01/2026', cliente: 'Richard Guerra', veiculo: 'Peugot 206', descricao: 'Troca de filtros', pagamento: 'Pago', total: 'R$120,00' }
+ 
+
+  // Mock de dados para renderizar a tabela dinamicamente igual à imagem
+  const ordensServico = [
+    { data: '13/02/2026', os: 'OS-00001', cliente: 'Guilherme Luiz', veiculo: 'BMW M3 G80', servico: 'Troca de Pneus', status: 'Concluido' },
+    { data: '15/05/2026', os: 'OS-00002', cliente: 'Bruno Luan', veiculo: 'Jetta GLI', servico: 'Alinhamento', status: 'Pendente' },
+    { data: '24/02/2026', os: 'OS-00003', cliente: 'Cauã Takasaki', veiculo: '911 GT3 RS', servico: 'Reparo de Freios', status: 'Concluido' },
+    { data: '18/09/2026', os: 'OS-00004', cliente: 'Matheus', veiculo: 'Onix LT 2021', servico: 'Troca de Filtros', status: 'Concluido' },
+    { data: '31/12/2026', os: 'OS-00005', cliente: 'João Pedro', veiculo: 'Gol 2017', servico: 'Troca de Oleo', status: 'Pendente' },
+    { data: '29/05/2026', os: 'OS-00006', cliente: 'Wesley Beraldi', veiculo: 'Tracker 2022', servico: 'Balanceamento', status: 'Concluido' },
+    { data: '01/01/2026', os: 'OS-00007', cliente: 'Richard Guerra', veiculo: 'Peugot 206', servico: 'Troca de filtros', status: 'Concluido' },
   ];
-
-  // Filtra os dados com base no que o usuário digitar na busca
-  const dadosFiltrados = dadosTabela.filter(item => 
-    item.cliente.toLowerCase().includes(busca.toLowerCase()) ||
-    item.veiculo.toLowerCase().includes(busca.toLowerCase()) ||
-    item.descricao.toLowerCase().includes(busca.toLowerCase())
-  );
 
   return (
     <div className={styles.container}>
 
-      {/* Topbar / Barra Principal */}
       <div className={styles.barra_Principal}>
-        <div className={styles.barra_Logo}>
-          <button
-            className={`${styles.barra_menu_btn} ${menuAberto ? styles.barra_menu_btn_aberto : ''}`}
-            onClick={() => setMenuAberto(!menuAberto)}
-            aria-label="Abrir menu"
-          >
-            <span className={styles.barra_linha}></span>
-            <span className={styles.barra_linha}></span>
-            <span className={styles.barra_linha}></span>
+          <div className={styles.barra_Logo}>
+            <button
+              className={`${styles.barra_menu_btn} ${menuAberto ? styles.barra_menu_btn_aberto : ''}`}
+              onClick={() => setMenuAberto(!menuAberto)}
+              aria-label="Abrir menu"
+            >
+              <span className={styles.barra_linha}></span>
+              <span className={styles.barra_linha}></span>
+              <span className={styles.barra_linha}></span>
+            </button>
+            <img src={logo} className={styles.barra_Imagem} />
+          </div>
+
+          <div className={styles.barra_conteudo}>
+            <Link to="/login" className={styles.barra_botao}>Serviços</Link>
+            <Link to="/" className={styles.barra_botao}>Acompanhar Veiculo</Link>
+            <Link to="/login" className={styles.barra_botao}>Fazer Login</Link>
+          </div>
+
+          <div className={styles.barra_direita}>
+
+          {/* Ícone de notificação — COLOQUE SEU ÍCONE/IMAGEM AQUI se quiser */}
+          <button className={styles.barra_sino} aria-label="Notificações">
+            {/* <img src={iconeSino} alt="Notificações" /> */}
+            <img src={notificacao}></img>
           </button>
-          <img src={logo} className={styles.barra_Imagem} alt="MaxCar Logo" />
+
+          {/* Card de perfil */}
+          <div className={styles.barra_perfil}>
+            {/* ÍCONE DO USUÁRIO — troque por <img src={iconePerfil} /> se tiver */}
+            <div className={styles.barra_perfil_icone}>
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={1.8}>
+                <circle cx="12" cy="8" r="4"/>
+                <path strokeLinecap="round" d="M4 20c0-4 3.582-7 8-7s8 3 8 7"/>
+              </svg>
+            </div>
+
+            <div className={styles.barra_perfil_info}>
+              <span className={styles.barra_perfil_nome}>Admin</span>
+              <span className={styles.barra_perfil_cargo}>Administrador</span>
+            </div>
+
+            {/* Seta dropdown — troque por <img src={setaDropdown} /> se quiser */}
+            <svg className={styles.barra_seta} src={notificacao} width="16" height="16" fill="none"
+                viewBox="0 0 24 24" stroke="white" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </div>
+
         </div>
 
-        <div className={styles.barra_conteudo}>
-          <Link to="/login" className={styles.barra_botao}>Serviços</Link>
-          <Link to="/" className={styles.barra_botao}>Acompanhar Veiculo</Link>
-          <Link to="/login" className={styles.barra_botao}>Fazer Login</Link>
-        </div>
+        
       </div>
 
-      {/* Conteúdo Principal do Dashboard */}
+      
+
       <div className={styles.home_conteudo}>
 
         {menuAberto && (
@@ -79,9 +103,9 @@ function Atualizar() {
           <div className={styles.home_margin1_inner}>
             <Botao texto="FINANCEIRO" acao={'vermelho'} aoClicar={() => navigate("/cadastro")} />
 
-            <div className={styles.home_margin1_btn}>
+            <div className={styles.home_margin1_btn_os}>
               <img src={ordemServiço} className={styles.home_margin1_img} alt="" />
-              <Link to="/login" className={styles.home_margin1_text}>HISTORICO DE ORDEM DE SERVIÇO</Link>
+              <Link to="/login" className={styles.home_margin1_text_os}>HISTORICO DE ORDEM DE SERVIÇO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>
@@ -106,142 +130,279 @@ function Atualizar() {
           </div>
         </div>
 
-        {/* Painel Central Financeiro (Adicionado) */}
-        <div className={styles.painel_financeiro}>
+        {/* Conteúdo principal */}
+        <div className={styles.home_margin2} style={{ width: menuAberto ? '75%' : '100%' }}>
+          <div className={styles.home_box}>
+
           
-          {/* Seção de Cards Superiores */}
-          <div className={styles.cards_container}>
-            <div className={`${styles.card_item} ${styles.card_pecas}`}>
-              <div className={styles.card_icone}>📦</div>
-              <div className={styles.card_info}>
-                <span className={styles.card_label}>Peças</span>
-                <span className={styles.card_valor}>R$650,00</span>
-                <span className={styles.card_subtext}>Total de Peças</span>
-              </div>
+            {/* NOVO: Filtros Rápidos (Cards Superiores) */}
+            <div className={styles.gs_filtros_rapidos}>
+              <div className={styles.gs_card_filtro}></div>
+              <div className={styles.gs_card_filtro}></div>
+              <div className={styles.gs_card_filtro}></div>
+              <div className={styles.gs_card_filtro}></div>
             </div>
 
-            <div className={`${styles.card_item} ${styles.card_mao_obra}`}>
-              <div className={styles.card_icone}>🔧</div>
-              <div className={styles.card_info}>
-                <span className={styles.card_label}>Mão de Obra</span>
-                <span className={styles.card_valor}>R$300,00</span>
-                <span className={styles.card_subtext}>Total de Mao de</span>
-              </div>
-            </div>
-
-            <div className={`${styles.card_item} ${styles.card_total}`}>
-              <div className={styles.card_icone}>💲</div>
-              <div className={styles.card_info}>
-                <span className={styles.card_label}>Total</span>
-                <span className={styles.card_valor}>R$950,00</span>
-                <span className={styles.card_subtext}>Total geral</span>
-              </div>
-            </div>
-
-            <div className={`${styles.card_item} ${styles.card_ordem}`}>
-              <div className={styles.card_icone}>📄</div>
-              <div className={styles.card_info}>
-                <span className={styles.card_label}>Ordem</span>
-                <span className={styles.card_valor}>8</span>
-                <span className={styles.card_subtext}>Este mês</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Área de Filtros e Busca */}
-          <div className={styles.busca_container}>
-            <div className={styles.input_data_wrapper}>
-              <span className={styles.icone_calendario}>📅</span>
-              <input 
-                type="text" 
-                value={periodoData} 
-                onChange={(e) => setPeriodoData(e.target.value)}
-                className={styles.input_data} 
-              />
-            </div>
             
-            <div className={styles.input_busca_wrapper}>
-              <input 
-                type="text" 
-                placeholder="Buscar por cliente, serviço ou placa" 
-                value={busca}
-                onChange={(e) => setBusca(e.target.value)}
-                className={styles.input_busca} 
-              />
-              <span className={styles.icone_lupa}>🔍</span>
-            </div>
-          </div>
+              {/* ── Área de Listagem com Sombra ── */}
+              <div className={styles.gs_areaBlocos}>
+                
+                {/* ───────── NOVO CONTEÚDO DENTRO DA gs_areaBlocos ───────── */}
 
-          {/* Tabela de Registros */}
-          <div className={styles.tabela_container}>
-            <table className={styles.tabela_financeira}>
-              <thead>
-                <tr>
-                  <th>Data</th>
-                  <th>Cliente</th>
-                  <th>Veículo / Placa</th>
-                  <th>Descrição</th>
-                  <th>Pagamento</th>
-                  <th>Total</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {dadosFiltrados.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.data}</td>
-                    <td>{item.cliente}</td>
-                    <td>{item.veiculo}</td>
-                    <td>{item.descricao}</td>
-                    <td>
-                      <span className={`${styles.badge_pagamento} ${item.pagamento === 'Pago' ? styles.pago : styles.pendente}`}>
-                        {item.pagamento === 'Pago' ? '✓ ' : '🕒 '}{item.pagamento}
+                <div className={styles.os_header}>
+                  {/* Cards financeiros — linha superior */}
+                  <div className={styles.os_cards_financeiros}>
+                    <div className={styles.os_card_fin} style={{ background: '#3a0000' }}>
+                      <div className={styles.os_card_fin_icone} style={{ background: '#6b0000' }}>
+                        {/* ícone cubo/peças */}
+                        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#e03030" strokeWidth={1.8}>
+                          <path strokeLinejoin="round" d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/>
+                          <path strokeLinejoin="round" d="M12 3v18M4 7.5l8 4.5 8-4.5"/>
+                        </svg>
+                      </div>
+                      <div className={styles.os_card_fin_info}>
+                        <span className={styles.os_card_fin_label}>Peças</span>
+                        <span className={styles.os_card_fin_valor}>R$650,00</span>
+                        <span className={styles.os_card_fin_sub}>Total de Peças</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.os_card_fin} style={{ background: '#0d2a3a' }}>
+                      <div className={styles.os_card_fin_icone} style={{ background: '#0a3d5c' }}>
+                        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#4db8ff" strokeWidth={1.8}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                      </div>
+                      <div className={styles.os_card_fin_info}>
+                        <span className={styles.os_card_fin_label}>Mão de Obra</span>
+                        <span className={styles.os_card_fin_valor}>R$300,00</span>
+                        <span className={styles.os_card_fin_sub}>Total de Mão de Obra</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.os_card_fin} style={{ background: '#0d3a1a' }}>
+                      <div className={styles.os_card_fin_icone} style={{ background: '#1a5c24' }}>
+                        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#5de86e" strokeWidth={1.8}>
+                          <circle cx="12" cy="12" r="9"/>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v5l3 3"/>
+                          <path strokeLinecap="round" d="M12 6v1M12 17v1M6 12H5M19 12h-1"/>
+                        </svg>
+                      </div>
+                      <div className={styles.os_card_fin_info}>
+                        <span className={styles.os_card_fin_label}>Total</span>
+                        <span className={styles.os_card_fin_valor}>R$950,00</span>
+                        <span className={styles.os_card_fin_sub}>Total geral</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.os_card_fin} style={{ background: '#1a0d3a' }}>
+                      <div className={styles.os_card_fin_icone} style={{ background: '#2d1a5c' }}>
+                        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#b07aff" strokeWidth={1.8}>
+                          <rect x="5" y="2" width="14" height="20" rx="2"/>
+                          <path strokeLinecap="round" d="M9 7h6M9 11h6M9 15h4"/>
+                        </svg>
+                      </div>
+                      <div className={styles.os_card_fin_info}>
+                        <span className={styles.os_card_fin_label}>Ordem</span>
+                        <span className={styles.os_card_fin_valor}>8</span>
+                        <span className={styles.os_card_fin_sub}>Este mês</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Linha inferior: data + busca */}
+                  <div className={styles.os_header_bottom}>
+                    <div className={styles.os_data}>
+                      <span>📅</span>
+                      <p>01/01/2026 - 31/01/2026</p>
+                    </div>
+
+                    <div className={styles.os_busca}>
+                      <input
+                        type="text"
+                        placeholder="Buscar por cliente, serviço ou placa"
+                      />
+                      <span className={styles.os_busca_icon}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none"
+                          viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <circle cx="11" cy="11" r="8"/>
+                          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
                       </span>
-                    </td>
-                    <td className={styles.coluna_total}>{item.total}</td>
-                    <td>
-                      <button className={styles.btn_acoes}>•••</button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    </div>
+                  </div>
+                  </div>
+                
 
-            {/* Paginação da Tabela */}
-            <div className={styles.paginacao_container}>
-              <div className={styles.paginacao_info}>
-                Mostrando 1 a {dadosFiltrados.length} de 8 registros
-              </div>
-              
-              <div className={styles.paginacao_controles}>
-                <button className={styles.btn_pag} disabled>&lt;</button>
-                <button className={`${styles.btn_pag} ${styles.btn_pag_ativo}`}>1</button>
-                <button className={styles.btn_pag}>2</button>
-                <button className={styles.btn_pag}>&gt;</button>
+                
+
+                  
+
+                <div className={styles.os_tabela}>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Data</th>
+                        <th>Cliente</th>
+                        <th>Veículo / Placa</th>
+                        <th>Descrição</th>
+                        <th>Pagamento</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>13/02/2026</td>
+                        <td className={styles.os_codigo}>OS-00001</td>
+                        <td>Guilherme Luiz</td>
+                        <td>BMW M3 G80</td>
+                        <td>Troca de Pneus</td>
+                        <td>
+                          <span className={styles.status_concluido}>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
+                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            Concluido
+                          </span>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>15/05/2026</td>
+                        <td className={styles.os_codigo}>OS-00002</td>
+                        <td>Bruno Luan</td>
+                        <td>BMW 320i</td>
+                        <td>Alinhamento</td>
+                        <td>
+                          <span className={styles.status_andamento}>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#e8a83d" fillOpacity="0.25"/>
+                              <circle cx="7" cy="7" r="4.5" stroke="#e8a83d" strokeWidth="1.5"/>
+                              <path d="M7 4.5v3l1.5 1.5" stroke="#e8a83d" strokeWidth="1.5" strokeLinecap="round"/>
+                            </svg>
+                            Pendente
+                          </span>
+                      </td>
+                      </tr>
+
+                      <tr>
+                        <td>24/02/2026</td>
+                        <td className={styles.os_codigo}>OS-00003</td>
+                        <td>Cauã Takasaki</td>
+                        <td>Audi A3</td>
+                        <td>Reparo de Freios</td>
+                        <td>
+                          <span className={styles.status_concluido}>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
+                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            Pago
+                          </span>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>18/09/2026</td>
+                        <td className={styles.os_codigo}>OS-00004</td>
+                        <td>Wesley Beraldi</td>
+                        <td>Fiat Punto</td>
+                        <td>Troca de Filtros</td>
+                        <td>
+                          <span className={styles.status_concluido}>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
+                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            Pago
+                          </span>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>31/12/2026</td>
+                        <td className={styles.os_codigo}>OS-00005</td>
+                        <td>Caroline Ferraz</td>
+                        <td>Mitsubishi L-200</td>
+                        <td>Troca de Oleo</td>
+                        <td>
+                          <span className={styles.status_andamento}>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#e8a83d" fillOpacity="0.25"/>
+                              <circle cx="7" cy="7" r="4.5" stroke="#e8a83d" strokeWidth="1.5"/>
+                              <path d="M7 4.5v3l1.5 1.5" stroke="#e8a83d" strokeWidth="1.5" strokeLinecap="round"/>
+                            </svg>
+                            Pendente
+                          </span>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>29/05/2026</td>
+                        <td className={styles.os_codigo}>OS-00006</td>
+                        <td>Enzo Verluzzy</td>
+                        <td>Jeep Compass</td>
+                        <td>Balanceamento</td>
+                        <td>
+                          <span className={styles.status_andamento}>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#e8a83d" fillOpacity="0.25"/>
+                              <circle cx="7" cy="7" r="4.5" stroke="#e8a83d" strokeWidth="1.5"/>
+                              <path d="M7 4.5v3l1.5 1.5" stroke="#e8a83d" strokeWidth="1.5" strokeLinecap="round"/>
+                            </svg>
+                            Pendente
+                          </span>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>01/01/2026</td>
+                        <td className={styles.os_codigo}>OS-00007</td>
+                        <td>Richard Guerra</td>
+                        <td>Peugeot 206</td>
+                        <td>Troca de filtros</td>
+                        <td>
+                          <span className={styles.status_concluido}>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
+                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            Pago
+                          </span>
+                        </td>
+                      </tr> 
+                    </tbody>
+                  </table>
+
+                  <div className={styles.os_footer}>
+                    <p>Mostando 1 a 7 de 8 registros</p>
+
+                    <div className={styles.os_paginacao}>
+                      <button>{'<'}</button>
+                      <button className={styles.os_pagina_ativa}>1</button>
+                      <button>2</button>
+                      <button>{'>'}</button>
+                    </div>
+
+                    <select>
+                      <option>10</option>
+                    </select>
+                  </div>
+                </div>
               </div>
 
-              <div className={styles.seletor_itens}>
-                <select 
-                  value={itensPorPagina} 
-                  onChange={(e) => setItensPorPagina(Number(e.target.value))}
-                  className={styles.select_pag}
-                >
-                  <option value={10}>10</option>
-                  <option value={25}>25</option>
-                  <option value={50}>50</option>
-                </select>
-              </div>
-            </div>
+            
+
           </div>
-
         </div>
 
       </div>
 
       <div className={styles.rodape_principal}></div>
-      
     </div>
   );
 }
 
-export default Atualizar;
+export default os;
