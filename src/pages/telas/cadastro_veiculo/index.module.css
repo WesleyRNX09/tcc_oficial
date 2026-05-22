@@ -1,0 +1,289 @@
+/* ===== BASE ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fundo azul-escuro da página inteira */
+.container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #050505;;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== BARRA TOPO ===== */
+.barra_Principal {
+  border-bottom: #e50914 0.3rem solid;
+  width: 100%;
+  display: flex;
+  height: 9rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0A0A0A;
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3);
+  padding: 0 2rem;
+}
+
+.barra_Logo {
+  display: flex;
+  align-items: center;
+  margin-left: clamp(2rem, 5vw, 15rem);
+  height: 100%;
+}
+
+.barra_Imagem {
+  height: 10rem;
+  object-fit: contain;
+}
+
+.barra_conteudo {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-right: clamp(2rem, 5vw, 15rem);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.barra_botao {
+  padding: 0.5rem 1rem;
+  background-color: black;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-right: clamp(0.5rem, 2vw, 5rem);
+  font-weight: bold;
+  letter-spacing: 0.9px;
+  border: #e50914 1px solid;
+  text-decoration: none;
+}
+
+/* ===== ÁREA CENTRAL ===== */
+.cadastro_Conteudo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+}
+
+/* CARD — igual ao da referência */
+.cadastro_Margem {
+  width: 100%;
+  max-width: 110rem;
+  background: linear-gradient(90deg, #141414, #0f0f0f);
+  border-radius: 1.2rem;
+  padding: 2.5rem 3rem 3rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    border: 1px solid #232323;
+  position: relative;
+}
+
+/* ===== LOGO NO TOPO DO CARD ===== */
+.home_imagem_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.cadastro_imagem {
+  height: 10rem;
+  object-fit: contain;
+}
+
+/* ===== TÍTULO ===== */
+.cadastro_titulo {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.cadastro_cad {
+  color: #e50914;
+}
+
+/* ===== FORMULÁRIO: 3 colunas (col-esq | col-dir | imagem) ===== */
+.cadastro_boxs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 280px;
+  grid-template-rows: auto auto auto auto;
+  column-gap: 2.5rem;
+  row-gap: 0;
+  align-items: start;
+}
+
+/* Título ocupa as 3 colunas */
+.cadastro_titulo {
+  grid-column: 1 / -1;
+}
+
+/* ===== GRUPOS DE INPUT ===== */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.4rem;
+}
+
+/* Nome do Cliente — só col esquerda (col 1) */
+.inputGroupFull {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.4rem;
+  grid-column: 1;
+}
+
+/* Área da imagem — col 3, linhas 1-4 */
+.imagemArea {
+  grid-column: 3;
+  grid-row: 2 / 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Labels dos inputs */
+.inputGroup label,
+.inputGroupFull label {
+  color: #ffffff;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+/* Inputs e select */
+.inputGroup input,
+.inputGroup select,
+.inputGroupFull input {
+  width: 100%;
+  height: 3.2rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid #e50914;
+  background-color: #ffffff;
+  padding: 0 0.9rem;
+  font-size: 0.95rem;
+  outline: none;
+  color: #111;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Select com seta customizada */
+.inputGroup select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.5rem;
+}
+
+/* ===== LADO DIREITO — IMAGEM ===== */
+.labelImagem {
+  color: #ffffff;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  align-self: flex-start;
+}
+
+.uploadBox {
+  width: 100%;
+  height: 220px;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.4rem;
+}
+
+.uploadIcon {
+  width: 90px;
+  opacity: 0.7;
+}
+
+.botaoCodigo {
+  margin-top: 1.2rem;
+  width: 100%;
+  height: 42px;
+  border: none;
+  border-radius: 0.6rem;
+  background: linear-gradient(to bottom, #ff1d1d, #b30000);
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botaoCodigo:hover {
+  transform: scale(1.02);
+}
+
+.codigo {
+  color: #ffffff;
+  margin-top: 0.8rem;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* ===== BOTÃO CADASTRAR ===== */
+.botaoArea {
+  grid-column: 1 / 3; /* ocupa cols 1 e 2, centralizado */
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.botaoCadastrar {
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 0.7rem;
+  background: linear-gradient(to bottom, #ff1d1d, #b30000);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  letter-spacing: 0.05rem;
+}
+
+.botaoCadastrar:hover {
+  transform: scale(1.02);
+}
+
+/* ===== RODAPÉ ===== */
+.rodape_principal {
+  border-top: #e50914 0.3rem solid;
+  width: 100%;
+  height: 9rem;
+  background-color: #0A0A0A;
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3);
+  margin-top: auto;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+  .cadastro_boxs {
+    grid-template-columns: 1fr 1fr;
+  }
+  .imagemArea {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  .botaoArea {
+    grid-column: 1 / -1;
+  }
+  .inputGroupFull {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .cadastro_boxs {
+    grid-template-columns: 1fr;
+  }
+}
