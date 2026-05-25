@@ -108,7 +108,7 @@ function Cadastro() {
           </div>{/* fim cadastro_boxs */}
           
             <div className={styles.botaoArea}>
-              <button className={styles.botaoCadastrar}>CADASTRAR</button>
+              <button className={styles.botaoCadastrar}>Cadastrar</button>
             </div>
 
         </div>{/* fim cadastro_Margem */}

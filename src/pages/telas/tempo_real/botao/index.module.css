@@ -15,8 +15,6 @@
     font-size: clamp(1.1rem, 1.5vw, 1.5rem); /* RESPONSIVO: tamanho de fonte que escala com a tela */
     letter-spacing: 0.15rem;
 
-    position: absolute;
-    bottom: 4rem;
     justify-content: center;
     align-items: center;
     text-align: center; /* RESPONSIVO: garante centralização do texto */

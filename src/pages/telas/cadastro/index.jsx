@@ -22,61 +22,49 @@ function cadastro (){
 
             <div className={styles.cadastro_Conteudo}>
                 <div className={styles.cadastro_Margem}>
-                
+
                     <div className={styles.home_imagem_container}>
-                        <img src={logo} className={styles.cadastro_imagem} />     
+                        <img src={logo} className={styles.cadastro_imagem} />
                     </div>
 
                     <div className={styles.cadastro_boxs}>
-                
-                        <label className={styles.cadastro_titulo}>Faça seu <span className={styles.cadastro_cad}> Cadastro:</span></label>
+                        <label className={styles.cadastro_titulo}>Faça seu <span className={styles.cadastro_cad}>Cadastro:</span></label>
 
                         <div className={styles.cadastro_caixas}>
-
-                            <div className={styles.cadastro_caixa01}>
-
-                                <label className={styles.cadastro_label}>Nome Completo:</label>
-                                <input className={styles.cadastro_textarea} placeholder="Digite aqui..."></input>
-
-                            </div>
-
-                            <div className={styles.cadastro_caixa02}>
-
-                                <label className={styles.cadastro_label}>Email:</label>
-                                <input className={styles.cadastro_textarea} placeholder="Digite aqui..."></input>
-                                
-                            </div>
-
-                            <div className={styles.cadastro_caixa02}>
-
-                                <label className={styles.cadastro_label}>Telefone:</label>
-                                <input className={styles.cadastro_textarea} placeholder="Digite aqui..."></input>
-                                
-                            </div>
-
-                            <div className={styles.cadastro_caixa02}>
-
-                                <label className={styles.cadastro_label}>Senha:</label>
-                                <input className={styles.cadastro_textarea} placeholder="Digite aqui..."></input>
-                                
-                            </div>
-
-                            <div className={styles.cadastro_caixa02}>
-
-                                <label className={styles.cadastro_label}>Confirme a Senha:</label>
-                                <input className={styles.cadastro_textarea} placeholder="Digite aqui..."></input>
-                                
-                            </div>
-
-                            <div className={styles.home_botoes}>
-                                <Botao texto="Cadastrar" acao={'vermelho'} />
-                            </div>
-              
+                        <div className={styles.cadastro_caixa01}>
+                            <label className={styles.cadastro_label}>Nome Completo:</label>
+                            <input className={styles.cadastro_textarea} placeholder="Digite aqui..." />
                         </div>
-    
+
+                        <div className={styles.cadastro_caixa02}>
+                            <label className={styles.cadastro_label}>Email:</label>
+                            <input className={styles.cadastro_textarea} placeholder="Digite aqui..." />
+                        </div>
+
+                        <div className={styles.cadastro_caixa02}>
+                            <label className={styles.cadastro_label}>Telefone:</label>
+                            <input className={styles.cadastro_textarea} placeholder="Digite aqui..." />
+                        </div>
+
+                        <div className={styles.cadastro_caixa02}>
+                            <label className={styles.cadastro_label}>Senha:</label>
+                            <input className={styles.cadastro_textarea} placeholder="Digite aqui..." />
+                        </div>
+
+                        <div className={styles.cadastro_caixa02}>
+                            <label className={styles.cadastro_label}>Confirme a Senha:</label>
+                            <input className={styles.cadastro_textarea} placeholder="Digite aqui..." />
+                        </div>
+
+                        {/* BOTÃO AQUI DENTRO */}
+                        <div className={styles.home_botoes}>
+                            <Botao texto="Cadastrar" acao={'vermelho'} />
+                        </div>
+
+                        </div>
                     </div>
 
-                </div>
+                    </div> {/* fim cadastro_Margem */}
 
             </div>
 
