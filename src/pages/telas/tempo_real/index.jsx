@@ -48,7 +48,7 @@ function tempo_real () {
                         </div>
             
                         <div className={styles.barra_perfil_info}>
-                          <span className={styles.barra_perfil_nome}>Usario</span>
+                          <span className={styles.barra_perfil_nome}>Usuario</span>
                           <span className={styles.barra_perfil_cargo}>Cliente</span>
                         </div>
             
