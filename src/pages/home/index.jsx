@@ -76,7 +76,10 @@ function Home() {
         <div
   className={styles.home_margin2} style={{width: menuAberto ? '75%' : '100%',}}>
           <div className={styles.home_box}>
-            <img src={fundo02} className={styles.home_imagem02} />
+            <div className={styles.controlImg}>
+              <img src={fundo02} className={styles.home_imagem02} />
+            </div>
+
             <div className={styles.home_box02}>
               <h1>Serviços</h1>
               <div className={styles.home_caixas}>

@@ -213,6 +213,20 @@
     
 }
 
+.controlImg{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%; 
+    padding-bottom: 0.4rem;
+}
+
+img{
+    max-width: 100%; 
+    width: auto; 
+}
+
 .home_box02{
     width: 100%;
 
