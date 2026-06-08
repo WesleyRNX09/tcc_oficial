@@ -1,15 +1,16 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 
-import Home from './pages/home/index'
-import Login01 from './pages/telas/login/index'
-import TempoReal01 from './pages/telas/tempo_real/index'
-import Cadastro from './pages/telas/cadastro/index'
-import Login_adm from './pages/telas/login_adm/index'
-import Home_adm from './pages/home_adm/index'
-import Atualizar_adm from './pages/telas/atualizar_veiculo/index'
-import Financeiro_adm from './pages/telas/financeiro/index'
-import OS_adm from './pages/telas/ordem_servico/index'
-import CadastroV from './pages/telas/cadastro_veiculo/index'
+import Home from './pages/home';
+import Login01 from './pages/telas/login';
+import TempoReal01 from './pages/telas/tempo_real';
+import Cadastro from './pages/telas/cadastro';
+import Login_adm from './pages/telas/login_adm';
+import Home_adm from './pages/home_adm';
+import Atualizar_adm from './pages/telas/atualizar_veiculo';
+import Financeiro_adm from './pages/telas/financeiro';
+import OS_adm from './pages/telas/ordem_servico';
+import CadastroV from './pages/telas/cadastro_veiculo';
+import Configuracao_adm from './pages/telas/configuracao_adm';
 
 function App() {
   return (
@@ -22,10 +23,11 @@ function App() {
       <Route path="/home_adm" element={<Home_adm />} />
       <Route path="/atualizar_veiculo" element={<Atualizar_adm />} />
       <Route path="/financeiro" element={<Financeiro_adm />} />
-      <Route path="/OS" element={<OS_adm />} />
+      <Route path="/os" element={<OS_adm />} />
       <Route path="/cadastroV" element={<CadastroV />} />
+      <Route path="/configuracao_adm" element={<Configuracao_adm />} />
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;
