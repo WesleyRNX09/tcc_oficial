@@ -114,19 +114,6 @@
   background-color: #e50914;
 }
 
-.barra_menu_btn_aberto .barra_linha:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-.barra_menu_btn_aberto .barra_linha:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-  background-color: #e50914;
-}
-.barra_menu_btn_aberto .barra_linha:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-  background-color: #e50914;
-}
-
 /* ───────── BARRA DIREITA ───────── */
 
 .barra_direita {

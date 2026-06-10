@@ -111,6 +111,8 @@
 }
 
 
+
+
 .home_conteudo {
     display: flex;
     flex: 1;              /* 👈 ocupa todo o espaço entre navbar e rodapé */
@@ -175,7 +177,7 @@
   display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 5rem;
     box-sizing: border-box;
     position: relative;
     z-index: 1;

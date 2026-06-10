@@ -71,7 +71,7 @@ function Login01() {
         </div>
 
       </div>
-      <div className={styles.rodape_principal}></div>
+      
       
     </div>
   );
