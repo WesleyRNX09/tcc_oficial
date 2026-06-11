@@ -252,6 +252,11 @@
   display: flex;
   flex-direction: column; 
 }
+.gs_letra01{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.8rem 0;
+}
 
 .gs_letra02{
   font-size: 1.5rem;
@@ -313,7 +318,7 @@
   background: #1a1a1a;
   border: 1px solid #676767;
   border-radius: 1.2rem;
-  margin: 0 2rem;
+  margin: 0 1.7rem;
   display: flex ;
   justify-content: space-between;
   align-items: center;
@@ -329,7 +334,7 @@
 
 .gs_bloco_text{
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .gs_bloco_text02{
@@ -338,7 +343,7 @@
 
 
 .gs_bloco_label{
-  margin: 2rem 4rem;
+  margin: 0rem 3rem;
   
 }
 
@@ -358,8 +363,8 @@
 }
 
 .gs_bloco_titulo{
-  font-size: 1.9rem;
-  margin: 2rem ;
+  font-size: 1.7rem;
+  margin: 1.7rem ;
   color: #e50914;
   letter-spacing: 0.2rem;
 }

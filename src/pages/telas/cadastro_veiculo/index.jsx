@@ -115,7 +115,7 @@ function Cadastro() {
       </div>{/* fim cadastro_Conteudo */}
 
       {/* ── RODAPÉ ── */}
-      <div className={styles.rodape_principal} />
+      
 
     </div>
   );

@@ -145,12 +145,12 @@
     justify-content: center; 
     align-items: center; 
     min-height: 80vh; 
-    padding: 5rem;
+    padding: 3rem;
 }
 
 .tempo_Margem{
-    width: 130vh; 
-    height: auto; 
+    width: 120vh; 
+    height: 80vh; 
     align-items: center;
     display: flex; 
     flex-direction: column; 
@@ -173,12 +173,12 @@
 
 .tempo_imagem{
     max-width: 100%; 
-    height: 15rem; 
+    height: 10rem; 
     display: flex;
 }
 
 .tempo_titulo{
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     display: flex;
     justify-content: center;
     font-weight: 700;
@@ -339,9 +339,9 @@
     align-items: center; 
     justify-content: center; 
     background-color: #d9d9d9;
-    height: 30rem;        /* aumentado */
+    height: 35rem;        /* aumentado */
     width: 45rem;         /* aumentado */
-    margin: 2rem;
+    margin: 1.5rem;
     border-radius: 2rem;  /* bordas arredondadas */
     overflow: hidden;     /* garante que a imagem respeite o border-radius */
 } 
@@ -359,9 +359,8 @@
     justify-content: center;
     text-align: center;
     background-color: #121212;
-    margin-top: 2rem;
-    margin-bottom: 2rem;  /* espaço entre o box e o botão */
-    height: 9rem;
+    margin-bottom: 1.5rem;  /* espaço entre o box e o botão */
+    height: 13rem;
     width: 60rem;
     border: #e50914 2px solid;
     border-radius: 2rem;
