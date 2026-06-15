@@ -153,8 +153,8 @@ function os() {
                 <div className={styles.os_header}>
                   <div className={styles.os_data}>
                     <span>📅</span>
-                    <p>Data:</p>
-                    <p>01/01/2026 - 31/01/2026</p>
+                    <p className={styles.gs_bloco_text}>Data:</p>
+                    <p className={styles.gs_bloco_text}>01/01/2026 - 31/01/2026</p>
                   </div>
 
                   <div className={styles.os_busca}>
@@ -325,22 +325,7 @@ function os() {
                         </td>
                       </tr>
 
-                      <tr>
-                        <td>01/01/2026</td>
-                        <td className={styles.os_codigo}>OS-00007</td>
-                        <td>Richard Guerra</td>
-                        <td>Peugeot 206</td>
-                        <td>Troca de filtros</td>
-                        <td>
-                          <span className={styles.status_concluido}>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
-                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                            Concluido
-                          </span>
-                        </td>
-                      </tr>
+                      
                     </tbody>
                   </table>
 
@@ -368,7 +353,7 @@ function os() {
 
       </div>
 
-      <div className={styles.rodape_principal}></div>
+    
     </div>
   );
 }

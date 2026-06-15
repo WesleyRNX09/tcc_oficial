@@ -296,7 +296,7 @@ function atualizar() {
 
       </div>
 
-      <div className={styles.rodape_principal}></div>
+   
     </div>
   );
 }

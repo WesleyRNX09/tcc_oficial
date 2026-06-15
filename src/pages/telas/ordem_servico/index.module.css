@@ -435,6 +435,16 @@
     color: #c9c9c9;
 }
 
+.gs_bloco_titulo{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.8rem 0;
+}
+
+.gs_bloco_text{
+      font-size: 1.4rem;
+}
+
 /* ───────── ÁREA PRINCIPAL ───────── */
 
 .gs_areaBlocos{
@@ -450,7 +460,7 @@
     display: flex;
     align-items: center;
     gap: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.3rem;
     flex-wrap: wrap;
 }
 
@@ -502,7 +512,7 @@
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   width: 100%;
 }
 
@@ -646,7 +656,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     flex-wrap: wrap;
     gap: 2rem;
 }

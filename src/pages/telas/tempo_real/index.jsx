@@ -133,7 +133,7 @@ function tempo_real () {
 
             </div>
 
-            <div className={styles.rodape_principal}></div>
+        
             
         </div>
     )
