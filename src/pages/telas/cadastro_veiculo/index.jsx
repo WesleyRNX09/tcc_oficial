@@ -14,7 +14,6 @@ function Cadastro() {
         </div>
         <div className={styles.barra_conteudo}>
           <Link to="/" className={styles.barra_botao}>Inicio</Link>
-          <Link to="/login" className={styles.barra_botao}>Fazer login</Link>
         </div>
       </div>
 
