@@ -38,7 +38,6 @@ function Home() {
         </div>
 
         <div className={styles.barra_conteudo}>
-          <Link to="/login" className={styles.barra_botao}>Serviços</Link>
           <Link   className={styles.barra_botao} onClick={() => setModalAberto(true)}>Acompanhar Veiculo</Link>
           <Link to="/login_adm" className={styles.barra_botao}>Logar Como Adiministrador</Link>
         </div>
@@ -66,8 +65,8 @@ function Home() {
           }}
         >
             <div className={styles.home_margin1_inner}>
+              <Botao texto="ENTRE EM CONTATO CONOSCO" acao={'vermelho'} />
               <img src={fundo01} className={styles.home_imagem01} />
-              <Botao texto="ENTRE EM CONTATO CONOSCO" acao={'branco'} />
             </div>
         </div>
 

@@ -24,6 +24,29 @@
     height: 100%;
 } 
 
+.barra_conteudo { 
+    display: flex; 
+    flex-direction: row; 
+    gap: 1rem; 
+    margin-right: clamp(2rem, 5vw, 15rem); 
+    flex-wrap: wrap; justify-content: flex-end; 
+}
+ 
+.barra_botao { 
+  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.5vw, 1rem);
+  background-color: black;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.9px;
+  border: #e50914 1px solid;
+  font-size: clamp(1rem, 1.2vw, 1.6rem);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+} 
+
 .barra_Imagem { 
     height: 10rem; 
     object-fit: contain;
@@ -339,7 +362,7 @@
     align-items: center; 
     justify-content: center; 
     background-color: #d9d9d9;
-    height: 35rem;        /* aumentado */
+    height: 50rem;        /* aumentado */
     width: 45rem;         /* aumentado */
     margin: 1.5rem;
     border-radius: 2rem;  /* bordas arredondadas */
