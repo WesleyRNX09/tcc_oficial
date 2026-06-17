@@ -128,7 +128,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5rem ;
   gap: 5rem;
   flex-shrink: 0;
   position: relative;
@@ -145,7 +144,7 @@
   align-items: center;
   gap: 2rem;
   width: 100%;
-  padding: 2rem;
+  padding: 5rem;
   transition:
     opacity 0.4s ease 0.2s;  /* 👈 só opacity, sem translateX */
 }
@@ -235,7 +234,7 @@ img{
 .home_box02{
     width: 100%;
 
-    border: #676767 solid 1px;
+    
     border-radius: 2rem;
 
     padding: 1.5rem 4rem;     /* era 4rem — reduz topo/base */
