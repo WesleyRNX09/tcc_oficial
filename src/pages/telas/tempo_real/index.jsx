@@ -98,7 +98,7 @@ function tempo_real () {
                         <p className={styles.login_textbox02}>PREVISÃO DE ENTREGA 00/00/0000</p>
                     </div>
 
-                    <Botao texto="VERIFICAR ORÇAMENTO" acao={'vermelho'} />
+                    <Botao texto="VERIFICAR ORÇAMENTO" acao={'vermelho'}  aoClicar={() => navigate("/v_orcamento")}/>
 
                     
                     

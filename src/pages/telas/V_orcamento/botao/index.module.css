@@ -1,0 +1,38 @@
+.botao {
+    padding: 1rem 2rem;
+    cursor: pointer;
+    margin: 0.5rem;
+    color: white;
+    border: none;
+}
+
+.vermelho {
+    display: flex;
+    gap: 20px;
+    width: clamp(25rem, 30vw, 40rem); /* RESPONSIVO: mesma lógica do botão branco para consistência */
+    height: 9rem; /* RESPONSIVO: mesma altura que o botão branco */
+    font-weight: 700; /* RESPONSIVO: tamanho de fonte que escala com a tela */
+    letter-spacing: 0.15rem;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* RESPONSIVO: garante centralização do texto */
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    background-color: #e50914;
+
+    font-size: 1.7rem;
+    -webkit-text-stroke: 0.02 black;
+    z-index: 3;
+}
+
+.preto{
+    background-color: #1a1a1a;
+    border: 1px solid #555;
+    border-radius: 1rem;
+    color: #ffffff;
+    font-size: 2.2rem;       /* maior */
+    padding: 1.2rem 2rem;    /* maior */
+    cursor: pointer;
+    min-width: 6rem;
+}

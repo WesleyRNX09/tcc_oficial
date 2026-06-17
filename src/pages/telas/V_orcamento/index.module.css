@@ -1,0 +1,296 @@
+.container { 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
+    height: 100%; 
+} 
+
+.barra_Principal { 
+    border-bottom: #e50914 0.3rem solid; 
+    width: 100%; 
+    display: flex; 
+    height: 9rem; 
+    align-items: center; 
+    justify-content: space-between; /* distribui os lados */ 
+    background-color: #0A0A0A;
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
+    padding: 0 2rem; 
+} 
+
+.barra_Logo { 
+    display: flex; 
+    align-items: center; 
+    margin-left: clamp(2rem, 5vw, 15rem); 
+    height: 100%;
+} 
+
+.barra_conteudo { 
+    display: flex; 
+    flex-direction: row; 
+    gap: 1rem; 
+    margin-right: clamp(2rem, 5vw, 15rem); 
+    flex-wrap: wrap; justify-content: flex-end; 
+}
+ 
+.barra_botao { 
+  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.5vw, 1rem);
+  background-color: black;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.9px;
+  border: #e50914 1px solid;
+  font-size: clamp(1rem, 1.2vw, 1.6rem);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+} 
+
+.barra_Imagem { 
+    height: 10rem; 
+    object-fit: contain;
+} 
+.barra_direita {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-right: 3rem;
+  /* REMOVA o ::before completamente */
+}
+
+/* Separador vertical */
+.barra_direita::before {
+  content: '';
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(to bottom, transparent, #333, transparent);
+  margin-right: 1rem;
+}
+
+/* Sino */
+.barra_sino {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 0.8rem;
+  transition: background 0.2s;
+  position: relative;
+}
+.barra_sino:hover {
+  background: rgba(229, 9, 20, 0.12);
+}
+.barra_sino svg {
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.barra_sino:hover svg {
+  opacity: 1;
+}
+
+/* Card de perfil */
+.barra_perfil {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 1rem;
+  padding: 0.6rem 1.2rem 0.6rem 0.6rem;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  margin-left: 0.5rem;
+}
+.barra_perfil:hover {
+  border-color: #e50914;
+  background: #1a1a1a;
+  box-shadow: 0 0 14px rgba(229, 9, 20, 0.15);
+}
+
+/* Ícone circular com gradiente vermelho */
+.barra_perfil_icone {
+  width: 3.6rem;
+  height: 3.6rem;
+  background: linear-gradient(135deg, #3a0000, #1a1a1a);
+  border: 1px solid #e50914;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  /* COLOQUE SUA IMAGEM DE PERFIL AQUI — adicione overflow: hidden */
+}
+.barra_perfil_icone svg {
+  opacity: 0.9;
+}
+
+/* Textos */
+.barra_perfil_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.barra_perfil_nome {
+  color: #f0f0f0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.3px;
+}
+.barra_perfil_cargo {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Seta */
+.barra_seta {
+  opacity: 0.4;
+  flex-shrink: 0;
+  margin-left: 0.4rem;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.barra_perfil:hover .barra_seta {
+  opacity: 0.8;
+  transform: translateY(2px);
+}
+
+
+.tempo_Conteudo{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 80vh; 
+    padding: 3rem;
+}
+
+.tempo_Margem{
+    width: 120vh; 
+    height: 80vh; 
+    align-items: center;
+    display: flex; 
+    flex-direction: column; 
+    position: relative; 
+    overflow: visible; 
+    background-color: #0A0A0A; 
+    border-radius: clamp(2rem, 4vw, 5rem); 
+    padding: 2rem; 
+    border: #676767 1px solid;
+    
+}
+
+.tempo_imagem_container{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+    justify-content: center;
+}
+
+.tempo_imagem{
+    max-width: 100%; 
+    height: 10rem; 
+    display: flex;
+}
+
+.tempo_titulo{
+    font-size: 3.5rem;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 4rem;
+}
+
+.gs_areaBlocos {
+  display: flex;
+  flex-direction: column;
+  
+  width: 100%;
+  
+  background: #333;
+  border: 1px solid #676767;
+  border-radius: 1.2rem;
+}
+
+.gs_bloco { 
+  background: #1a1a1a;
+  border: 1px solid #676767;
+  border-radius: 1.2rem;
+  margin: 0 1.7rem;
+  display: flex ;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gs_bloco_box{
+  margin: 2rem 0;
+}
+
+.gs_bloco_box_img{
+  margin-right: 2rem;
+}
+
+.gs_bloco_text{
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.gs_bloco_text02{
+  color: #888;
+}
+
+
+.gs_bloco_label{
+  margin: 0rem 3rem;
+  
+}
+
+.gs_bloco02{
+  background: #1a1a1a;
+  border: 1px solid #676767;
+  border-radius: 1.2rem;
+  margin: 2rem 2rem;
+}
+
+.gs_bloco_img{
+  display: flex;
+  width: 35vh;
+  padding: 2rem;
+ 
+  border-radius: 4rem;
+}
+
+.gs_bloco_titulo{
+  font-size: 1.7rem;
+  margin: 1.7rem ;
+  color: #e50914;
+  letter-spacing: 0.2rem;
+}
+
+
+
+.tempo_topo {
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* centraliza a logo */
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;        /* permite posicionamento absoluto do botão */
+}
+
+
+.tempo_topo_espacador {
+    flex: 1;
+}
+
+.voltar {
+    position: absolute;        /* sai do fluxo, não afeta a logo */
+    left: 0;                   /* cola no canto esquerdo */
+}
