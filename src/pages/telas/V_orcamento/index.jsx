@@ -3,14 +3,9 @@ import Botao from './botao'
 import { Link } from "react-router-dom";
 import logo from '../../../assets/logo.png';
 
-import entrada from "../../../assets/entrada.png";
-import analise from "../../../assets/analise.png";
-import diagnostico from "../../../assets/diagnostico.png";
-import processo from "../../../assets/processo.png";
-import finalizado from "../../../assets/finalizado.png";
-import carro from "../../../assets/carro.png";
+import punto from '../../../assets/fiat_punto.png';
+import diagnostico from '../../../assets/diagnostico.png';
 
-import notificacao from "../../../assets/notificacao.png";
 
 
 import { useNavigate } from "react-router-dom";
@@ -56,48 +51,55 @@ function tempo_real () {
 
                     <div className={styles.gs_areaBlocos}>
                     
-                                  <h2 className={styles.gs_bloco_titulo}>DADOS DO VEÍCULO</h2>
                     
-                                  <div className={styles.gs_bloco}>
+                                <div className={styles.gs_blocos}>
+
+                                    <div className={styles.gs_bloco01}>
                     
-                                    <div className={styles.gs_bloco_label}>
-                    
-                                      <div className={styles.gs_bloco_box}>
-                                        <h1 className={styles.gs_bloco_text}>CLIENTE</h1>
-                                        <p className={styles.gs_bloco_text02}>Guilherme Luiz</p>
-                                      </div>
-                    
-                                      <div className={styles.gs_bloco_box}>
-                                          <h1 className={styles.gs_bloco_text}>VEÍCULO</h1>
-                                          <p className={styles.gs_bloco_text02}>Jetta 2.0 TSI</p>
-                                      </div>
-                    
-                                      <div className={styles.gs_bloco_box}>
-                                        <h1 className={styles.gs_bloco_text}>PLACA</h1>
-                                        <p className={styles.gs_bloco_text02}>GLZ-2A08</p>
-                                      </div>
+                                        <img src={punto} className={styles.gs_bloco_img} />
+                                        
+                                        <div className={styles.gs_bloco_label}>
+                        
+                                            <div className={styles.gs_bloco_box01}>
+                                                <h1 className={styles.gs_bloco_titulo}>VEÍCULO</h1>
+                                                <p className={styles.gs_bloco_text02}>Fiat Punto Essence 1.6 Flex 16V</p>
+                                            </div>
+                            
+                                            <div className={styles.gs_bloco_box02}>
+                                                <h1 className={styles.gs_bloco_text}>PLACA:</h1>
+                                                <p className={styles.gs_bloco_text02}>ABL-5A78</p>
+                                            </div>
+                            
+                                            <div className={styles.gs_bloco_box02}>
+                                                <h1 className={styles.gs_bloco_text}>ANO:</h1>
+                                                <p className={styles.gs_bloco_text02}>2020</p>
+                                            </div>
+
+                                            <div className={styles.gs_bloco_box02}>
+                                                <h1 className={styles.gs_bloco_text}>COR:</h1>
+                                                <p className={styles.gs_bloco_text02}>Prata</p>
+                                            </div>
+
+                                        </div>
+
                                     </div>
+
+                                    <div className={styles.gs_linha}></div>
+
+                                    <div className={styles.gs_bloco02}>
                     
-                                    <div className={styles.gs_bloco_label}>
-                    
-                                      <div className={styles.gs_bloco_box}>
-                                        <h1 className={styles.gs_bloco_text}>DATA DE ENTRADA</h1>
-                                        <p className={styles.gs_bloco_text02}>27/07/2026</p>
-                                      </div>
-                    
-                                      <div className={styles.gs_bloco_box}>
-                                          <h1 className={styles.gs_bloco_text}>PREVISÃO DE ENTREGA</h1>
-                                          <p className={styles.gs_bloco_text02}>29/07/2026</p>
-                                      </div>
-                    
-                                      <div className={styles.gs_bloco_box}>
-                                        <h1 className={styles.gs_bloco_text}>ORDEM DE SERVIÇO</h1>
-                                        <p className={styles.gs_bloco_text02}>OS-000123</p>
-                                      </div>
+                                        <div className={styles.gs_bloco_box01}>
+
+                                                <img src={diagnostico} className={styles.gs_bloco_img02} />    
+                                                <h1 className={styles.gs_bloco_titulo}>VEÍCULO</h1>
+                                                <p className={styles.gs_bloco_text02}>Fiat Punto Essence 1.6 Flex 16V</p>
+                                        </div>
+
                                     </div>
-                    
-                                   
-                                  </div>
+
+                                </div>
+
+                                
                     </div>
 
                     

@@ -219,18 +219,26 @@
   border-radius: 1.2rem;
 }
 
-.gs_bloco { 
+.gs_blocos { 
   background: #1a1a1a;
   border: 1px solid #676767;
   border-radius: 1.2rem;
-  margin: 0 1.7rem;
+  margin: 1.7rem;
   display: flex ;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
-.gs_bloco_box{
+.gs_linha{
+  border: #676767 1px solid;
+  height: 85%;
+}
+
+.gs_bloco_box02{
   margin: 2rem 0;
+  display:flex ;
+  align-items: center;
+  gap: 1rem;
 }
 
 .gs_bloco_box_img{
@@ -247,16 +255,19 @@
 }
 
 
-.gs_bloco_label{
-  margin: 0rem 3rem;
-  
+/*.gs_bloco_label{
+  margin: 0rem 1rem;
+  padding: 1rem 0;
+}*/
+
+.gs_bloco01{
+  display: flex ;
+  align-items: center;
 }
 
 .gs_bloco02{
-  background: #1a1a1a;
-  border: 1px solid #676767;
-  border-radius: 1.2rem;
-  margin: 2rem 2rem;
+  display: flex ;
+  align-items: center;
 }
 
 .gs_bloco_img{
@@ -268,10 +279,7 @@
 }
 
 .gs_bloco_titulo{
-  font-size: 1.7rem;
-  margin: 1.7rem ;
-  color: #e50914;
-  letter-spacing: 0.2rem;
+  font-size: 1.9rem;
 }
 
 
