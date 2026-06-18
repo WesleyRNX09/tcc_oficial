@@ -87,14 +87,13 @@ function tempo_real () {
                                     <div className={styles.gs_linha}></div>
 
                                     <div className={styles.gs_bloco02}>
-                    
                                         <div className={styles.gs_bloco_box01}>
-
-                                                <img src={diagnostico} className={styles.gs_bloco_img02} />    
-                                                <h1 className={styles.gs_bloco_titulo}>VEÍCULO</h1>
-                                                <p className={styles.gs_bloco_text02}>Fiat Punto Essence 1.6 Flex 16V</p>
+                                            <div className={styles.gs_bloco_cabecalho}>
+                                                <img src={diagnostico} className={styles.gs_bloco_img02} />
+                                                <h1 className={styles.gs_bloco_titulo}>Descrição do serviço</h1>
+                                            </div>
+                                            <p className={styles.gs_bloco_descricao}>Realizada a revisão do sistema de freios, sendo identificado desgaste nas pastilhas. Efetuada a substituição dos componentes necessários e realizados testes para garantir a eficiência e a segurança da frenagem.</p>
                                         </div>
-
                                     </div>
 
                                 </div>
