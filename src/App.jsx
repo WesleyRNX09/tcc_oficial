@@ -9,7 +9,6 @@ import Atualizar_adm from './pages/telas/atualizar_veiculo';
 import Financeiro_adm from './pages/telas/financeiro';
 import OS_adm from './pages/telas/ordem_servico';
 import CadastroV from './pages/telas/cadastro_veiculo';
-import Configuracao_adm from './pages/telas/configuracao_adm';
 import V_orcamento from './pages/telas/V_orcamento';
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
       <Route path="/financeiro" element={<Financeiro_adm />} />
       <Route path="/os" element={<OS_adm />} />
       <Route path="/cadastroV" element={<CadastroV />} />
-      <Route path="/configuracao_adm" element={<Configuracao_adm />} />
       <Route path="/v_orcamento" element={<V_orcamento />} />
     </Routes>
   );

@@ -224,7 +224,7 @@
   margin: 1.7rem;
   display: flex ;
   align-items: center;
-  justify-content: space-between;
+  gap: 5rem;
 }
 
 .gs_linha{
@@ -264,6 +264,7 @@
 .gs_bloco02{
   display: flex ;
   align-items: center;
+  margin: 0rem 8rem 4rem 0rem;
 }
 
 .gs_bloco_img{
@@ -278,6 +279,7 @@
 .gs_bloco_titulo{
   font-size: 1.9rem;
 }
+
 
 
 
