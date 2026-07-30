@@ -217,3 +217,24 @@
   line-height: 1.6;
   margin: 0;
 }
+
+.botao_pagamento {
+  width: 30%;
+  height: 5rem;
+  padding: 1.2rem;
+  background: linear-gradient(180deg, #e50914 0%, #a00000 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.botao_pagamento:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}

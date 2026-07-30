@@ -129,9 +129,13 @@ function TempoReal() {
                 </div>
               </div>
 
+              
             </div>
-          </div>
 
+          </div>
+                <button className={styles.botao_pagamento}>
+                    PAGAMENTO
+                </button>
         </div>
       </div>
     </div>
