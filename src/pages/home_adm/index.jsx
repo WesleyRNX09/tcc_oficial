@@ -34,11 +34,11 @@ function Home() {
           <img src={logo} className={styles.barra_Imagem} />
         </div>
 
-        <div className={styles.barra_conteudo}>
+        {/*<div className={styles.barra_conteudo}>
           <Link to="/login" className={styles.barra_botao}>Serviços</Link>
           <Link to="/" className={styles.barra_botao}>Acompanhar Veiculo</Link>
           <Link to="/login" className={styles.barra_botao}>Fazer Login</Link>
-        </div>
+        </div>*/}
       </div>
 
       <div className={styles.home_conteudo}>
@@ -54,7 +54,7 @@ function Home() {
 
             <div className={styles.home_margin1_btn}>
               <img src={ordemServiço} className={styles.home_margin1_img} />
-              <Link to="/login" className={styles.home_margin1_text}>HISTORICO DE ORDEM DE SERVIÇO</Link>
+              <Link to="/os" className={styles.home_margin1_text}>HISTORICO DE ORDEM DE SERVIÇO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>
@@ -69,7 +69,7 @@ function Home() {
 
             <div className={styles.home_margin1_btn}>
               <img src={carro} className={styles.home_margin1_img} />
-              <Link to="/login" className={styles.home_margin1_text}>CADASTRAR VEÍCULO</Link>
+              <Link to="/cadastroV" className={styles.home_margin1_text}>CADASTRAR VEÍCULO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>
