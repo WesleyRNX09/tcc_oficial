@@ -12,9 +12,23 @@ function Cadastro() {
         <div className={styles.barra_Logo}>
           <img src={logo} className={styles.barra_Imagem} alt="logo" />
         </div>
-        <div className={styles.barra_conteudo}>
-          <Link to="/" className={styles.barra_botao}>Inicio</Link>
+       
+
+        <div className={styles.barra_perfil}>
+
+          <div className={styles.barra_perfil_icone}>
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={1.8}>
+                <circle cx="12" cy="8" r="4"/>
+                <path strokeLinecap="round" d="M4 20c0-4 3.582-7 8-7s8 3 8 7"/>
+              </svg>
+          </div>
+          
+          <div className={styles.barra_perfil_info}>
+              <span className={styles.barra_perfil_nome}>Admin</span>
+              <span className={styles.barra_perfil_cargo}>Administrador</span>
+          </div>
         </div>
+
       </div>
 
       {/* ── CONTEÚDO CENTRAL ── */}

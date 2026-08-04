@@ -39,6 +39,19 @@ function Home() {
           <Link to="/" className={styles.barra_botao}>Acompanhar Veiculo</Link>
           <Link to="/login" className={styles.barra_botao}>Fazer Login</Link>
         </div>*/}
+        <div className={styles.barra_perfil}>
+
+          <div className={styles.barra_perfil_icone}>
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={1.8}>
+                <circle cx="12" cy="8" r="4"/>
+                <path strokeLinecap="round" d="M4 20c0-4 3.582-7 8-7s8 3 8 7"/>
+              </svg>
+          </div>
+          <div className={styles.barra_perfil_info}>
+              <span className={styles.barra_perfil_nome}>Admin</span>
+              <span className={styles.barra_perfil_cargo}>Administrador</span>
+          </div>
+        </div>
       </div>
 
       <div className={styles.home_conteudo}>

@@ -78,11 +78,6 @@ function os() {
               <span className={styles.barra_perfil_cargo}>Administrador</span>
             </div>
 
-            {/* Seta dropdown — troque por <img src={setaDropdown} /> se quiser */}
-            <svg className={styles.barra_seta} src={notificacao} width="16" height="16" fill="none"
-                viewBox="0 0 24 24" stroke="white" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
-            </svg>
           </div>
 
         </div>
@@ -101,11 +96,11 @@ function os() {
         {/* Sidebar */}
         <div className={`${styles.home_margin1} ${menuAberto ? styles.home_margin1_aberto : ''}`} style={{ width: menuAberto ? '50rem' : '0', minWidth: menuAberto ? '50rem' : '0' }}>
           <div className={styles.home_margin1_inner}>
-            <Botao texto="FINANCEIRO" acao={'vermelho'} aoClicar={() => navigate("/cadastro")} />
+            <Botao texto="FINANCEIRO" acao={'vermelho'} aoClicar={() => navigate("/financeiro")} />
 
-            <div className={styles.home_margin1_btn_os}>
+            <div className={styles.home_margin1_btn}>
               <img src={ordemServiço} className={styles.home_margin1_img} alt="" />
-              <Link to="/login" className={styles.home_margin1_text_os}>HISTORICO DE ORDEM DE SERVIÇO</Link>
+              <Link to="/os" className={styles.home_margin1_text}>HISTORICO DE ORDEM DE SERVIÇO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>
@@ -115,12 +110,12 @@ function os() {
 
             <div className={styles.home_margin1_btn}>
               <img src={carro} className={styles.home_margin1_img} alt="" />
-              <Link to="/login" className={styles.home_margin1_text}>ATUALIZAR VEÍCULO</Link>
+              <Link to="/atualizar_veiculo" className={styles.home_margin1_text}>ATUALIZAR VEÍCULO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>
               <img src={carro} className={styles.home_margin1_img} alt="" />
-              <Link to="/login" className={styles.home_margin1_text}>CADASTRAR VEÍCULO</Link>
+              <Link to="/cadastroV" className={styles.home_margin1_text}>CADASTRAR VEÍCULO</Link>
             </div>
 
             <div className={styles.home_margin1_btn}>
@@ -299,7 +294,7 @@ function os() {
                               <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
                               <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
-                            Pago
+                            Concluido
                           </span>
                         </td>
                       </tr>
@@ -316,7 +311,7 @@ function os() {
                               <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
                               <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
-                            Pago
+                            Concluido
                           </span>
                         </td>
                       </tr>
@@ -334,7 +329,7 @@ function os() {
                               <circle cx="7" cy="7" r="4.5" stroke="#e8a83d" strokeWidth="1.5"/>
                               <path d="M7 4.5v3l1.5 1.5" stroke="#e8a83d" strokeWidth="1.5" strokeLinecap="round"/>
                             </svg>
-                            Pendente
+                            Pendente  
                           </span>
                         </td>
                       </tr>

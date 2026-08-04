@@ -44,11 +44,24 @@ function atualizar() {
           <img src={logo} className={styles.barra_Imagem} />
         </div>
 
-        <div className={styles.barra_conteudo}>
-          <Link to="/login" className={styles.barra_botao}>Serviços</Link>
-          <Link to="/" className={styles.barra_botao}>Acompanhar Veiculo</Link>
-          <Link to="/login" className={styles.barra_botao}>Fazer Login</Link>
+        
+
+        <div className={styles.barra_perfil}>
+
+          <div className={styles.barra_perfil_icone}>
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={1.8}>
+                <circle cx="12" cy="8" r="4"/>
+                <path strokeLinecap="round" d="M4 20c0-4 3.582-7 8-7s8 3 8 7"/>
+              </svg>
+          </div>
+          
+          <div className={styles.barra_perfil_info}>
+              <span className={styles.barra_perfil_nome}>Admin</span>
+              <span className={styles.barra_perfil_cargo}>Administrador</span>
+          </div>
         </div>
+
+
       </div>
 
       <div className={styles.home_conteudo}>
@@ -60,32 +73,32 @@ function atualizar() {
         {/* Sidebar */}
         <div className={`${styles.home_margin1} ${menuAberto ? styles.home_margin1_aberto : ''}`} style={{ width: menuAberto ? '50rem' : '0', minWidth: menuAberto ? '50rem' : '0' }}>
           <div className={styles.home_margin1_inner}>
-            <Botao texto="FINANCEIRO" acao={'vermelho'} aoClicar={() => navigate("/cadastro")} />
+            <Botao texto="FINANCEIRO" acao={'vermelho'} aoClicar={() => navigate("/financeiro")} />
 
             <div className={styles.home_margin1_btn}>
-              <img src={ordemServiço} className={styles.home_margin1_img} />
-              <Link to="/login" className={styles.home_margin1_text}>HISTORICO DE ORDEM DE SERVIÇO</Link>
-            </div>
-
-            <div className={styles.home_margin1_btn}>
-              <img src={adicionarFuncionario} className={styles.home_margin1_img} />
-              <Link to="/login" className={styles.home_margin1_text}>ADICIONAR FUNCIONARIO</Link>
-            </div>
-
-            <div className={styles.home_margin1_btn}>
-              <img src={carro} className={styles.home_margin1_img} />
-              <Link to="/login" className={styles.home_margin1_text}>ATUALIZAR VEÍCULO</Link>
-            </div>
-
-            <div className={styles.home_margin1_btn}>
-              <img src={carro} className={styles.home_margin1_img} />
-              <Link to="/login" className={styles.home_margin1_text}>CADASTRAR VEÍCULO</Link>
-            </div>
-
-            <div className={styles.home_margin1_btn}>
-              <img src={relatorio} className={styles.home_margin1_img} />
-              <Link to="/login" className={styles.home_margin1_text}>RELATORIOS</Link>
-            </div>
+                          <img src={ordemServiço} className={styles.home_margin1_img} alt="" />
+                          <Link to="/os" className={styles.home_margin1_text}>HISTORICO DE ORDEM DE SERVIÇO</Link>
+                        </div>
+            
+                        <div className={styles.home_margin1_btn}>
+                          <img src={adicionarFuncionario} className={styles.home_margin1_img} alt="" />
+                          <Link to="/login" className={styles.home_margin1_text}>ADICIONAR FUNCIONARIO</Link>
+                        </div>
+            
+                        <div className={styles.home_margin1_btn}>
+                          <img src={carro} className={styles.home_margin1_img} alt="" />
+                          <Link to="/atualizar_veiculo" className={styles.home_margin1_text}>ATUALIZAR VEÍCULO</Link>
+                        </div>
+            
+                        <div className={styles.home_margin1_btn}>
+                          <img src={carro} className={styles.home_margin1_img} alt="" />
+                          <Link to="/cadastroV" className={styles.home_margin1_text}>CADASTRAR VEÍCULO</Link>
+                        </div>
+            
+                        <div className={styles.home_margin1_btn}>
+                          <img src={relatorio} className={styles.home_margin1_img} alt="" />
+                          <Link to="/login" className={styles.home_margin1_text}>RELATORIOS</Link>
+                        </div>
           </div>
         </div>
 
