@@ -448,10 +448,10 @@
   padding: 0 1.8rem;
   background: #191919;
   border-bottom: 1px solid #353535;
-  color: #992222;
+  color: #ffffff;
   font-size: 1.35rem;
   font-weight: 700;
-  text-align: left;
+  text-align: center;
 }
 
 .relatorios_tabela td {
@@ -467,6 +467,8 @@
 .relatorios_tabela tbody tr {
   background: #101010;
   transition: background-color 0.2s;
+  justify-content: center;
+  align-items: center;
 }
 
 .relatorios_tabela tbody tr:hover {
