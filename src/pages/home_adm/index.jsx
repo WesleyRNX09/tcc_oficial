@@ -47,11 +47,13 @@ function Home() {
                 <path strokeLinecap="round" d="M4 20c0-4 3.582-7 8-7s8 3 8 7"/>
               </svg>
           </div>
+          
           <div className={styles.barra_perfil_info}>
               <span className={styles.barra_perfil_nome}>Admin</span>
               <span className={styles.barra_perfil_cargo}>Administrador</span>
           </div>
         </div>
+
       </div>
 
       <div className={styles.home_conteudo}>
