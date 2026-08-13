@@ -435,7 +435,7 @@
 .relatorios_tabela {
   width: 100%;
   min-width: 95rem;
-  border-collapse: collapse;
+  
   table-layout: fixed;
 }
 
@@ -446,8 +446,9 @@
 .relatorios_tabela th {
   height: 6rem;
   padding: 0 1.8rem;
-  background: #191919;
+  background: #101010;
   border-bottom: 1px solid #353535;
+
   color: #ffffff;
   font-size: 1.35rem;
   font-weight: 700;
@@ -484,27 +485,32 @@
 .relatorios_tabela th:nth-child(1),
 .relatorios_tabela td:nth-child(1) {
   width: 27%;
+
 }
 
 .relatorios_tabela th:nth-child(2),
 .relatorios_tabela td:nth-child(2) {
   width: 14%;
+
 }
 
 .relatorios_tabela th:nth-child(3),
 .relatorios_tabela td:nth-child(3) {
   width: 19%;
+
 }
 
 .relatorios_tabela th:nth-child(4),
 .relatorios_tabela td:nth-child(4) {
   width: 16%;
+
 }
 
 .relatorios_tabela th:nth-child(5),
 .relatorios_tabela td:nth-child(5) {
   width: 14%;
   text-align: center;
+
 }
 
 .relatorios_tabela th:nth-child(6),
