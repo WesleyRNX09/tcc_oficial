@@ -342,8 +342,7 @@
     TELA DE RELATÓRIOS
   ========================================= */
 
-<<<<<<< HEAD
-=======
+
 .relatorios_cabecalho {
   margin-bottom: 3rem;
 }
@@ -430,16 +429,12 @@
   table-layout: fixed;
 }
 
-.relatorios_tabela thead {
-  background: #191919;
-}
 
 .relatorios_tabela th {
   height: 6rem;
   padding: 0 1.8rem;
   background: #101010;
   border-bottom: 1px solid #353535;
-
   color: #ffffff;
   font-size: 1.35rem;
   font-weight: 700;
@@ -676,7 +671,6 @@
 /* Responsividade */
 
 @media screen and (max-width: 900px) {
->>>>>>> 805461e30c11d1ad0bbfed9791dc52f3e63f9e38
   .relatorios_conteudo {
     flex: 1;
     min-width: 0;
@@ -685,7 +679,7 @@
     background:#050505;
     color: #ffffff;
   }
-
+}
   /* Cabeçalho */
 
   .relatorios_cabecalho {
@@ -774,20 +768,6 @@
     table-layout: fixed;
   }
 
-  .relatorios_tabela thead {
-    background: #191919;
-  }
-
-  .relatorios_tabela th {
-    height: 6rem;
-    padding: 0 1.8rem;
-    background: #191919;
-    border-bottom: 1px solid #353535;
-    color: #ffffff;
-    font-size: 1.35rem;
-    font-weight: 700;
-    text-align: center;
-  }
 
   .relatorios_tabela td {
     height: 5.8rem;
@@ -819,7 +799,8 @@
 .relatorios_tabela th {
     height: 5rem;
     padding: 0 1.8rem;
-    background: #181818;
+    background: #101010;
+    border: 1px solid #ccc;
     border-left: none !important;
     border-right: none !important;
     border-bottom: 1px solid #2a2a2a !important; /* Linha horizontal sutil na base */
