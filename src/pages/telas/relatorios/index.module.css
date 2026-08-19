@@ -673,6 +673,277 @@
     background-color: #050505;
 }
 
+/* Overlay escuro que cobre toda a tela */
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1000;
+  padding-right: 2rem;
+}
+
+/* Container principal da janela */
+.modal_container {
+  background-color: #161616;
+  width: 520px;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+/* Keyframes das Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Cabeçalho */
+.modal_header {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #262626;
+}
+
+.modal_header h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.modal_close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.modal_close:hover {
+  color: #fff;
+}
+
+/* Corpo e Rolagem */
+.modal_body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Card do Veículo */
+.modal_veiculo_card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: #1c1c1c;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+}
+
+.modal_veiculo_card img {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+}
+
+.modal_veiculo_titulo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.modal_veiculo_titulo h3 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.modal_placa {
+  background: #2a2a2a;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.modal_veiculo_card p {
+  margin: 0.2rem 0;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.modal_veiculo_card p strong {
+  color: #fff;
+}
+
+/* Títulos das Seções Internas */
+.modal_secao_titulo {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* Grid Financeiro */
+.modal_cards_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+}
+
+.modal_card_stat {
+  background: #1c1c1c;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.modal_card_stat small {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+.modal_card_stat strong {
+  font-size: 0.95rem;
+}
+
+/* Lista de OS */
+.modal_lista_os {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.modal_item_os {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1c1c1c;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.modal_item_os div {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_item_os small {
+  color: #777;
+  font-size: 0.75rem;
+}
+
+.badge_pago {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+.badge_pendente {
+  background: rgba(249, 115, 22, 0.15);
+  color: #f97316;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+.btn_acoes_os {
+  background: #2a2a2a;
+  border: none;
+  color: #aaa;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Histórico de Pagamentos */
+.modal_historico {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.modal_linha_historico {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #ccc;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #222;
+}
+
+/* Textos Coloridos */
+.text_green {
+  color: #22c55e;
+}
+
+.text_orange {
+  color: #f97316;
+}
+
+/* Rodapé e Botão Fechar */
+.modal_footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #262626;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal_btn_fechar {
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 2rem;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.modal_btn_fechar:hover {
+  background: #b71c1c;
+}
+
 /* ───────── RESPONSIVIDADE ───────── */
 
 @media screen and (max-width: 1200px){
@@ -802,4 +1073,46 @@
   .funcionario_salvar {
     width: 100%;
   }
+/* Adaptabilidade do Modal para telas menores e dispositivos móveis */
+@media (max-width: 768px) {
+  .modal_overlay {
+    padding: 1rem;
+    justify-content: center; /* Centraliza o modal em telas menores */
+  }
+
+  .modal_container {
+    width: 100%;
+    max-height: 95vh;
+  }
+
+  .modal_cards_grid {
+    grid-template-columns: repeat(2, 1fr); /* Transforma de 4 colunas para 2x2 */
+    gap: 0.6rem;
+  }
+
+  .modal_item_os {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .modal_item_os button {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal_cards_grid {
+    grid-template-columns: 1fr; /* Em celulares pequenos, exibe 1 card por linha */
+  }
+
+  .modal_veiculo_card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .modal_veiculo_titulo {
+    justify-content: center;
+  }
+}
 }
