@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Botao from './botao'
 import { Link } from "react-router-dom";
 import logo from '../../assets/logo.png';
@@ -12,10 +12,87 @@ import { useNavigate } from "react-router-dom";
 
 import styles from './index.module.css';
 
+import apiRequest from '../../services/api'
+
 function Home() {
+
+  const [ordens, setOrdens] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState('');
+
+
+  useEffect(() => {
+
+      async function carregarOrdens() {
+
+          try {
+
+              const resposta = await apiRequest(
+                  '/ordens-servico'
+              );
+
+              setOrdens(
+                  resposta.dados || []
+              );
+
+          } catch (error) {
+
+              console.log(error);
+
+              setErro(
+                  error.message
+              );
+
+          } finally {
+
+              setCarregando(false);
+
+          }
+
+      }
+
+
+      carregarOrdens();
+
+  }, []);
+
   const navigate = useNavigate();
   const [menuAberto, setMenuAberto] = useState(false);
   const [busca, setBusca] = useState('');
+
+  const usuarioLogado = JSON.parse(
+      localStorage.getItem('usuario')
+      || '{}'
+  );
+
+  const ordensFiltradas = ordens.filter((ordem) => {
+
+      const textoBusca = busca
+          .toLowerCase()
+          .trim();
+
+      if (!textoBusca) {
+          return true;
+      }
+
+      return (
+          String(ordem.id_os)
+              .includes(textoBusca) ||
+
+          ordem.nome_cliente
+              ?.toLowerCase()
+              .includes(textoBusca) ||
+
+          ordem.placa
+              ?.toLowerCase()
+              .includes(textoBusca) ||
+
+          ordem.status
+              ?.toLowerCase()
+              .includes(textoBusca)
+      );
+
+  });
 
   return (
     <div className={styles.container}>
@@ -49,8 +126,16 @@ function Home() {
           </div>
           
           <div className={styles.barra_perfil_info}>
-              <span className={styles.barra_perfil_nome}>Admin</span>
-              <span className={styles.barra_perfil_cargo}>Administrador</span>
+              <span className={styles.barra_perfil_nome}>
+                  {usuarioLogado.usuario || 'Admin'}
+              </span>
+              <span className={styles.barra_perfil_cargo}>
+                  {
+                      usuarioLogado.tipo_usuario === 'administrador'
+                          ? 'Administrador'
+                          : 'Funcionário'
+                  }
+              </span>
           </div>
         </div>
 
@@ -100,7 +185,12 @@ function Home() {
 
             {/* ── Topbar: botão + busca ── */}
             <div className={styles.gs_topbar}>
-              <button className={styles.gs_btnGerenciar}>GERENCIAR SERVIÇOS</button>
+              <button
+                  className={styles.gs_btnGerenciar}
+                  onClick={() => navigate('/os')}
+              >
+                  GERENCIAR SERVIÇOS
+              </button>
 
               <div className={styles.gs_buscaWrapper}>
                 <input
@@ -121,9 +211,117 @@ function Home() {
 
             {/* ── Área de blocos ── */}
             <div className={styles.gs_areaBlocos}>
-              <div className={styles.gs_bloco}></div>
-              <div className={styles.gs_bloco}></div>
-            </div>
+
+              {carregando && (
+                  <div className={styles.gs_bloco}>
+                      <p>Carregando ordens de serviço...</p>
+                  </div>
+              )}
+
+
+              {erro && (
+                  <div className={styles.gs_bloco}>
+                      <p>{erro}</p>
+                  </div>
+              )}
+
+
+              {!carregando &&
+              !erro &&
+              ordensFiltradas.length === 0 && (
+
+                  <div className={styles.gs_bloco}>
+                      <p>Nenhuma ordem de serviço encontrada.</p>
+                  </div>
+
+              )}
+
+
+              {!carregando &&
+              !erro &&
+              ordensFiltradas.map((ordem) => (
+
+                  <div
+                      className={styles.gs_bloco}
+                      key={ordem.id_os}
+                  >
+
+                      <div>
+                          <strong>
+                              OS #{ordem.id_os}
+                          </strong>
+                      </div>
+
+
+                      <div>
+                          <span>Cliente:</span>
+
+                          <strong>
+                              {ordem.nome_cliente}
+                          </strong>
+                      </div>
+
+
+                      <div>
+                          <span>Veículo:</span>
+
+                          <strong>
+                              {ordem.marca} {ordem.modelo}
+                          </strong>
+                      </div>
+
+
+                      <div>
+                          <span>Placa:</span>
+
+                          <strong>
+                              {ordem.placa}
+                          </strong>
+                      </div>
+
+
+                      <div>
+                          <span>Status:</span>
+
+                          <strong>
+                              {ordem.status}
+                          </strong>
+                      </div>
+
+
+                      <div>
+                          <span>Valor:</span>
+
+                          <strong>
+                              {Number(
+                                  ordem.valor_total || 0
+                              ).toLocaleString(
+                                  'pt-BR',
+                                  {
+                                      style: 'currency',
+                                      currency: 'BRL'
+                                  }
+                              )}
+                          </strong>
+                      </div>
+
+
+                      <button
+                          type="button"
+                          onClick={() =>
+                              navigate(
+                                  `/os/${ordem.id_os}`
+                              )
+                          }
+                      >
+                          VER DETALHES
+                      </button>
+
+                  </div>
+
+              ))}
+
+          </div>
 
           </div>
         </div>
