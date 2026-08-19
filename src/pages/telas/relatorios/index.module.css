@@ -692,7 +692,8 @@
 .modal_container {
   background-color: #161616;
   width: 520px;
-  max-width: 90vw;
+  height: 100%;
+  max-width:650px;
   max-height: 90vh;
   border-radius: 12px;
   border: 1px solid #2a2a2a;
@@ -753,6 +754,8 @@
 
 /* Corpo e Rolagem */
 .modal_body {
+  display: flex;
+  flex: 1;
   padding: 1.5rem;
   overflow-y: auto;
   display: flex;
@@ -766,10 +769,12 @@
   align-items: center;
   gap: 1.2rem;
   background: #1c1c1c;
-  padding: 1rem;
+  padding: 1.2rem; /* Ajustado para remover o padding de 6rem antigo */
   border-radius: 8px;
   border: 1px solid #2a2a2a;
 }
+
+
 
 .modal_veiculo_card img {
   width: 70px;
@@ -797,10 +802,14 @@
   color: #ccc;
 }
 
-.modal_veiculo_card p {
-  margin: 0.2rem 0;
-  font-size: 0.85rem;
-  color: #aaa;
+.modal_veiculo_card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: #1c1c1c;
+  padding: 1.2rem; /* Ajustado para remover o padding de 6rem antigo */
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
 }
 
 .modal_veiculo_card p strong {
@@ -821,6 +830,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.8rem;
+  width: 100%;
 }
 
 .modal_card_stat {
@@ -831,7 +841,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-}
+  box-sizing: border-box;
+} 
 
 .modal_card_stat small {
   font-size: 0.7rem;
@@ -851,19 +862,30 @@
 
 .modal_item_os {
   display: flex;
+  flex:1;
   align-items: center;
   justify-content: space-between;
   background: #1c1c1c;
   padding: 0.8rem 1rem;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+  padding: 15px;
+  gap: 1rem;
 }
 
-.modal_item_os div {
+.modal_item_os > div:first-child {
   display: flex;
   flex-direction: column;
+  min-width: 80px; /* Garante largura fixa para o número da OS */
 }
 
+.modal_item_os > span:nth-child(2) {
+  flex: 1; /* Faz a descrição ocupar o espaço central disponível */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+z
 .modal_item_os small {
   color: #777;
   font-size: 0.75rem;
