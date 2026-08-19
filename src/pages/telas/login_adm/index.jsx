@@ -6,105 +6,103 @@ import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { fazerLogin } from '../../../services/auth';
 
-  const navigate = useNavigate();
-
-  const [usuario, setUsuario] =
-      useState('');
-
-  const [senha, setSenha] =
-      useState('');
-
-  const [erro, setErro] =
-      useState('');
-
-  const [carregando, setCarregando] =
-      useState(false);
-
-  async function entrar(event) {
-
-    event.preventDefault();
-
-    setErro('');
-    setCarregando(true);
-
-
-      try {
-
-          const resposta =
-              await fazerLogin(
-                  usuario,
-                  senha
-              );
-
-
-          const dados =
-              resposta.dados;
-
-
-          localStorage.setItem(
-              'token',
-              dados.token
-          );
-
-
-          localStorage.setItem(
-              'usuario',
-              JSON.stringify({
-                  id_login:
-                      dados.id_login,
-
-                  id_funcionario:
-                      dados.id_funcionario,
-
-                  usuario:
-                      dados.usuario,
-
-                  tipo_usuario:
-                      dados.tipo_usuario,
-
-                  nome_funcionario:
-                      dados.nome_funcionario,
-
-                  especialidade:
-                      dados.especialidade
-              })
-          );
-
-
-          if (
-              dados.tipo_usuario ===
-              'administrador'
-          ) {
-
-              navigate('/admin');
-
-          } else {
-
-              navigate('/funcionario');
-
-          }
-
-
-      } catch (error) {
-
-          setErro(
-              error.message
-          );
-
-      } finally {
-
-          setCarregando(false);
-
-      }
-
-  }    
+  
 
 
 function Login01() {
 
-  
+    const navigate = useNavigate();
 
-  const navigate = useNavigate();
+    const [usuario, setUsuario] =
+        useState('');
+
+    const [senha, setSenha] =
+        useState('');
+
+    const [erro, setErro] =
+        useState('');
+
+    const [carregando, setCarregando] =
+        useState(false);
+
+    async function entrar(event) {
+
+        event.preventDefault();
+
+        setErro('');
+        setCarregando(true);
+
+
+        try {
+
+            const resposta =
+                await fazerLogin(
+                    usuario,
+                    senha
+                );
+
+
+            const dados =
+                resposta.dados;
+
+
+            localStorage.setItem(
+                'token',
+                dados.token
+            );
+
+
+            localStorage.setItem(
+                'usuario',
+                JSON.stringify({
+                    id_login:
+                        dados.id_login,
+
+                    id_funcionario:
+                        dados.id_funcionario,
+
+                    usuario:
+                        dados.usuario,
+
+                    tipo_usuario:
+                        dados.tipo_usuario,
+
+                    nome_funcionario:
+                        dados.nome_funcionario,
+
+                    especialidade:
+                        dados.especialidade
+                })
+            );
+
+
+            if (
+                dados.tipo_usuario ===
+                'administrador'
+            ) {
+
+                navigate('/admin');
+
+            } else {
+
+                navigate('/funcionario');
+
+            }
+
+
+        } catch (error) {
+
+            setErro(
+                error.message
+            );
+
+        } finally {
+
+            setCarregando(false);
+
+        }
+
+    }    
 
   return (
     <div className={styles.container} onSubmit={entrar}>
