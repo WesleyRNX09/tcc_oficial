@@ -1,194 +1,794 @@
-.container { 
-    align-items: center; 
-    justify-content: space-between; 
-    width: 100%; 
-    height: 100%; 
-} 
+/* =========================================
+   PÁGINA
+========================================= */
 
-.barra_Principal { 
-    border-bottom: #e50914 0.3rem solid; 
-    width: 100%; 
-    display: flex; 
-    height: 9rem; 
-    align-items: center; 
-    justify-content: space-between; /* distribui os lados */ 
-    background-color: #0A0A0A; 
-    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
-    padding: 0 2rem; 
-} 
+.container {
+    width: 100%;
+    min-height: 100vh;
 
-.barra_Logo { 
-    display: flex; 
-    align-items: center; 
-    margin-left: clamp(2rem, 5vw, 15rem); 
-    height: 100%;
-} 
+    display: flex;
+    flex-direction: column;
 
-.barra_Imagem { 
-    height: 10rem; 
-    object-fit: contain;
-} 
+    position: relative;
 
-.barra_conteudo { 
-    display: flex; 
-    flex-direction: row; 
-    gap: 1rem; 
-    margin-right: clamp(2rem, 5vw, 15rem); 
-    flex-wrap: wrap; justify-content: flex-end; 
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            #25272d 0%,
+            #17181c 42%,
+            #0d0d0f 75%,
+            #080808 100%
+        );
 }
- 
-.barra_botao { 
-    padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.5vw, 1rem);
-  background-color: black;
-  color: white;
-  border-radius: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  letter-spacing: 0.9px;
-  border: #e50914 1px solid;
-  font-size: clamp(1rem, 1.2vw, 1.6rem);
-  white-space: nowrap;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s;
-} 
+
+
+/* DETALHE NO FUNDO */
+
+.container::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            165deg,
+            transparent 0%,
+            transparent 66%,
+            rgba(255, 255, 255, 0.025) 66%,
+            rgba(255, 255, 255, 0.025) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.barra_Principal {
+    width: 100%;
+    height: 9rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    flex-shrink: 0;
+
+    background-color: #0A0A0A;
+
+    padding: 0 clamp(4rem, 7vw, 14rem);
+
+    box-sizing: border-box;
+
+    position: relative;
+    z-index: 10;
+
+    /* BORDA VERMELHA EMBAIXO */
+    border-bottom: 0.3rem solid #e50914;
+
+    /* SOMBRA LEVE */
+    box-shadow: 0 2px 8px rgba(229, 9, 20, 0.25);
+}
+
+
+/* =========================================
+   LOGO NAVBAR
+========================================= */
+
+.barra_Logo {
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    margin: 0;
+}
+
+
+.barra_Imagem {
+
+    width: 13rem;
+
+    height: 7.5rem;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+
+/* =========================================
+   DIREITA DA NAVBAR
+========================================= */
+
+.barra_conteudo {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0;
+}
+
+
+
+/* =========================================
+   BOTÃO INÍCIO
+========================================= */
+
+.barra_botao {
+
+    min-width: 7rem;
+
+    height: 3.6rem;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0 1.5rem;
+
+    box-sizing: border-box;
+
+    background: #080808;
+
+    color: #ffffff;
+
+    border:
+        1px solid
+        #e50914;
+
+    border-radius: 1rem;
+
+    text-decoration: none;
+
+    font-size: 1.4rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
 
 .barra_botao:hover {
-  background-color: #e50914;
+
+    background: #e50914;
+
+    border-color: #e50914;
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(229, 9, 20, 0.25);
 }
 
-.link_barra{ 
-    color: #E0E0E0 ; 
-} 
 
+.barra_botao:active {
 
-.login_Conteudo{
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    min-height: 80vh; 
-    padding: 2rem;
+    transform:
+        translateY(0);
 }
 
-.login_Margem{
-    width: 80vh; 
-    height: 72vh; 
+
+
+/* =========================================
+   CONTEÚDO DO LOGIN
+========================================= */
+
+.login_Conteudo {
+
+    width: 100%;
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+
     align-items: center;
-    display: flex; 
-    flex-direction: column; 
-    position: relative; 
-    overflow: visible; 
-    background-color: #0A0A0A; 
-    border-radius: clamp(2rem, 4vw, 5rem); 
-    padding: 2rem; 
-    border: #676767 1px solid;
-}
 
-.home_imagem_container{
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    width: 100%; 
-    justify-content: center;
-}
+    padding:
+        3rem
+        2rem
+        5rem;
 
-.login_imagem{
-    max-width: 100%; 
-    height: 15rem; 
-    display: flex;
-}
-
-.login_boxs{
-    margin-top: 10rem;
-}
-
-.login_titulo{
-    font-size: 4.5rem;
-    display: flex;
-    justify-content: center;
-    bottom: 11rem;
-    position: relative;
-    font-weight: 700;
-}
-
-.login_label{
-    font-size: 2rem;
-    color: #E0E0E0;
-    font-weight: 500;
-    letter-spacing: 0.05rem;
-    display: flex;
-    
-}
-
-.login_textarea { 
-    min-height: 1rem;
-    padding: 1rem;
-    border: 2px solid #e50914;
-    border-radius: 1.4rem;
-    font-size: 2rem;
-    resize: none;
-    outline: none;
-    transition: border 0.2s ease;
     box-sizing: border-box;
-    text-align: left;      /* mantém o texto alinhado à esquerda */
-    height: 6rem;
-    width: 60rem;
-    
-}
 
-.home_botoes{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-top: 3rem;
+    position: relative;
+
+    z-index: 1;
 }
 
 
 
-.login_caixa01{
-    margin-top: -7rem;
+/* =========================================
+   CARD
+========================================= */
+
+.login_card {
+
+    width: 100%;
+
+    max-width: 48rem;
+
+    min-height: 49rem;
+
     display: flex;
+
     flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    background:
+        rgba(25, 25, 25, 0.98);
+
+    border:
+        1px solid
+        #474747;
+
+    border-radius: 2.5rem;
+
+    padding:
+        3rem
+        5rem
+        4rem;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.50);
 }
 
-.login_caixa02{
-    margin-top: 1.2rem;
+
+
+/* =========================================
+   LOGO DO CARD
+========================================= */
+
+.logo_container {
+
+    width: 100%;
+
     display: flex;
-    flex-direction: column;
-}
 
-.login_senha{
+    align-items: center;
 
-    align-self: flex-end; 
-    color:rgb(40, 126, 255);
-}
-
-.login_linha{
-    width: 70%; 
-    height: 4px;
-    border-radius: 2px; 
-    position: absolute; 
-    bottom: 6rem; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    z-index: 2; 
-    display: flex; 
-    justify-content: center; 
-    border: #E0E0E0 solid 2px;
-}
-
-.home_botoes2{
-    display: flex;
     justify-content: center;
-    text-align: center;
-    margin-top: 6rem;
+
+    margin-bottom: 1.8rem;
 }
 
-.rodape_principal{ 
-    border-top: #e50914 0.3rem solid;
-    width: 100%; height: 9rem; 
-    background-color: #0A0A0A; 
-    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
-    padding: 0 2rem; 
-    position: absolute; 
-    bottom: -4rem; 
+
+.login_logo {
+
+    width: 14rem;
+
+    height: 8rem;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.login_titulo {
+
+    margin:
+        0
+        0
+        3rem;
+
+    color: #f1f1f1;
+
+    font-size: 2.4rem;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    letter-spacing: 0.02rem;
+}
+
+
+
+/* =========================================
+   FORMULÁRIO
+========================================= */
+
+.login_form {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.8rem;
+}
+
+
+
+/* =========================================
+   CAMPO
+========================================= */
+
+.campo {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.7rem;
+}
+
+
+.campo label {
+
+    color: #eeeeee;
+
+    font-size: 1.35rem;
+
+    font-weight: 500;
+}
+
+
+
+/* =========================================
+   INPUT USUÁRIO
+========================================= */
+
+.campo > input {
+
+    width: 100%;
+
+    height: 4.8rem;
+
+    padding:
+        0
+        1.5rem;
+
+    box-sizing: border-box;
+
+    background: #f4f4f4;
+
+    color: #171717;
+
+    border:
+        1.5px solid
+        #e50914;
+
+    border-radius: 0.9rem;
+
+    outline: none;
+
+    font-size: 1.35rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.campo > input::placeholder {
+
+    color: #858585;
+}
+
+
+.campo > input:focus {
+
+    background: #ffffff;
+
+    border-color: #ff1d29;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(229, 9, 20, 0.13);
+}
+
+
+
+/* =========================================
+   SENHA
+========================================= */
+
+.senha_container {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+}
+
+
+.senha_container input {
+
+    width: 100%;
+
+    height: 4.8rem;
+
+    padding:
+        0
+        5rem
+        0
+        1.5rem;
+
+    box-sizing: border-box;
+
+    background: #f4f4f4;
+
+    color: #171717;
+
+    border:
+        1.5px solid
+        #e50914;
+
+    border-radius: 0.9rem;
+
+    outline: none;
+
+    font-size: 1.35rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.senha_container input::placeholder {
+
+    color: #858585;
+}
+
+
+.senha_container input:focus {
+
+    background: #ffffff;
+
+    border-color: #ff1d29;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(229, 9, 20, 0.13);
+}
+
+
+
+/* =========================================
+   MOSTRAR SENHA
+========================================= */
+
+.botao_senha {
+
+    position: absolute;
+
+    right: 1.3rem;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0.4rem;
+
+    background: transparent;
+
+    color: #555;
+
+    border: none;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.botao_senha:hover {
+
+    color: #e50914;
+}
+
+
+
+/* =========================================
+   ERRO
+========================================= */
+
+.login_erro {
+
+    width: 100%;
+
+    padding:
+        1rem
+        1.2rem;
+
+    box-sizing: border-box;
+
+    background:
+        rgba(229, 9, 20, 0.08);
+
+    border:
+        1px solid
+        rgba(229, 9, 20, 0.35);
+
+    border-radius: 0.8rem;
+
+    color: #ff7078;
+
+    font-size: 1.3rem;
+
+    text-align: center;
+}
+
+
+
+/* =========================================
+   BOTÃO ENTRAR
+========================================= */
+
+.botao_entrar {
+
+    width: 18rem;
+
+    height: 5rem;
+
+    align-self: center;
+
+    margin-top: 2rem;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff1717 0%,
+            #e00000 100%
+        );
+
+    color: white;
+
+    border: none;
+
+    border-radius: 0.9rem;
+
+    font-size: 1.4rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.05rem;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(229, 9, 20, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.botao_entrar:hover:not(:disabled) {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff2828 0%,
+            #ec0000 100%
+        );
+
+    box-shadow:
+        0 10px 25px
+        rgba(229, 9, 20, 0.35);
+}
+
+
+.botao_entrar:active:not(:disabled) {
+
+    transform:
+        translateY(0);
+}
+
+
+.botao_entrar:disabled {
+
+    opacity: 0.55;
+
+    cursor: not-allowed;
+}
+
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media screen and (max-width: 768px) {
+
+    .barra_Principal {
+
+        height: 7rem;
+
+        padding:
+            0
+            2.5rem;
+    }
+
+
+    .barra_Imagem {
+
+        width: 10rem;
+
+        height: 6rem;
+    }
+
+
+    .barra_botao {
+
+        min-width: 6.5rem;
+
+        height: 3.4rem;
+
+        font-size: 1.3rem;
+    }
+
+
+    .login_Conteudo {
+
+        padding:
+            2.5rem
+            2rem
+            4rem;
+    }
+
+
+    .login_card {
+
+        max-width: 44rem;
+
+        min-height: auto;
+
+        padding:
+            3rem
+            3.5rem
+            4rem;
+    }
+
+
+    .login_titulo {
+
+        font-size: 2.1rem;
+    }
+
+}
+
+
+
+@media screen and (max-width: 480px) {
+
+    .barra_Principal {
+
+        padding:
+            0
+            1.5rem;
+    }
+
+
+    .barra_Imagem {
+
+        width: 9rem;
+    }
+
+
+    .login_Conteudo {
+
+        align-items: flex-start;
+
+        padding:
+            2rem
+            1.5rem
+            3rem;
+    }
+
+
+    .login_card {
+
+        padding:
+            2.5rem
+            2rem
+            3.5rem;
+
+        border-radius: 2rem;
+    }
+
+
+    .login_logo {
+
+        width: 12rem;
+
+        height: 7rem;
+    }
+
+
+    .login_titulo {
+
+        font-size: 1.8rem;
+
+        margin-bottom: 2.5rem;
+    }
+
+
+    .campo label {
+
+        font-size: 1.3rem;
+    }
+
+
+    .campo > input,
+    .senha_container input {
+
+        height: 4.6rem;
+
+        font-size: 1.3rem;
+    }
+
+
+    .botao_entrar {
+
+        width: 16rem;
+
+        height: 4.7rem;
+    }
+
 }

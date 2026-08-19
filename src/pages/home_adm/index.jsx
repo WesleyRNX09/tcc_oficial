@@ -16,10 +16,9 @@ import apiRequest from '../../services/api'
 
 function Home() {
 
-  const [ordens, setOrdens] = useState([]);
-  const [carregando, setCarregando] = useState(true);
-  const [erro, setErro] = useState('');
-
+    const [ordens, setOrdens] = useState([]);
+    const [carregando, setCarregando] = useState(true);
+    const [erro, setErro] = useState('');
 
   useEffect(() => {
 
@@ -212,116 +211,157 @@ function Home() {
             {/* ── Área de blocos ── */}
             <div className={styles.gs_areaBlocos}>
 
-              {carregando && (
-                  <div className={styles.gs_bloco}>
-                      <p>Carregando ordens de serviço...</p>
-                  </div>
-              )}
+                {carregando && (
+                    <div className={styles.gs_mensagem}>
+                        <p>Carregando ordens de serviço...</p>
+                    </div>
+                )}
+
+                {erro && (
+                    <div className={styles.gs_mensagem}>
+                        <p>{erro}</p>
+                    </div>
+                )}
+
+                {!carregando &&
+                !erro &&
+                ordensFiltradas.length === 0 && (
+                    <div className={styles.gs_mensagem}>
+                        <p>Nenhuma ordem de serviço encontrada.</p>
+                    </div>
+                )}
+
+                {!carregando &&
+                !erro &&
+                ordensFiltradas.map((ordem) => (
+
+                    <div
+                        className={styles.gs_card}
+                        key={ordem.id_os}
+                    >
+
+                        {/* FOTO DO VEÍCULO */}
+                        <div className={styles.gs_cardImagem}>
+                            <img
+                                src={ordem.imagem_veiculo || carro}
+                                alt={`${ordem.marca || ''} ${ordem.modelo || ''}`}
+                            />
+                        </div>
 
 
-              {erro && (
-                  <div className={styles.gs_bloco}>
-                      <p>{erro}</p>
-                  </div>
-              )}
+                        {/* INFORMAÇÕES */}
+                        <div className={styles.gs_cardInformacoes}>
+
+                            <div className={styles.gs_cardCampo}>
+                                <span className={styles.gs_cardTitulo}>
+                                    CLIENTE
+                                </span>
+
+                                <span className={styles.gs_cardValor}>
+                                    {ordem.nome_cliente || 'Não informado'}
+                                </span>
+                            </div>
 
 
-              {!carregando &&
-              !erro &&
-              ordensFiltradas.length === 0 && (
+                            <div className={styles.gs_cardCampo}>
+                                <span className={styles.gs_cardTitulo}>
+                                    VEÍCULO
+                                </span>
 
-                  <div className={styles.gs_bloco}>
-                      <p>Nenhuma ordem de serviço encontrada.</p>
-                  </div>
-
-              )}
-
-
-              {!carregando &&
-              !erro &&
-              ordensFiltradas.map((ordem) => (
-
-                  <div
-                      className={styles.gs_bloco}
-                      key={ordem.id_os}
-                  >
-
-                      <div>
-                          <strong>
-                              OS #{ordem.id_os}
-                          </strong>
-                      </div>
+                                <span className={styles.gs_cardValor}>
+                                    {ordem.marca || ''} {ordem.modelo || ''}
+                                </span>
+                            </div>
 
 
-                      <div>
-                          <span>Cliente:</span>
+                            <div className={styles.gs_cardCampo}>
+                                <span className={styles.gs_cardTitulo}>
+                                    PLACA
+                                </span>
 
-                          <strong>
-                              {ordem.nome_cliente}
-                          </strong>
-                      </div>
+                                <span className={styles.gs_cardValor}>
+                                    {ordem.placa || 'Não informada'}
+                                </span>
+                            </div>
 
-
-                      <div>
-                          <span>Veículo:</span>
-
-                          <strong>
-                              {ordem.marca} {ordem.modelo}
-                          </strong>
-                      </div>
+                        </div>
 
 
-                      <div>
-                          <span>Placa:</span>
+                        {/* BOTÃO DE OPÇÕES */}
+                        <button
+                            type="button"
+                            className={styles.gs_cardOpcoes}
+                            onClick={() =>
+                                navigate(`/os/${ordem.id_os}`)
+                            }
+                            title="Ver detalhes da OS"
+                        >
 
-                          <strong>
-                              {ordem.placa}
-                          </strong>
-                      </div>
+                            {/* engrenagem */}
+                            <svg
+                                width="19"
+                                height="19"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.8"
+                            >
+                                <circle cx="12" cy="12" r="3" />
+
+                                <path d="
+                                    M19.4 15
+                                    a1.7 1.7 0 0 0 .34 1.88
+                                    l.06.06
+                                    a2 2 0 1 1-2.83 2.83
+                                    l-.06-.06
+                                    A1.7 1.7 0 0 0 15 19.4
+                                    a1.7 1.7 0 0 0-1 .6
+                                    V20
+                                    a2 2 0 1 1-4 0
+                                    v-.09
+                                    a1.7 1.7 0 0 0-1-.6
+                                    1.7 1.7 0 0 0-1.88.34
+                                    l-.06.06
+                                    a2 2 0 1 1-2.83-2.83
+                                    l.06-.06
+                                    A1.7 1.7 0 0 0 4.6 15
+                                    a1.7 1.7 0 0 0-.6-1
+                                    H4
+                                    a2 2 0 1 1 0-4
+                                    h.09
+                                    a1.7 1.7 0 0 0 .6-1
+                                    1.7 1.7 0 0 0-.34-1.88
+                                    l-.06-.06
+                                    a2 2 0 1 1 2.83-2.83
+                                    l.06.06
+                                    A1.7 1.7 0 0 0 9 4.6
+                                    a1.7 1.7 0 0 0 1-.6
+                                    V4
+                                    a2 2 0 1 1 4 0
+                                    v.09
+                                    a1.7 1.7 0 0 0 1 .6
+                                    1.7 1.7 0 0 0 1.88-.34
+                                    l.06-.06
+                                    a2 2 0 1 1 2.83 2.83
+                                    l-.06.06
+                                    A1.7 1.7 0 0 0 19.4 9
+                                    c.1.35.3.7.6 1
+                                    H20
+                                    a2 2 0 1 1 0 4
+                                    h-.09
+                                    a1.7 1.7 0 0 0-.51 1z
+                                "/>
+                            </svg>
 
 
-                      <div>
-                          <span>Status:</span>
 
-                          <strong>
-                              {ordem.status}
-                          </strong>
-                      </div>
+                        </button>
 
+                    </div>
 
-                      <div>
-                          <span>Valor:</span>
+                ))}
 
-                          <strong>
-                              {Number(
-                                  ordem.valor_total || 0
-                              ).toLocaleString(
-                                  'pt-BR',
-                                  {
-                                      style: 'currency',
-                                      currency: 'BRL'
-                                  }
-                              )}
-                          </strong>
-                      </div>
-
-
-                      <button
-                          type="button"
-                          onClick={() =>
-                              navigate(
-                                  `/os/${ordem.id_os}`
-                              )
-                          }
-                      >
-                          VER DETALHES
-                      </button>
-
-                  </div>
-
-              ))}
-
-          </div>
+            </div>
 
           </div>
         </div>
