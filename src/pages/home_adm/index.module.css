@@ -5,24 +5,30 @@
     width: 100%;
 }
 
-.barra_Principal { 
-    border-bottom: #e50914 0.3rem solid; 
-    width: 100%; 
-    display: flex; 
-    height: 9rem; 
-    align-items: center; 
+.barra_Principal {  
+    border-bottom: #e50914 0.3rem solid;  
+    width: 100%;  
+    display: flex;  
+    height: 9rem;  
+    align-items: center;  
     justify-content: space-between;
-    background-color: #0A0A0A; 
-    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3); 
-    padding: 0 6rem; 
-} 
 
-.barra_Logo { 
-    display: flex; 
-    align-items: center; 
-    margin-left: clamp(2rem, 5vw, 15rem); 
+    background-color: #0A0A0A;  
+    box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3);
+
+    /* MESMO ESPAÇAMENTO DOS DOIS LADOS */
+    padding: 0 clamp(3rem, 8vw, 16rem);
+
+    box-sizing: border-box;
+}
+
+.barra_Logo {  
+    display: flex;  
+    align-items: center;
     height: 100%;
-} 
+
+    margin-left: 0;
+}
 
 .barra_Imagem { 
     height: 10rem; 
@@ -105,17 +111,18 @@
 }
 
 /* Card de perfil */
-.barra_perfil {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: #111;
-  border: 1px solid #2a2a2a;
-  border-radius: 1rem;
-  padding: 0.6rem 1.2rem 0.6rem 0.6rem;
-  cursor: pointer;
-  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
-  margin-left: 0.5rem;
+.barra_perfil { 
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
+    background: #111; 
+    border: 1px solid #2a2a2a; 
+    border-radius: 1rem; 
+    padding: 0.6rem 1.2rem 0.6rem 0.6rem; 
+    cursor: pointer; 
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+
+    margin-left: 0;
 }
 .barra_perfil:hover {
   border-color: #e50914;
@@ -254,79 +261,124 @@
 }
 
 /* ── home_box (container principal) ── */
-.home_box {
-  display: flex;
-  flex-direction: column;
+.home_box { 
+    display: flex; 
+    flex-direction: column; 
 
-  border: #676767 1px solid;
-  border-radius: 3rem;
-  background-color: #0A0A0A;
+    border: 1px solid #505050;
 
-  width: 100%;
-  max-width: 140rem;
+    border-radius: 1.5rem;
 
-  padding: 2.5rem;
-  gap: 2rem;
+    background-color: #0A0A0A; 
 
-  box-sizing: border-box;
-  overflow: hidden;
+    width: 100%; 
+    max-width: 140rem;
+
+    padding: 2.5rem;
+
+    gap: 2rem;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
 }
 
 /* ── Topbar: botão GERENCIAR + busca ── */
-.gs_topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+.gs_topbar { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+
+    gap: 4rem;
+
+    width: 100%;
 }
 
 .gs_btnGerenciar {
-  background: transparent;
-  color: white;
-  border: 2px solid #676767;
-  border-radius: 0.6rem;
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.2s;
+    background: #151515;
+    color: #f5f5f5;
+
+    border: 1px solid #555;
+    border-left: 4px solid #e50914;
+
+    border-radius: 0.8rem;
+
+    padding: 1.2rem 2rem;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition: all 0.2s ease;
 }
 
 .gs_btnGerenciar:hover {
-  background: rgba(74, 144, 217, 0.15);
+    background: #e50914;
+    border-color: #e50914;
+
+    color: white;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.18);
 }
 
-.gs_buscaWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex: 1;
-  max-width: 50rem;
+.gs_btnGerenciar:active {
+    transform: translateY(0);
 }
 
-.gs_buscaInput {
-  width: 100%;
-  height: 4.5rem;
-  background: #1e1e1e;
-  border: 1px solid #3a3a3a;
-  border-radius: 0.8rem;
-  color: white;
-  font-size: 1.6rem;
-  padding: 0 4.5rem 0 1.5rem;
-  outline: none;
-  box-sizing: border-box;
-  transition: border-color 0.2s;
+.gs_buscaWrapper { 
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 48rem;
+
+    max-width: 48rem;
+
+    flex: none;
 }
 
-.gs_buscaInput::placeholder {
-  color: #888;
+
+.gs_buscaInput { 
+    width: 100%;
+
+    height: 4.6rem;
+
+    background: #252525;
+
+    border: 1px solid #555;
+
+    border-radius: 0.9rem;
+
+    color: white;
+
+    font-size: 1.4rem;
+
+    padding: 0 4.5rem 0 1.5rem;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.2s,
+        background 0.2s;
 }
 
-.gs_buscaInput:focus {
-  border-color: #e50914;
+.gs_buscaInput::placeholder { 
+    color: #aaa;
+}
+
+
+.gs_buscaInput:focus { 
+    border-color: #888;
+
+    background: #2a2a2a;
 }
 
 .gs_buscaIcone {
@@ -338,20 +390,265 @@
   pointer-events: none;
 }
 
-/* ── Blocos de conteúdo ── */
+/* ========================================
+   ÁREA DAS ORDENS DE SERVIÇO
+======================================== */
+
 .gs_areaBlocos {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 100%;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 1.6rem;
+
+    /* fundo mais escuro */
+    background: #121212;
+
+    /* borda discreta */
+    border: 1px solid #2c2c2c;
+
+    border-radius: 1.4rem;
+
+    padding: 1.5rem;
+
+    box-sizing: border-box;
+
+    max-height: 52rem;
+
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.gs_bloco {
-  width: 100%;
-  height: 17rem;
-  background: #1a1a1a;
-  border: 1px solid #2e2e2e;
-  border-radius: 1.2rem;
+
+/* ========================================
+   SCROLL
+======================================== */
+
+.gs_areaBlocos::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+.gs_areaBlocos::-webkit-scrollbar-track {
+    background: #0d0d0d;
+}
+
+.gs_areaBlocos::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 1rem;
+}
+
+.gs_areaBlocos::-webkit-scrollbar-thumb:hover {
+    background: #e50914;
+}
+
+/* ========================================
+   CARD DA OS
+======================================== */
+
+.gs_card {
+    width: 100%;
+    min-height: 15rem;
+
+    display: flex;
+    align-items: stretch;
+
+    position: relative;
+
+    background-color: #1a1a1a;
+
+    border: 1px solid #303030;
+
+    border-radius: 1.2rem;
+
+    padding: 0.9rem;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.gs_card:hover {
+    transform: translateY(-2px);
+
+    background: #202020;
+
+    border-color: #e50914;
+
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.12);
+}
+
+
+/* ========================================
+   FOTO DO VEÍCULO
+======================================== */
+
+.gs_cardImagem {
+    width: 17rem;
+    min-width: 17rem;
+
+    height: 13rem;
+
+    border-radius: 1rem;
+
+    overflow: hidden;
+
+    background: #111;
+
+    align-self: center;
+}
+
+
+.gs_cardImagem img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.3s ease;
+}
+
+
+.gs_card:hover .gs_cardImagem img {
+    transform: scale(1.035);
+}
+
+
+/* ========================================
+   INFORMAÇÕES
+======================================== */
+
+.gs_cardInformacoes {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 1rem;
+
+    padding: 0.7rem 5.5rem 0.7rem 1.8rem;
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.gs_cardCampo {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.2rem;
+
+    min-width: 0;
+}
+
+
+.gs_cardTitulo {
+    color: #f2f2f2;
+
+    font-size: 1.4rem;
+
+    font-weight: 700;
+
+    line-height: 1.1;
+}
+
+
+.gs_cardValor {
+    color: #999;
+
+    font-size: 1.3rem;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ========================================
+   BOTÃO ENGRENAGEM
+======================================== */
+
+.gs_cardOpcoes {
+    position: absolute;
+
+    top: 1rem;
+    right: 1rem;
+
+    height: 3.4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.3rem;
+
+    padding: 0 0.7rem;
+
+    color: #e5e5e5;
+
+    background: #1a1a1a;
+
+    border: 2px solid #666;
+
+    border-radius: 0.6rem;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.gs_cardOpcoes:hover {
+    color: white;
+
+    background: #2b2b2b;
+
+    border-color: #e50914;
+}
+
+
+/* ========================================
+   CARREGANDO / ERRO / SEM RESULTADOS
+======================================== */
+
+.gs_mensagem {
+    grid-column: 1 / -1;
+
+    min-height: 15rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #191919;
+
+    border: 1px solid #333;
+
+    border-radius: 1rem;
+
+    color: #aaa;
+
+    font-size: 1.5rem;
+}
+
+
+.gs_mensagem p {
+    margin: 0;
 }
 
 /* ── Rodapé ── */
@@ -394,4 +691,83 @@
   .barra_Logo { margin-left: 0; justify-content: center; width: 100%; } 
   .barra_conteudo { margin-right: 0; width: 100%; justify-content: center; gap: 0.5rem; } 
   .barra_botao { font-size: 1.2rem; }
+}
+
+@media screen and (max-width: 1100px) {
+
+    .gs_areaBlocos {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .gs_topbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+
+    .gs_buscaWrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    .gs_areaBlocos {
+        grid-template-columns: 1fr;
+
+        padding: 1rem;
+
+        gap: 1rem;
+    }
+
+
+    .gs_cardImagem {
+        width: 13rem;
+        min-width: 13rem;
+    }
+
+
+    .gs_cardInformacoes {
+        padding-left: 1.2rem;
+    }
+
+}
+
+
+@media screen and (max-width: 520px) {
+
+    .gs_card {
+        min-height: 12rem;
+    }
+
+
+    .gs_cardImagem {
+        width: 10rem;
+        min-width: 10rem;
+
+        height: 10rem;
+    }
+
+
+    .gs_cardTitulo {
+        font-size: 1.2rem;
+    }
+
+
+    .gs_cardValor {
+        font-size: 1.1rem;
+    }
+
+
+    .gs_cardInformacoes {
+        gap: 0.6rem;
+
+        padding-right: 4rem;
+    }
+
 }

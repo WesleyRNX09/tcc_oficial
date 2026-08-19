@@ -13,6 +13,8 @@ function Login01() {
 
     const [usuario, setUsuario] = useState("");
     const [senha, setSenha] = useState("");
+    const [mostrarSenha, setMostrarSenha] = useState(false);
+
     const [erro, setErro] = useState("");
     const [carregando, setCarregando] = useState(false);
 
@@ -34,14 +36,12 @@ function Login01() {
             const dados = resposta.dados;
 
 
-            // Salvar token
             localStorage.setItem(
                 "token",
                 dados.token
             );
 
 
-            // Salvar informações do usuário
             localStorage.setItem(
                 "usuario",
                 JSON.stringify({
@@ -55,7 +55,6 @@ function Login01() {
             );
 
 
-            // Redirecionamento
             if (dados.tipo_usuario === "administrador") {
 
                 navigate("/home_adm");
@@ -83,14 +82,20 @@ function Login01() {
 
         <div className={styles.container}>
 
-            <div className={styles.barra_Principal}>
+
+            {/* =========================
+                NAVBAR
+            ========================== */}
+
+            <header className={styles.barra_Principal}>
+
 
                 <div className={styles.barra_Logo}>
 
                     <img
                         src={logo}
                         className={styles.barra_Imagem}
-                        alt="Logo"
+                        alt="MaxCar"
                     />
 
                 </div>
@@ -107,100 +112,172 @@ function Login01() {
 
                 </div>
 
-            </div>
+
+            </header>
 
 
-            <div className={styles.login_Conteudo}>
 
-                <div className={styles.login_Margem}>
+            {/* =========================
+                CONTEÚDO DO LOGIN
+            ========================== */}
 
-                    <div className={styles.home_imagem_container}>
+            <main className={styles.login_Conteudo}>
+
+
+                <div className={styles.login_card}>
+
+
+                    {/* LOGO */}
+
+                    <div className={styles.logo_container}>
 
                         <img
                             src={logo}
-                            className={styles.login_imagem}
-                            alt="Logo"
+                            className={styles.login_logo}
+                            alt="Logo MaxCar"
                         />
 
                     </div>
 
 
-                    {/* AGORA É UM FORM */}
+
+                    {/* TÍTULO */}
+
+                    <h1 className={styles.login_titulo}>
+                        LOGIN ADMINISTRADOR
+                    </h1>
+
+
+
+                    {/* FORMULÁRIO */}
+
                     <form
-                        className={styles.login_boxs}
+                        className={styles.login_form}
                         onSubmit={entrar}
                     >
 
-                        <label className={styles.login_titulo}>
-                            Login Administrador:
-                        </label>
+
+                        {/* USUÁRIO */}
+
+                        <div className={styles.campo}>
+
+                            <label>
+                                Usuário
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="Digite seu usuário"
+                                value={usuario}
+                                onChange={(event) =>
+                                    setUsuario(event.target.value)
+                                }
+                                autoComplete="username"
+                            />
+
+                        </div>
 
 
-                        <div className={styles.login_caixas}>
 
-                            <div className={styles.login_caixa02}>
+                        {/* SENHA */}
 
-                                <label className={styles.login_label}>
-                                    Usuario:
-                                </label>
+                        <div className={styles.campo}>
+
+                            <label>
+                                Senha
+                            </label>
+
+
+                            <div className={styles.senha_container}>
 
                                 <input
-                                    type="text"
-                                    placeholder="Usuário"
-                                    value={usuario}
-                                    onChange={(event) =>
-                                        setUsuario(
-                                            event.target.value
-                                        )
+                                    type={
+                                        mostrarSenha
+                                            ? "text"
+                                            : "password"
                                     }
-                                />
-
-                            </div>
-
-
-                            <div className={styles.login_caixa02}>
-
-                                <label className={styles.login_label}>
-                                    Senha:
-                                </label>
-
-                                <input
-                                    type="password"
-                                    placeholder="Senha"
+                                    placeholder="Digite sua senha"
                                     value={senha}
                                     onChange={(event) =>
-                                        setSenha(
-                                            event.target.value
-                                        )
+                                        setSenha(event.target.value)
                                     }
+                                    autoComplete="current-password"
                                 />
 
-                            </div>
-
-
-                            {/* ERRO FORA DO BOTÃO */}
-                            {
-                                erro && (
-
-                                    <p>
-                                        {erro}
-                                    </p>
-
-                                )
-                            }
-
-
-                            <div className={styles.home_botoes}>
 
                                 <button
-                                    type="submit"
-                                    disabled={carregando}
+                                    type="button"
+                                    className={styles.botao_senha}
+                                    onClick={() =>
+                                        setMostrarSenha(!mostrarSenha)
+                                    }
+                                    aria-label={
+                                        mostrarSenha
+                                            ? "Ocultar senha"
+                                            : "Mostrar senha"
+                                    }
                                 >
 
                                     {
-                                        carregando
-                                            ? "Entrando..."
-                                            : "Entrar"
+                                        mostrarSenha
+                                            ? (
+
+                                                <svg
+                                                    width="20"
+                                                    height="20"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="1.8"
+                                                >
+
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="M3 3l18 18"
+                                                    />
+
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="M10.6 10.6a2 2 0 002.8 2.8"
+                                                    />
+
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="M9.8 4.2A10.8 10.8 0 0112 4c5.5 0 9 5 9 5a16 16 0 01-3.2 3.7M6.2 6.2C4.2 7.5 3 9 3 9s3.5 5 9 5c1.1 0 2.1-.2 3-.5"
+                                                    />
+
+                                                </svg>
+
+                                            )
+                                            : (
+
+                                                <svg
+                                                    width="20"
+                                                    height="20"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="1.8"
+                                                >
+
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"
+                                                    />
+
+                                                    <circle
+                                                        cx="12"
+                                                        cy="12"
+                                                        r="2.5"
+                                                    />
+
+                                                </svg>
+
+                                            )
                                     }
 
                                 </button>
@@ -209,11 +286,47 @@ function Login01() {
 
                         </div>
 
+
+
+                        {/* ERRO */}
+
+                        {
+                            erro && (
+
+                                <div className={styles.login_erro}>
+                                    {erro}
+                                </div>
+
+                            )
+                        }
+
+
+
+                        {/* BOTÃO */}
+
+                        <button
+                            type="submit"
+                            className={styles.botao_entrar}
+                            disabled={carregando}
+                        >
+
+                            {
+                                carregando
+                                    ? "ENTRANDO..."
+                                    : "ENTRAR"
+                            }
+
+                        </button>
+
+
                     </form>
+
 
                 </div>
 
-            </div>
+
+            </main>
+
 
         </div>
 
