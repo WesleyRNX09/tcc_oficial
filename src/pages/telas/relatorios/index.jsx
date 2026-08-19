@@ -17,7 +17,7 @@ function Relatorios() {
 
   const [menuAberto, setMenuAberto] = useState(false);
   const [busca, setBusca] = useState('');
-  
+  const [veiculoSelecionado, setVeiculoSelecionado] = useState(null);
   const [paginaAtual, setPaginaAtual] = useState(1);
   const [itensPorPagina, setItensPorPagina] = useState(10);
 
@@ -295,7 +295,129 @@ function Relatorios() {
             </div>
           </div>
         </div>
+{/* Modal do Relatório do Veículo */}
+      {veiculoSelecionado && (
+        <div 
+          className={styles.modal_overlay} 
+          onClick={() => setVeiculoSelecionado(null)}
+        >
+          <div 
+            className={styles.modal_container} 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={styles.modal_header}>
+              <h2>RELATÓRIO DO VEÍCULO</h2>
+              <button 
+                className={styles.modal_close}
+                onClick={() => setVeiculoSelecionado(null)}
+              >
+                ✕
+              </button>
+            </div>
 
+            <div className={styles.modal_body}>
+              {/* Card do Veículo */}
+              <div className={styles.modal_veiculo_card}>
+                <img src={veiculoSelecionado.imagem} alt={veiculoSelecionado.veiculo} />
+                <div>
+                  <div className={styles.modal_veiculo_titulo}>
+                    <h3>{veiculoSelecionado.veiculo}</h3>
+                    <span className={styles.modal_placa}>{veiculoSelecionado.placa}</span>
+                  </div>
+                  <p>Cliente: <strong>{veiculoSelecionado.cliente}</strong></p>
+                  <p>Total de OS: <strong>{veiculoSelecionado.totalOs}</strong></p>
+                </div>
+              </div>
+
+              {/* Resumo Financeiro */}
+              <h4 className={styles.modal_secao_titulo}>RESUMO FINANCEIRO</h4>
+              <div className={styles.modal_cards_grid}>
+                <div className={styles.modal_card_stat}>
+                  <span className={styles.modal_icon_blue}>📄</span>
+                  <small>Total de OS</small>
+                  <strong>{veiculoSelecionado.totalOs}</strong>
+                </div>
+                <div className={styles.modal_card_stat}>
+                  <span className={styles.modal_icon_green}>💲</span>
+                  <small>Total Pago</small>
+                  <strong className={styles.text_green}>R$360,00</strong>
+                </div>
+                <div className={styles.modal_card_stat}>
+                  <span className={styles.modal_icon_orange}>⏱️</span>
+                  <small>Total Pendente</small>
+                  <strong className={styles.text_orange}>R$120,00</strong>
+                </div>
+                <div className={styles.modal_card_stat}>
+                  <span className={styles.modal_icon_purple}>👛</span>
+                  <small>Total Geral</small>
+                  <strong>R$480,00</strong>
+                </div>
+              </div>
+
+              {/* Últimas Ordens de Serviço */}
+              <h4 className={styles.modal_secao_titulo}>ÚLTIMAS ORDENS DE SERVIÇO</h4>
+              <div className={styles.modal_lista_os}>
+                <div className={styles.modal_item_os}>
+                  <div>
+                    <strong>OS #1003</strong>
+                    <small>13/02/2026</small>
+                  </div>
+                  <span>Troca de Pneus</span>
+                  <span className={styles.badge_pago}>Pago</span>
+                  <button className={styles.btn_acoes_os}>•••</button>
+                </div>
+                <div className={styles.modal_item_os}>
+                  <div>
+                    <strong>OS #1002</strong>
+                    <small>20/01/2026</small>
+                  </div>
+                  <span>Revisão Completa</span>
+                  <span className={styles.badge_pendente}>Pendente</span>
+                  <button className={styles.btn_acoes_os}>•••</button>
+                </div>
+                <div className={styles.modal_item_os}>
+                  <div>
+                    <strong>OS #1001</strong>
+                    <small>05/01/2026</small>
+                  </div>
+                  <span>Alinhamento e Balanceamento</span>
+                  <span className={styles.badge_pago}>Pago</span>
+                  <button className={styles.btn_acoes_os}>•••</button>
+                </div>
+              </div>
+
+              {/* Histórico de Pagamentos */}
+              <h4 className={styles.modal_secao_titulo}>HISTÓRICO DE PAGAMENTOS</h4>
+              <div className={styles.modal_historico}>
+                <div className={styles.modal_linha_historico}>
+                  <span>13/02/2026</span>
+                  <span>Pagamento da OS #1003</span>
+                  <span className={styles.text_green}>R$120,00</span>
+                </div>
+                <div className={styles.modal_linha_historico}>
+                  <span>05/01/2026</span>
+                  <span>Pagamento da OS #1001</span>
+                  <span className={styles.text_green}>R$120,00</span>
+                </div>
+                <div className={styles.modal_linha_historico}>
+                  <span>02/01/2026</span>
+                  <span>Adiantamento</span>
+                  <span className={styles.text_green}>R$120,00</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.modal_footer}>
+              <button 
+                className={styles.modal_btn_fechar}
+                onClick={() => setVeiculoSelecionado(null)}
+              >
+                FECHAR
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
         {/* Conteúdo dos relatórios */}
         <main className={styles.relatorios_conteudo}>
           <header className={styles.relatorios_cabecalho}>
@@ -366,9 +488,7 @@ function Relatorios() {
                           type="button"
                           className={styles.relatorios_acoes}
                           aria-label={`Abrir ações de ${item.veiculo}`}
-                          onClick={() =>
-                            navigate(`/relatorios/${item.id}`)
-                          }
+                          onClick={() => setVeiculoSelecionado(item)}
                         >
                           <span></span>
                           <span></span>
