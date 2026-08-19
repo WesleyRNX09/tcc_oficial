@@ -339,7 +339,7 @@
   min-width: 0;
   min-height: calc(100vh - 9rem);
   padding: 3rem 2rem;
-  background:#e0d8d8;
+  background:#070707;
   color: #ffffff;
 }
 
@@ -408,13 +408,14 @@
 /* Container da tabela */
 
 .relatorios_tabela_container {
-  width: 100%;
+  width: auto;
   overflow: hidden;
   background: #101010;
   border: 1px solid #303030;
   border-radius: 1rem;
   padding-top: 2rem;
-
+  margin-left:6rem;
+  margin-right: 6rem;
 }
 
 .relatorios_tabela_scroll {
@@ -426,19 +427,16 @@
 
 .relatorios_tabela {
   width: 100%;
-  min-width: 95rem;
+  min-width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
-
 }
-
 
 .relatorios_tabela th {
   height: 5rem;
   padding: 0 1.8rem;
   background: #101010;
   border: none !important;
-  border-bottom: 1px solid #2a2a2a !important;
   color: #e0e0e0;
   font-size: 1.35rem;
   font-weight: 600;
