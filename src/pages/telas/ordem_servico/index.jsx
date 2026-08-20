@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Botao from './botao'
-import { Link } from "react-router-dom";
 import logo from '../../../assets/logo.png';
 
 import ordemServiço from "../../../assets/historico_de_ordem.png";
@@ -11,26 +10,169 @@ import notificacao from "../../../assets/notificacao.png";
 
 import seta from "../../../assets/seta_esquerda1.png";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from './index.module.css';
 
-function os() {
+import apiRequest from '../../../services/api';
+
+function Os() {
   const navigate = useNavigate();
   const [menuAberto, setMenuAberto] = useState(false);
   const [busca, setBusca] = useState('');
 
- 
+  const [ordensServico, setOrdensServico] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState("");
 
-  // Mock de dados para renderizar a tabela dinamicamente igual à imagem
-  const ordensServico = [
-    { data: '13/02/2026', os: 'OS-00001', cliente: 'Guilherme Luiz', veiculo: 'BMW M3 G80', servico: 'Troca de Pneus', status: 'Concluido' },
-    { data: '15/05/2026', os: 'OS-00002', cliente: 'Bruno Luan', veiculo: 'Jetta GLI', servico: 'Alinhamento', status: 'Pendente' },
-    { data: '24/02/2026', os: 'OS-00003', cliente: 'Cauã Takasaki', veiculo: '911 GT3 RS', servico: 'Reparo de Freios', status: 'Concluido' },
-    { data: '18/09/2026', os: 'OS-00004', cliente: 'Matheus', veiculo: 'Onix LT 2021', servico: 'Troca de Filtros', status: 'Concluido' },
-    { data: '31/12/2026', os: 'OS-00005', cliente: 'João Pedro', veiculo: 'Gol 2017', servico: 'Troca de Oleo', status: 'Pendente' },
-    { data: '29/05/2026', os: 'OS-00006', cliente: 'Wesley Beraldi', veiculo: 'Tracker 2022', servico: 'Balanceamento', status: 'Concluido' },
-    { data: '01/01/2026', os: 'OS-00007', cliente: 'Richard Guerra', veiculo: 'Peugot 206', servico: 'Troca de filtros', status: 'Concluido' },
-  ];
+  const [paginaAtual, setPaginaAtual] = useState(1);
+  const [itensPorPagina, setItensPorPagina] = useState(10);
+
+  useEffect(() => {
+
+      async function carregarOrdens() {
+
+          try {
+
+              setCarregando(true);
+              setErro("");
+
+              const resposta = await apiRequest(
+                  '/ordens-servico?page=1&limit=100'
+              );
+
+              setOrdensServico(
+                  resposta.dados || []
+              );
+
+          } catch (error) {
+
+              console.log(error);
+
+              setErro(
+                  error.message
+              );
+
+          } finally {
+
+              setCarregando(false);
+
+          }
+
+      }
+
+      carregarOrdens();
+
+  }, []);
+
+  const ordensFiltradas = ordensServico.filter((ordem) => {
+
+      const texto = busca
+          .toLowerCase()
+          .trim();
+
+      if (!texto) {
+          return true;
+      }
+
+      return (
+
+          String(ordem.id_os)
+              .includes(texto)
+
+          ||
+
+          ordem.nome_cliente
+              ?.toLowerCase()
+              .includes(texto)
+
+          ||
+
+          ordem.placa
+              ?.toLowerCase()
+              .includes(texto)
+
+          ||
+
+          ordem.marca
+              ?.toLowerCase()
+              .includes(texto)
+
+          ||
+
+          ordem.modelo
+              ?.toLowerCase()
+              .includes(texto)
+
+          ||
+
+          ordem.status
+              ?.toLowerCase()
+              .includes(texto)
+
+      );
+
+  });
+
+  const totalPaginas = Math.max(
+      Math.ceil(
+          ordensFiltradas.length /
+          itensPorPagina
+      ),
+      1
+  );
+
+
+  const indiceInicial =
+      (paginaAtual - 1) *
+      itensPorPagina;
+
+
+  const indiceFinal =
+      indiceInicial +
+      itensPorPagina;
+
+
+  const ordensPagina =
+      ordensFiltradas.slice(
+          indiceInicial,
+          indiceFinal
+      );
+
+  useEffect(() => {
+
+      setPaginaAtual(1);
+
+  }, [busca, itensPorPagina]);
+
+  function formatarData(data) {
+
+      if (!data) {
+          return '-';
+      }
+
+      const dataFormatada =
+          new Date(data);
+
+      return dataFormatada
+          .toLocaleDateString(
+              'pt-BR'
+          );
+
+  }
+
+  function formatarValor(valor) {
+
+      return Number(
+          valor || 0
+      ).toLocaleString(
+          'pt-BR',
+          {
+              style: 'currency',
+              currency: 'BRL'
+          }
+      );
+
+  }
 
   return (
     <div className={styles.container}>
@@ -154,8 +296,14 @@ function os() {
 
                   <div className={styles.os_busca}>
                     <input
-                      type="text"
-                      placeholder="Buscar por cliente, serviço ou placa"
+                        type="text"
+                        placeholder="Buscar por cliente, placa ou OS"
+                        value={busca}
+                        onChange={(event) =>
+                            setBusca(
+                                event.target.value
+                            )
+                        }
                     />
 
                     <span className={styles.os_busca_icon}>
@@ -190,7 +338,12 @@ function os() {
                     <div className={styles.os_card_info}>
                       <span className={styles.os_card_label}>Concluídas</span>
                       <span className={styles.os_card_valor}>
-                        {ordensServico.filter(o => o.status === 'Concluido').length}
+                        {
+                            ordensServico.filter(
+                                (ordem) =>
+                                    ordem.status === 'Finalizada'
+                            ).length
+                        }
                       </span>
                     </div>
                   </div>
@@ -198,9 +351,17 @@ function os() {
                   <div className={styles.os_card}>
                     <div className={styles.os_card_icone} style={{ background: '#7a4010' }}>🕐</div>
                     <div className={styles.os_card_info}>
-                      <span className={styles.os_card_label}>Em Espera</span>
+                      <span className={styles.os_card_label}>
+                          Abertas
+                      </span>
+
                       <span className={styles.os_card_valor}>
-                        {ordensServico.filter(o => o.status === 'Pendente').length}
+                          {
+                              ordensServico.filter(
+                                  (ordem) =>
+                                      ordem.status === 'Aberta'
+                              ).length
+                          }
                       </span>
                     </div>
                   </div>
@@ -210,7 +371,12 @@ function os() {
                     <div className={styles.os_card_info}>
                       <span className={styles.os_card_label}>Em Manutenção</span>
                       <span className={styles.os_card_valor}>
-                        {ordensServico.filter(o => o.status === 'Em andamento').length}
+                        {
+                            ordensServico.filter(
+                                (ordem) =>
+                                    ordem.status === 'Em andamento'
+                            ).length
+                        }
                       </span>
                     </div>
                   </div>
@@ -224,119 +390,265 @@ function os() {
                         <th>OS</th>
                         <th>Cliente</th>
                         <th>Veículo / Placa</th>
-                        <th>Serviço</th>
+                        <th>Valor</th>
                         <th>Status</th>
                       </tr>
                     </thead>
 
                     <tbody>
-                      <tr>
-                        <td>13/02/2026</td>
-                        <td className={styles.os_codigo}>OS-00001</td>
-                        <td>Guilherme Luiz</td>
-                        <td>BMW M3 G80</td>
-                        <td>Troca de Pneus</td>
-                        <td>
-                          <span className={styles.status_concluido}>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
-                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                            Concluido
-                          </span>
-                        </td>
-                      </tr>
 
-                      <tr>
-                        <td>15/05/2026</td>
-                        <td className={styles.os_codigo}>OS-00002</td>
-                        <td>Bruno Luan</td>
-                        <td>Jetta GLI</td>
-                        <td>Alinhamento</td>
-                        <td>
-                          <span className={styles.status_andamento}>Em andamento</span>
-                        </td>
-                      </tr>
+                    {carregando && (
 
-                      <tr>
-                        <td>24/02/2026</td>
-                        <td className={styles.os_codigo}>OS-00003</td>
-                        <td>Cauã Takasaki</td>
-                        <td>911 GT3 RS</td>
-                        <td>Reparo de Freios</td>
-                        <td>
-                          <span className={styles.status_concluido}>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
-                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                            Concluido
-                          </span>
-                        </td>
-                      </tr>
+                        <tr>
 
-                      <tr>
-                        <td>18/09/2026</td>
-                        <td className={styles.os_codigo}>OS-00004</td>
-                        <td>Matheus</td>
-                        <td>Onix LT 2021</td>
-                        <td>Troca de Filtros</td>
-                        <td>
-                          <span className={styles.status_concluido}>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
-                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                            Concluido
-                          </span>
-                        </td>
-                      </tr>
+                            <td colSpan="6">
+                                Carregando ordens de serviço...
+                            </td>
 
-                      <tr>
-                        <td>31/12/2026</td>
-                        <td className={styles.os_codigo}>OS-00005</td>
-                        <td>João Pedro</td>
-                        <td>Gol 2017</td>
-                        <td>Troca de Óleo</td>
-                        <td>
-                          <span className={styles.status_andamento}>Em andamento</span>
-                        </td>
-                      </tr>
+                        </tr>
 
-                      <tr>
-                        <td>29/05/2026</td>
-                        <td className={styles.os_codigo}>OS-00006</td>
-                        <td>Wesley Beraldi</td>
-                        <td>Tracker 2022</td>
-                        <td>Balanceamento</td>
-                        <td>
-                          <span className={styles.status_concluido}>
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                              <circle cx="7" cy="7" r="7" fill="#5de86e" fillOpacity="0.25"/>
-                              <path d="M4 7l2 2 4-4" stroke="#5de86e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                            Concluido
-                          </span>
-                        </td>
-                      </tr>
+                    )}
 
-                      
-                    </tbody>
+
+                    {erro && (
+
+                        <tr>
+
+                            <td colSpan="6">
+                                {erro}
+                            </td>
+
+                        </tr>
+
+                    )}
+
+
+                    {
+                        !carregando &&
+                        !erro &&
+                        ordensPagina.length === 0 && (
+
+                            <tr>
+
+                                <td colSpan="6">
+                                    Nenhuma ordem de serviço encontrada.
+                                </td>
+
+                            </tr>
+
+                        )
+                    }
+
+
+                    {
+                        !carregando &&
+                        !erro &&
+                        ordensPagina.map((ordem) => (
+
+                            <tr
+                                key={ordem.id_os}
+                                onClick={() => navigate(`/os/${ordem.id_os}`)}
+                                className={styles.os_linha}
+                                title="Clique para ver os detalhes"
+                            >
+
+                                <td>
+
+                                    {
+                                        formatarData(
+                                            ordem.data_entrada
+                                        )
+                                    }
+
+                                </td>
+
+
+                                <td
+                                    className={
+                                        styles.os_codigo
+                                    }
+                                >
+
+                                    OS-
+                                    {
+                                        String(
+                                            ordem.id_os
+                                        ).padStart(
+                                            5,
+                                            '0'
+                                        )
+                                    }
+
+                                </td>
+
+
+                                <td>
+
+                                    {
+                                        ordem.nome_cliente
+                                    }
+
+                                </td>
+
+
+                                <td>
+
+                                    {
+                                        ordem.marca
+                                    }
+
+                                    {' '}
+
+                                    {
+                                        ordem.modelo
+                                    }
+
+                                    <br />
+
+                                    <small>
+                                        {
+                                            ordem.placa
+                                        }
+                                    </small>
+
+                                </td>
+
+
+                                <td>
+
+                                    {
+                                        formatarValor(
+                                            ordem.valor_total
+                                        )
+                                    }
+
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        className={
+                                            ordem.status === 'Finalizada'
+                                                ? styles.status_concluido
+                                                : styles.status_andamento
+                                        }
+                                    >
+
+                                        {
+                                            ordem.status
+                                        }
+
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+                        ))
+                    }
+
+                </tbody>
                   </table>
 
                   <div className={styles.os_footer}>
-                    <p>Mostando 1 a 7 de 8 registros</p>
+                    <p>
+
+                      Mostrando
+
+                      {' '}
+
+                      {
+                          ordensFiltradas.length === 0
+                              ? 0
+                              : indiceInicial + 1
+                      }
+
+                      {' '}a{' '}
+
+                      {
+                          Math.min(
+                              indiceFinal,
+                              ordensFiltradas.length
+                          )
+                      }
+
+                      {' '}de{' '}
+
+                      {
+                          ordensFiltradas.length
+                      }
+
+                      {' '}registros
+
+                  </p>
 
                     <div className={styles.os_paginacao}>
-                      <button>{'<'}</button>
-                      <button className={styles.os_pagina_ativa}>1</button>
-                      <button>2</button>
-                      <button>{'>'}</button>
+                      <button
+                          type="button"
+                          disabled={
+                              paginaAtual === 1
+                          }
+                          onClick={() =>
+                              setPaginaAtual(
+                                  paginaAtual - 1
+                              )
+                          }
+                      >
+                          {'<'}
+                      </button>
+
+
+                      <button
+                          type="button"
+                          className={
+                              styles.os_pagina_ativa
+                          }
+                      >
+                          {paginaAtual}
+                      </button>
+
+
+                      <button
+                          type="button"
+                          disabled={
+                              paginaAtual === totalPaginas
+                          }
+                          onClick={() =>
+                              setPaginaAtual(
+                                  paginaAtual + 1
+                              )
+                          }
+                      >
+                          {'>'}
+                      </button>
                     </div>
 
-                    <select>
-                      <option>10</option>
+                    <select
+                        value={itensPorPagina}
+                        onChange={(event) =>
+                            setItensPorPagina(
+                                Number(
+                                    event.target.value
+                                )
+                            )
+                        }
+                    >
+
+                        <option value="5">
+                            5
+                        </option>
+
+                        <option value="10">
+                            10
+                        </option>
+
+                        <option value="20">
+                            20
+                        </option>
+
                     </select>
+
                   </div>
                 </div>
               </div>
@@ -353,4 +665,4 @@ function os() {
   );
 }
 
-export default os;
+export default Os;

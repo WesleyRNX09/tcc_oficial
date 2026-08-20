@@ -344,10 +344,18 @@
 .home_box {
     width: 100%;
     max-width: 150rem;
-    background: linear-gradient(90deg,#141414,#0f0f0f);
+
+    background: linear-gradient(90deg, #141414, #0f0f0f);
+
     border-radius: 1.5rem;
     border: 1px solid #232323;
+
     padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: calc(100vh - 13rem);
 }
 
 /* ───────── TOPBAR ───────── */
@@ -447,11 +455,21 @@
 
 /* ───────── ÁREA PRINCIPAL ───────── */
 
-.gs_areaBlocos{
-    background: linear-gradient(90deg,#1a1a1a,#111);
+.gs_areaBlocos {
+    width: 100%;
+    flex: 1;
+
+    background: linear-gradient(90deg, #1a1a1a, #111);
+
     border-radius: 1.5rem;
     border: 1px solid #2d2d2d;
+
     padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 0;
 }
 
 /* ───────── HEADER DA TABELA ───────── */
@@ -570,12 +588,21 @@
 
 /* ───────── TABELA ───────── */
 
-.os_tabela{
+.os_tabela {
     width: 100%;
+    flex: 1;
+
     border: 1px solid #2a2a2a;
     border-radius: 1rem;
+
     overflow: hidden;
+
     background: #111;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 40rem;
 }
 
 .os_tabela table{
@@ -626,39 +653,66 @@
 
 /* ───────── STATUS ───────── */
 
-.status_concluido{
-    background: #1a5c24;
+.status_concluido {
+    width: 13rem;
+    height: 3.2rem;
+
+    background: #146b28;
     color: #5de86e;
-    padding: 0.6rem 1.2rem;
+
     border-radius: 2rem;
+
     font-size: 1.2rem;
+    font-weight: 600;
+
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    justify-content: center;
+
+    padding: 0 1rem;
+
     white-space: nowrap;
+    box-sizing: border-box;
 }
 
-.status_andamento{
-    background: #7a4010;
-    color: transparent; /* sem texto visível como na imagem 2 */
-    padding: 0.6rem 3rem;
-    border-radius: 0.6rem;
+
+.status_andamento {
+    width: 13rem;
+    height: 3.2rem;
+
+    background: #8a470d;
+    color: #ffb56b;
+
+    border-radius: 2rem;
+
     font-size: 1.2rem;
+    font-weight: 600;
+
     display: inline-flex;
     align-items: center;
-    min-width: 8rem;
-    min-height: 3rem;
+    justify-content: center;
+
+    padding: 0 1rem;
+
+    white-space: nowrap;
+    box-sizing: border-box;
 }
 
 /* ───────── FOOTER DA TABELA ───────── */
 
-.os_footer{
+.os_footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding: 1rem 2rem;
+
     flex-wrap: wrap;
     gap: 2rem;
+
+    margin-top: auto;
+
+    min-height: 7rem;
 }
 
 .os_footer p{
@@ -705,6 +759,15 @@
     color: white;
     padding: 0 1rem;
     outline: none;
+}
+
+.os_linha {
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.os_linha:hover {
+    background-color: #1c1c1c;
 }
 
 /* ───────── RODAPÉ ───────── */
