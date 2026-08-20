@@ -691,9 +691,9 @@
 /* Container principal da janela */
 .modal_container {
   background-color: #161616;
-  width: 520px;
+  width: 520px; 
   height: 100%;
-  max-width:650px;
+  max-width: 60rem;
   max-height: 90vh;
   border-radius: 12px;
   border: 1px solid #2a2a2a;
@@ -701,6 +701,7 @@
   flex-direction: column;
   overflow: hidden;
   color: #fff;
+  font-size:1.2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -760,6 +761,7 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
   gap: 1.5rem;
 }
 
@@ -768,13 +770,12 @@
   display: flex;
   align-items: center;
   gap: 1.2rem;
+  padding: 10px ;
   background: #1c1c1c;
-  padding: 1.2rem; /* Ajustado para remover o padding de 6rem antigo */
+  padding: rem;
   border-radius: 8px;
   border: 1px solid #2a2a2a;
 }
-
-
 
 .modal_veiculo_card img {
   width: 70px;
@@ -802,14 +803,11 @@
   color: #ccc;
 }
 
-.modal_veiculo_card {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  background: #1c1c1c;
-  padding: 1.2rem; /* Ajustado para remover o padding de 6rem antigo */
-  border-radius: 8px;
-  border: 1px solid #2a2a2a;
+.modal_veiculo_card p {
+  margin: 0.2rem 0;
+  font-size: 1rem;
+  color: #aaa;
+  padding-bottom:  0.5rem;
 }
 
 .modal_veiculo_card p strong {
@@ -830,19 +828,18 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.8rem;
-  width: 100%;
 }
 
 .modal_card_stat {
   background: #1c1c1c;
-  padding: 0.8rem;
+  padding: 1rem;
   border-radius: 8px;
   border: 1px solid #2a2a2a;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  box-sizing: border-box;
-} 
+  font-size: 1.2rem;
+}
 
 .modal_card_stat small {
   font-size: 0.7rem;
@@ -862,30 +859,20 @@
 
 .modal_item_os {
   display: flex;
-  flex:1;
   align-items: center;
   justify-content: space-between;
   background: #1c1c1c;
   padding: 0.8rem 1rem;
   border-radius: 6px;
-  font-size: 0.95rem;
-  padding: 15px;
-  gap: 1rem;
+  font-size: 0.85rem;
+  padding: 1rem;
 }
 
-.modal_item_os > div:first-child {
+.modal_item_os div {
   display: flex;
   flex-direction: column;
-  min-width: 80px; /* Garante largura fixa para o número da OS */
 }
 
-.modal_item_os > span:nth-child(2) {
-  flex: 1; /* Faz a descrição ocupar o espaço central disponível */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-z
 .modal_item_os small {
   color: #777;
   font-size: 0.75rem;
@@ -928,7 +915,7 @@ z
 .modal_linha_historico {
   display: flex;
   justify-content: space-between;
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   color: #ccc;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #222;
