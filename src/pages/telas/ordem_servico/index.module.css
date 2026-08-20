@@ -660,6 +660,7 @@
     background: #146b28;
     color: #5de86e;
 
+    border: 1px solid #1d8235;
     border-radius: 2rem;
 
     font-size: 1.2rem;
@@ -683,6 +684,31 @@
     background: #8a470d;
     color: #ffb56b;
 
+    border: 1px solid #a95b16;
+    border-radius: 2rem;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 1rem;
+
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+
+.status_cancelado {
+    width: 13rem;
+    height: 3.2rem;
+
+    background: #7a1010;
+    color: #ff6b6b;
+
+    border: 1px solid #a71919;
     border-radius: 2rem;
 
     font-size: 1.2rem;

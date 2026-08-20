@@ -531,14 +531,14 @@ function Os() {
                                         className={
                                             ordem.status === 'Finalizada'
                                                 ? styles.status_concluido
+
+                                                : ordem.status === 'Cancelada'
+                                                ? styles.status_cancelado
+
                                                 : styles.status_andamento
                                         }
                                     >
-
-                                        {
-                                            ordem.status
-                                        }
-
+                                        {ordem.status}
                                     </span>
 
                                 </td>

@@ -1,62 +1,937 @@
-.pagina {
-    min-height: 100vh;
-    width: 100%;
-
-    background-color: #080808;
-    color: white;
-
-    padding: 3rem;
-}
-
+/* ========================================================= */
+/* PÁGINA */
+/* ========================================================= */
 
 .container {
     width: 100%;
+    min-height: 100vh;
+
+    background: #050505;
+
+    color: white;
+}
+
+
+/* ========================================================= */
+/* NAVBAR */
+/* ========================================================= */
+
+.barra_Principal {
+    width: 100%;
+    height: 9rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #0a0a0a;
+
+    border-bottom: 0.3rem solid #e50914;
+
+    box-shadow:
+        0 2px 8px
+        rgba(229, 57, 53, 0.3);
+
+    padding: 0 4rem;
+}
+
+
+.barra_Logo {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.barra_Imagem {
+    height: 9rem;
+
+    object-fit: contain;
+}
+
+
+.barra_menu_btn {
+    width: 3.5rem;
+    height: 3.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    background: transparent;
+
+    border: none;
+
+    cursor: pointer;
+
+    margin-right: 1.5rem;
+
+    border-radius: 0.8rem;
+}
+
+
+.barra_menu_btn:hover {
+    background:
+        rgba(229, 9, 20, 0.1);
+}
+
+
+.barra_linha {
+    width: 26px;
+    height: 2px;
+
+    background: white;
+
+    border-radius: 2px;
+}
+
+
+.barra_direita {
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+}
+
+
+.barra_sino {
+    width: 4rem;
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    border-radius: 0.8rem;
+}
+
+
+.barra_sino:hover {
+    background:
+        rgba(229, 9, 20, 0.1);
+}
+
+
+.barra_sino img {
+    width: 2.4rem;
+}
+
+
+.barra_perfil {
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+
+    background: #111;
+
+    border: 1px solid #2a2a2a;
+
+    border-radius: 1rem;
+
+    padding:
+        0.6rem
+        1.3rem
+        0.6rem
+        0.6rem;
+}
+
+
+.barra_perfil_icone {
+    width: 3.6rem;
+    height: 3.6rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e50914;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3a0000,
+            #1a1a1a
+        );
+}
+
+
+.barra_perfil_info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.3rem;
+}
+
+
+.barra_perfil_nome {
+    color: white;
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+}
+
+
+.barra_perfil_cargo {
+    color: #777;
+
+    font-size: 1rem;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================================= */
+/* CONTEÚDO */
+/* ========================================================= */
+
+.conteudo {
+    width: 100%;
+
+    padding: 2rem;
+}
+
+
+.painel {
+    width: 100%;
+
     max-width: 150rem;
 
     margin: 0 auto;
 
-    background: linear-gradient(
-        90deg,
-        #141414,
-        #0f0f0f
-    );
+    padding: 2.5rem;
 
-    border: 1px solid #292929;
+    background:
+        linear-gradient(
+            90deg,
+            #141414,
+            #0f0f0f
+        );
+
+    border:
+        1px solid
+        #232323;
+
     border-radius: 1.5rem;
-
-    padding: 3rem;
 }
 
 
-.voltar {
-    background: transparent;
-    border: none;
+/* ========================================================= */
+/* TOPO */
+/* ========================================================= */
 
-    color: #aaa;
+.topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    margin-bottom: 2.5rem;
+}
+
+
+.topo_esquerda {
+    display: flex;
+    align-items: center;
+
+    gap: 1.5rem;
+}
+
+
+.botao_voltar {
+    width: 4.5rem;
+    height: 4.5rem;
+
+    border: 1px solid #333;
+    border-radius: 1rem;
+
+    background: #181818;
+    color: white;
+
+    font-size: 2rem;
 
     cursor: pointer;
 
-    font-size: 1.4rem;
+    transition: 0.2s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    line-height: 1;
+}
+
+
+.botao_voltar:hover {
+    border-color: #e50914;
+
+    background: #202020;
+}
+
+
+.subtitulo,
+.secao_subtitulo {
+    color: #777;
+
+    font-size: 1rem;
+
+    letter-spacing: 1.5px;
+
+    font-weight: 700;
+}
+
+
+.topo h1 {
+    margin: 0.3rem 0 0;
+
+    font-size: 2.8rem;
+}
+
+
+/* ========================================================= */
+/* STATUS */
+/* ========================================================= */
+
+.status_finalizada,
+.status_andamento,
+.status_cancelada {
+    width: 14rem;
+    height: 3.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 2rem;
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+}
+
+
+.status_finalizada {
+    background: #145d25;
+
+    color: #5de86e;
+}
+
+
+.status_andamento {
+    background: #7a4010;
+
+    color: #ffb86b;
+}
+
+
+.status_cancelada {
+    background: #631919;
+
+    color: #ff7373;
+}
+
+
+/* ========================================================= */
+/* MENSAGENS */
+/* ========================================================= */
+
+.mensagem_sucesso,
+.mensagem_erro {
+    width: 100%;
+
+    padding: 1.3rem 1.5rem;
+
+    border-radius: 0.8rem;
+
+    margin-bottom: 2rem;
+
+    font-size: 1.3rem;
+}
+
+
+.mensagem_sucesso {
+    background:
+        rgba(27, 122, 51, 0.18);
+
+    border:
+        1px solid
+        #1b7a33;
+
+    color: #6ee884;
+}
+
+
+.mensagem_erro {
+    background:
+        rgba(229, 9, 20, 0.12);
+
+    border:
+        1px solid
+        #8b151b;
+
+    color: #ff7a80;
+}
+
+
+/* ========================================================= */
+/* CARDS */
+/* ========================================================= */
+
+.cards {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 2rem;
 
     margin-bottom: 2rem;
 }
 
 
-.voltar:hover {
+.card {
+    min-width: 0;
+
+    background: #181818;
+
+    border:
+        1px solid
+        #303030;
+
+    border-radius: 1rem;
+
+    padding: 2rem;
+
+    transition: 0.2s;
+}
+
+
+.card:hover {
+    border-color: #444;
+}
+
+
+.card_titulo {
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+}
+
+
+.card_titulo h2 {
+    margin: 0;
+
+    font-size: 1.8rem;
+}
+
+
+.card_icone {
+    width: 4rem;
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #252525;
+
+    border-radius: 0.8rem;
+
+    font-size: 1.8rem;
+}
+
+
+.linha_info {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    padding: 1rem 0;
+
+    border-bottom:
+        1px solid
+        #242424;
+}
+
+
+.linha_info:last-child {
+    border-bottom: none;
+}
+
+
+.linha_info span {
+    color: #888;
+
+    font-size: 1.2rem;
+}
+
+
+.linha_info strong {
+    color: #eee;
+
+    font-size: 1.3rem;
+
+    text-align: right;
+}
+
+
+.valor,
+.valor_atual {
+    color: #62dc79 !important;
+}
+
+
+.placa {
+    color: #ff4a4a !important;
+}
+
+
+/* ========================================================= */
+/* SEÇÕES */
+/* ========================================================= */
+
+.secao {
+    width: 100%;
+
+    background: #151515;
+
+    border:
+        1px solid
+        #292929;
+
+    border-radius: 1rem;
+
+    padding: 2rem;
+
+    margin-top: 2rem;
+}
+
+
+.secao_titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 2rem;
+}
+
+
+.secao_titulo h2 {
+    margin: 0.3rem 0 0;
+
+    font-size: 2rem;
+}
+
+
+/* ========================================================= */
+/* GERENCIAR OS */
+/* ========================================================= */
+
+.gerenciamento {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 2rem;
+}
+
+
+.gerenciar_card {
+    background: #101010;
+
+    border:
+        1px solid
+        #2b2b2b;
+
+    border-radius: 1rem;
+
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1.5rem;
+}
+
+
+.gerenciar_card h3 {
+    margin: 0;
+
+    font-size: 1.6rem;
+}
+
+
+.gerenciar_card p {
+    color: #999;
+
+    font-size: 1.2rem;
+
+    margin: 0;
+}
+
+
+.gerenciar_card select {
+    width: 100%;
+    height: 4.5rem;
+
+    background: #202020;
+
+    color: white;
+
+    border:
+        1px solid
+        #3b3b3b;
+
+    border-radius: 0.8rem;
+
+    padding: 0 1.3rem;
+
+    outline: none;
+}
+
+
+.gerenciar_card select:focus {
+    border-color: #e50914;
+}
+
+
+.input_valor {
+    width: 100%;
+    height: 4.5rem;
+
+    display: flex;
+    align-items: center;
+
+    background: #202020;
+
+    border:
+        1px solid
+        #3b3b3b;
+
+    border-radius: 0.8rem;
+
+    overflow: hidden;
+}
+
+
+.input_valor span {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 1.4rem;
+
+    background: #292929;
+
+    color: #aaa;
+
+    font-weight: bold;
+}
+
+
+.input_valor input {
+    flex: 1;
+
+    height: 100%;
+
+    background: transparent;
+
+    border: none;
+
+    outline: none;
+
+    color: white;
+
+    padding: 0 1.3rem;
+}
+
+
+.botoes_valor {
+    display: flex;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
+}
+
+
+.botao_salvar,
+.botao_secundario {
+    min-height: 4.2rem;
+
+    border-radius: 0.8rem;
+
+    padding: 0 2rem;
+
+    cursor: pointer;
+
+    font-size: 1.1rem;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+
+.botao_salvar {
+    background: #b40000;
+
+    border:
+        1px solid
+        #d20a13;
+
     color: white;
 }
 
 
-.container h1 {
-    font-size: 2.8rem;
-    margin-bottom: 3rem;
+.botao_salvar:hover {
+    background: #d00000;
 }
 
 
-.card {
+.botao_salvar:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+.botao_secundario {
+    background: #222;
+
+    border:
+        1px solid
+        #404040;
+
+    color: #ddd;
+}
+
+
+.botao_secundario:hover {
+    border-color: #e50914;
+}
+
+
+/* ========================================================= */
+/* OBSERVAÇÕES */
+/* ========================================================= */
+
+.observacoes {
+    width: 100%;
+
+    min-height: 7rem;
+
+    background: #101010;
+
+    border:
+        1px solid
+        #282828;
+
+    border-radius: 0.8rem;
+
+    padding: 1.5rem;
+
+    color: #bbb;
+
+    font-size: 1.3rem;
+
+    line-height: 1.6;
+}
+
+
+/* ========================================================= */
+/* PROBLEMAS */
+/* ========================================================= */
+
+.problema {
+    background: #101010;
+
+    border:
+        1px solid
+        #2a2a2a;
+
+    border-radius: 1rem;
+
+    padding: 2rem;
+
+    margin-bottom: 1.5rem;
+}
+
+
+.problema:last-child {
+    margin-bottom: 0;
+}
+
+
+.problema_topo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    margin-bottom: 2rem;
+}
+
+
+.problema_id {
+    color: #777;
+
+    font-size: 1rem;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+.problema_topo h3 {
+    margin:
+        0.5rem 0 0;
+
+    font-size: 1.6rem;
+}
+
+
+.badges {
+    display: flex;
+
+    gap: 1rem;
+}
+
+
+.badge_prioridade,
+.badge_status {
+    min-width: 10rem;
+    height: 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 2rem;
+
+    padding: 0 1rem;
+
+    font-size: 1.1rem;
+}
+
+
+.badge_prioridade {
+    background: #5c210f;
+
+    color: #ff9c72;
+}
+
+
+.badge_status {
+    background: #282828;
+
+    color: #ddd;
+}
+
+
+/* ========================================================= */
+/* SERVIÇOS */
+/* ========================================================= */
+
+.servicos {
+    border-top:
+        1px solid
+        #242424;
+
+    padding-top: 1.5rem;
+}
+
+
+.servicos h4,
+.execucao h4 {
+    margin:
+        0 0 1rem;
+
+    color: #aaa;
+
+    font-size: 1.2rem;
+}
+
+
+.servico {
+    display: grid;
+
+    grid-template-columns:
+        1fr 12rem 14rem;
+
+    gap: 2rem;
+
+    padding: 1rem 0;
+
+    border-bottom:
+        1px solid
+        #1f1f1f;
+
+    font-size: 1.2rem;
+}
+
+
+.execucao {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.8rem;
+
+    margin-top: 1.5rem;
+
     background: #171717;
 
-    border: 1px solid #303030;
+    border-radius: 0.8rem;
+
+    padding: 1.5rem;
+
+    color: #999;
+
+    font-size: 1.2rem;
+}
+
+/* ========================================================= */
+/* ADICIONAR PEÇA */
+/* ========================================================= */
+
+.adicionar_peca {
+    width: 100%;
+
+    background: #101010;
+
+    border: 1px solid #2a2a2a;
+
     border-radius: 1rem;
 
     padding: 2rem;
@@ -65,19 +940,469 @@
 }
 
 
-.card h2 {
-    color: white;
+.adicionar_peca_topo {
+    width: 100%;
 
-    font-size: 2rem;
+    display: flex;
 
-    margin-top: 0;
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 1.8rem;
 }
 
 
-.card p {
-    color: #c7c7c7;
+.adicionar_peca_topo h3 {
+    margin: 0.4rem 0 0;
 
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 
-    margin: 1rem 0;
+    color: white;
+}
+
+
+/* FORMULÁRIO */
+
+.peca_form {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr;
+
+    gap: 1.5rem;
+
+    align-items: end;
+}
+
+
+/* CAMPOS */
+
+.campo_peca {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.8rem;
+}
+
+
+.campo_peca label {
+    color: #888;
+
+    font-size: 1.1rem;
+
+    font-weight: 600;
+}
+
+
+.campo_peca select,
+.campo_peca input {
+    width: 100%;
+
+    height: 4.5rem;
+
+    background: #202020;
+
+    color: white;
+
+    border: 1px solid #3b3b3b;
+
+    border-radius: 0.8rem;
+
+    padding: 0 1.3rem;
+
+    outline: none;
+
+    font-size: 1.2rem;
+
+    transition: 0.2s;
+}
+
+
+.campo_peca select:focus,
+.campo_peca input:focus {
+    border-color: #e50914;
+}
+
+
+/* INFORMAÇÕES */
+
+.peca_informacao {
+    min-height: 4.5rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 0.4rem;
+
+    background: #181818;
+
+    border: 1px solid #303030;
+
+    border-radius: 0.8rem;
+
+    padding: 0.8rem 1.3rem;
+}
+
+
+.peca_informacao span {
+    color: #777;
+
+    font-size: 1rem;
+}
+
+
+.peca_informacao strong {
+    color: #eee;
+
+    font-size: 1.3rem;
+}
+
+
+/* RODAPÉ */
+
+.peca_rodape {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 2rem;
+
+    margin-top: 2rem;
+
+    padding-top: 1.5rem;
+
+    border-top: 1px solid #242424;
+}
+
+
+.peca_total {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 0.3rem;
+}
+
+
+.peca_total span {
+    color: #777;
+
+    font-size: 1rem;
+
+    text-transform: uppercase;
+}
+
+
+.peca_total strong {
+    color: #62dc79;
+
+    font-size: 2rem;
+}
+
+
+/* BOTÃO */
+
+.botao_adicionar_peca {
+    min-width: 18rem;
+
+    height: 4.5rem;
+
+    background: #b40000;
+
+    color: white;
+
+    border: 1px solid #d20a13;
+
+    border-radius: 0.8rem;
+
+    padding: 0 2rem;
+
+    cursor: pointer;
+
+    font-size: 1.1rem;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+
+.botao_adicionar_peca:hover {
+    background: #d00000;
+
+    border-color: #e50914;
+}
+
+
+.botao_adicionar_peca:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+/* ========================================================= */
+/* TABELA */
+/* ========================================================= */
+
+.tabela_wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border:
+        1px solid
+        #292929;
+
+    border-radius: 1rem;
+}
+
+
+.tabela_wrapper table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+}
+
+
+.tabela_wrapper thead {
+    background: #1a1a1a;
+}
+
+
+.tabela_wrapper th {
+    color: white;
+
+    font-size: 1.2rem;
+
+    text-align: left;
+
+    padding: 1.5rem;
+
+    border-bottom:
+        1px solid
+        #303030;
+}
+
+
+.tabela_wrapper td {
+    color: #ccc;
+
+    font-size: 1.2rem;
+
+    padding: 1.5rem;
+
+    border-bottom:
+        1px solid
+        #222;
+}
+
+
+.tabela_wrapper tbody tr:hover {
+    background: #181818;
+}
+
+
+.total_item {
+    color: #62dc79 !important;
+
+    font-weight: bold;
+}
+
+
+/* ========================================================= */
+/* PAGAMENTOS */
+/* ========================================================= */
+
+.pagamentos {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+}
+
+
+.pagamento {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 2rem;
+
+    background: #101010;
+
+    border:
+        1px solid
+        #292929;
+
+    border-radius: 0.8rem;
+
+    padding: 1.5rem;
+}
+
+
+.pagamento > div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5rem;
+}
+
+
+.pagamento span {
+    color: #777;
+
+    font-size: 1rem;
+
+    text-transform: uppercase;
+}
+
+
+.pagamento strong {
+    color: #ddd;
+
+    font-size: 1.2rem;
+}
+
+
+.vazio {
+    padding: 2rem;
+
+    text-align: center;
+
+    color: #777;
+
+    background: #101010;
+
+    border-radius: 0.8rem;
+}
+
+
+.carregando {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #050505;
+
+    color: white;
+
+    font-size: 1.5rem;
+}
+
+
+/* ========================================================= */
+/* RESPONSIVO */
+/* ========================================================= */
+
+@media screen and (max-width: 1000px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+
+    .gerenciamento {
+        grid-template-columns: 1fr;
+    }
+
+
+    .pagamento {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .peca_form {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media screen and (max-width: 700px) {
+
+    .barra_Principal {
+        padding: 0 1.5rem;
+    }
+
+
+    .barra_perfil_info {
+        display: none;
+    }
+
+
+    .conteudo {
+        padding: 1rem;
+    }
+
+
+    .painel {
+        padding: 1.5rem;
+    }
+
+
+    .topo {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .problema_topo {
+        flex-direction: column;
+    }
+
+
+    .servico {
+        grid-template-columns: 1fr;
+    }
+
+
+    .pagamento {
+        grid-template-columns: 1fr;
+    }
+
+    .peca_form {
+        grid-template-columns: 1fr;
+    }
+
+
+    .peca_rodape {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .peca_total {
+        align-items: flex-start;
+    }
+
+
+    .botao_adicionar_peca {
+        width: 100%;
+    }
+
 }
