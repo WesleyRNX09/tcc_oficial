@@ -693,20 +693,18 @@
 
 /* Container principal da janela */
 .modal_container {
-  background-color: #161616;
-  width: 520px; 
-  height: 100%;
-  max-width: 60rem;
+  background-color: #141414;
+  width: 100%;
+  max-width: 580px; 
+  height: 70rem;     
   max-height: 90vh;
   border-radius: 12px;
-  border: 1px solid #2a2a2a;
+  border: 1px solid #282828;
   display: flex;
   flex-direction: column;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   overflow: hidden;
-  color: #fff;
-  font-size:1.2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 /* Keyframes das Animações */
 @keyframes fadeIn {
@@ -758,14 +756,12 @@
 
 /* Corpo e Rolagem */
 .modal_body {
-  display: flex;
-  flex: 1;
-  padding: 1.5rem;
+  padding: 1.2rem 1.5rem;
   overflow-y: auto;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  padding: 1rem;
-  gap: 1.5rem;
+  gap: 1.2rem; /* Espaçamento proporcional entre seções */
 }
 
 /* Card do Veículo */
@@ -773,17 +769,16 @@
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  padding: 10px ;
-  background: #1c1c1c;
-  padding: rem;
+  background: #1a1a1a;
+  padding: 0.8rem 1.2rem;
   border-radius: 8px;
-  border: 1px solid #2a2a2a;
+  border: 1px solid #262626;
 }
 
-.modal_veiculo_card img {
-  width: 70px;
-  height: auto;
-  object-fit: contain;
+.modal_cards_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
 }
 
 .modal_veiculo_titulo {
@@ -811,6 +806,7 @@
   font-size: 1rem;
   color: #aaa;
   padding-bottom:  0.5rem;
+  padding: 2rem, auto;
 }
 
 .modal_veiculo_card p strong {
@@ -819,7 +815,8 @@
 
 /* Títulos das Seções Internas */
 .modal_secao_titulo {
-  font-size: 0.85rem;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.5px;
@@ -841,7 +838,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
 }
 
 .modal_card_stat small {
@@ -865,9 +862,9 @@
   align-items: center;
   justify-content: space-between;
   background: #1c1c1c;
-  padding: 0.8rem 1rem;
+  padding: 1.5rem;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   padding: 1rem;
 }
 
@@ -935,10 +932,10 @@
 
 /* Rodapé e Botão Fechar */
 .modal_footer {
-  padding: 1rem 1.5rem;
+  padding: 1.2rem 1.5rem 1.5rem 1.5rem;
   border-top: 1px solid #262626;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end
 }
 
 .modal_btn_fechar {
