@@ -35,6 +35,12 @@ function DetalhesOs() {
     const [salvandoValor, setSalvandoValor] = useState(false);
 
     // =====================================================
+    // SERVIÇOS
+    // =====================================================
+
+    const [problemaSelecionado, setProblemaSelecionado] = useState("");
+
+    // =====================================================
     // PEÇAS
     // =====================================================
 
@@ -50,6 +56,30 @@ function DetalhesOs() {
     const usuarioLogado = JSON.parse(
         localStorage.getItem("usuario") || "{}"
     );
+
+    const [descricaoProblema, setDescricaoProblema] = useState("");
+    const [prioridadeProblema, setPrioridadeProblema] = useState("Média");
+    
+
+    const [cadastrandoProblema, setCadastrandoProblema] =
+        useState(false);
+
+
+    // =====================================================
+    // CADASTRAR SERVIÇO
+    // =====================================================
+
+    const [descricaoServico, setDescricaoServico] = useState("");
+
+    const [tempoServico, setTempoServico] = useState("");
+
+    const [valorServico, setValorServico] = useState("");
+
+    const [cadastrandoServico, setCadastrandoServico] =
+        useState(false);
+
+    
+
 
 
     // =====================================================
@@ -96,6 +126,195 @@ function DetalhesOs() {
         } finally {
 
             setCarregando(false);
+
+        }
+
+    }
+
+    async function cadastrarEAdicionarServico() {
+
+        try {
+
+            setErro("");
+            setMensagem("");
+
+
+            // PROBLEMA
+
+            if (!problemaSelecionado) {
+
+                setErro(
+                    "Selecione o problema."
+                );
+
+                return;
+
+            }
+
+
+            // DESCRIÇÃO
+
+            if (!descricaoServico.trim()) {
+
+                setErro(
+                    "Digite o serviço realizado."
+                );
+
+                return;
+
+            }
+
+
+            // TEMPO
+
+            const tempoNumero =
+                Number(tempoServico);
+
+
+            if (
+                !Number.isInteger(tempoNumero) ||
+                tempoNumero <= 0
+            ) {
+
+                setErro(
+                    "Informe um tempo válido."
+                );
+
+                return;
+
+            }
+
+
+            // VALOR
+
+            const valorNumero =
+                Number(valorServico);
+
+
+            if (
+                Number.isNaN(valorNumero) ||
+                valorNumero < 0
+            ) {
+
+                setErro(
+                    "Informe um valor válido."
+                );
+
+                return;
+
+            }
+
+
+            setCadastrandoServico(true);
+
+
+            // =========================================
+            // 1. CADASTRAR SERVIÇO
+            // =========================================
+
+            const respostaServico =
+                await apiRequest(
+                    "/servicos",
+                    {
+                        method: "POST",
+
+                        body: JSON.stringify({
+
+                            id_problema:
+                                Number(
+                                    problemaSelecionado
+                                ),
+
+                            descricao_serv:
+                                descricaoServico.trim(),
+
+                            tempo_estimado:
+                                tempoNumero,
+
+                            valor_mao_obra:
+                                valorNumero
+
+                        })
+                    }
+                );
+
+
+            const idServico =
+                respostaServico.dados?.id_servico;
+
+
+            if (!idServico) {
+
+                throw new Error(
+                    "Não foi possível obter o serviço criado."
+                );
+
+            }
+
+
+            // =========================================
+            // 2. ADICIONAR SERVIÇO À OS
+            // =========================================
+
+            await apiRequest(
+                "/itens-os",
+                {
+                    method: "POST",
+
+                    body: JSON.stringify({
+
+                        id_os:
+                            Number(id),
+
+                        id_servico:
+                            Number(idServico),
+
+                        quantidade: 1,
+
+                        valor_unitario:
+                            valorNumero
+
+                    })
+                }
+            );
+
+
+            // =========================================
+            // 3. RECALCULAR TOTAL
+            // =========================================
+
+            await apiRequest(
+                `/ordens-servico/${id}/recalcular-total`,
+                {
+                    method: "PATCH"
+                }
+            );
+
+
+            // LIMPAR
+
+            setDescricaoServico("");
+            setTempoServico("");
+            setValorServico("");
+
+
+            setMensagem(
+                "Serviço cadastrado e adicionado à OS."
+            );
+
+
+            await carregarDetalhes();
+
+
+        } catch (error) {
+
+            console.log(error);
+
+            setErro(error.message);
+
+        } finally {
+
+            setCadastrandoServico(false);
 
         }
 
@@ -577,6 +796,357 @@ function DetalhesOs() {
         Number(
             quantidadePeca || 0
         );
+
+    async function removerItem(idItem) {
+
+        const confirmar = window.confirm(
+            "Deseja realmente excluir este item da OS?"
+        );
+
+        if (!confirmar) {
+            return;
+        }
+
+
+        try {
+
+            setErro("");
+            setMensagem("");
+
+
+            await apiRequest(
+                `/itens-os/${idItem}`,
+                {
+                    method: "DELETE"
+                }
+            );
+
+
+            // Recalcula o valor total da OS
+            await apiRequest(
+                `/ordens-servico/${id}/recalcular-total`,
+                {
+                    method: "PATCH"
+                }
+            );
+
+
+            setMensagem(
+                "Item excluído com sucesso."
+            );
+
+
+            // Atualiza os itens da OS
+            await carregarDetalhes();
+
+
+            // Atualiza estoque disponível
+            await carregarPecas();
+
+
+        } catch (error) {
+
+            console.log(error);
+
+            setErro(
+                error.message
+            );
+
+        }
+
+    }
+
+    const dadosProblemaSelecionado =
+        ordem?.problemas?.find(
+            (problema) =>
+                Number(problema.id_problema) ===
+                Number(problemaSelecionado)
+        );
+
+
+    const servicosDoProblema =
+        dadosProblemaSelecionado?.servicos || [];
+
+
+    const dadosServicoSelecionado =
+        servicosDoProblema.find(
+            (servico) =>
+                Number(servico.id_servico) ===
+                Number(servicoSelecionado)
+        );
+
+    
+
+    // =====================================================
+    // ADICIONAR SERVIÇO À OS
+    // =====================================================
+
+    async function adicionarServico() {
+
+            try {
+
+                setErro("");
+                setMensagem("");
+
+
+                // =====================================================
+                // VALIDAR PROBLEMA
+                // =====================================================
+
+                if (!problemaSelecionado) {
+
+                    setErro(
+                        "Selecione um problema."
+                    );
+
+                    return;
+
+                }
+
+
+                // =====================================================
+                // VALIDAR SERVIÇO
+                // =====================================================
+
+                if (!servicoSelecionado) {
+
+                    setErro(
+                        "Selecione um serviço."
+                    );
+
+                    return;
+
+                }
+
+
+                if (!dadosServicoSelecionado) {
+
+                    setErro(
+                        "Serviço não encontrado."
+                    );
+
+                    return;
+
+                }
+
+
+                setAdicionandoServico(true);
+
+
+                // =====================================================
+                // ADICIONAR AO ITEM_OS
+                // =====================================================
+
+                await apiRequest(
+                    "/itens-os",
+                    {
+                        method: "POST",
+
+                        body: JSON.stringify({
+
+                            id_os:
+                                Number(id),
+
+                            id_servico:
+                                Number(
+                                    dadosServicoSelecionado.id_servico
+                                ),
+
+                            quantidade: 1,
+
+                            valor_unitario:
+                                Number(
+                                    dadosServicoSelecionado.valor_mao_obra
+                                )
+
+                        })
+                    }
+                );
+
+
+                // =====================================================
+                // RECALCULAR TOTAL
+                // =====================================================
+
+                await apiRequest(
+                    `/ordens-servico/${id}/recalcular-total`,
+                    {
+                        method: "PATCH"
+                    }
+                );
+
+
+                // =====================================================
+                // LIMPAR CAMPOS
+                // =====================================================
+
+                setProblemaSelecionado("");
+
+                setServicoSelecionado("");
+
+
+                setMensagem(
+                    "Serviço adicionado à ordem de serviço com sucesso."
+                );
+
+
+                // Atualiza toda a OS
+                await carregarDetalhes();
+
+
+            } catch (error) {
+
+                console.log(error);
+
+                setErro(
+                    error.message
+                );
+
+            } finally {
+
+                setAdicionandoServico(false);
+
+            }
+
+        }
+
+        async function excluirProblema(idProblema) {
+
+            const confirmar = window.confirm(
+                "Deseja realmente excluir este problema e os serviços relacionados?"
+            );
+
+            if (!confirmar) {
+                return;
+            }
+
+
+            try {
+
+                setErro("");
+                setMensagem("");
+
+
+                await apiRequest(
+                    `/problemas/${idProblema}`,
+                    {
+                        method: "DELETE"
+                    }
+                );
+
+
+                // Recalcular valor da OS depois da exclusão
+                await apiRequest(
+                    `/ordens-servico/${id}/recalcular-total`,
+                    {
+                        method: "PATCH"
+                    }
+                );
+
+
+                setMensagem(
+                    "Problema excluído com sucesso."
+                );
+
+
+                // Atualizar a tela
+                await carregarDetalhes();
+
+
+            } catch (error) {
+
+                console.log(error);
+
+                setErro(
+                    error.message
+                );
+
+            }
+
+        }
+
+        async function adicionarProblema() {
+
+            try {
+
+                setErro("");
+                setMensagem("");
+
+
+                if (!descricaoProblema.trim()) {
+
+                    setErro(
+                        "Digite a descrição do problema."
+                    );
+
+                    return;
+
+                }
+
+
+                setCadastrandoProblema(true);
+
+
+                const resposta = await apiRequest(
+                    "/problemas",
+                    {
+                        method: "POST",
+
+                        body: JSON.stringify({
+
+                            id_os: Number(id),
+
+                            descricao_prob:
+                                descricaoProblema.trim(),
+
+                            prioridade:
+                                prioridadeProblema,
+
+                            status: "Aberto"
+
+                        })
+                    }
+                );
+
+
+                // Seleciona automaticamente o problema criado
+                if (resposta.dados?.id_problema) {
+
+                    setProblemaSelecionado(
+                        String(
+                            resposta.dados.id_problema
+                        )
+                    );
+
+                }
+
+
+                setDescricaoProblema("");
+
+                setPrioridadeProblema("Média");
+
+
+                setMensagem(
+                    "Problema adicionado com sucesso."
+                );
+
+
+                await carregarDetalhes();
+
+
+            } catch (error) {
+
+                console.log(error);
+
+                setErro(error.message);
+
+            } finally {
+
+                setCadastrandoProblema(false);
+
+            }
+
+        }
 
 
     return (
@@ -1313,6 +1883,231 @@ function DetalhesOs() {
 
                         </div>
 
+                        
+                        <div className={styles.manutencao_acoes}>
+
+                            {/* ====================================== */}
+                            {/* NOVO PROBLEMA */}
+                            {/* ====================================== */}
+
+                            <div className={styles.acao_compacta}>
+
+                                <div className={styles.acao_titulo}>
+
+                                    <span>
+                                        +
+                                    </span>
+
+                                    <strong>
+                                        Novo problema
+                                    </strong>
+
+                                </div>
+
+
+                                <div className={styles.problema_compacto}>
+
+
+                                    <input
+                                        type="text"
+                                        placeholder="Descreva o problema"
+                                        value={descricaoProblema}
+                                        onChange={(event) =>
+                                            setDescricaoProblema(
+                                                event.target.value
+                                            )
+                                        }
+                                    />
+
+
+                                    <select
+                                        value={prioridadeProblema}
+                                        onChange={(event) =>
+                                            setPrioridadeProblema(
+                                                event.target.value
+                                            )
+                                        }
+                                    >
+
+                                        <option value="Baixa">
+                                            Baixa
+                                        </option>
+
+                                        <option value="Média">
+                                            Média
+                                        </option>
+
+                                        <option value="Alta">
+                                            Alta
+                                        </option>
+
+                                    </select>
+
+
+                                    <button
+                                        type="button"
+                                        onClick={adicionarProblema}
+                                        disabled={cadastrandoProblema}
+                                    >
+
+                                        {
+                                            cadastrandoProblema
+                                                ? "ADICIONANDO..."
+                                                : "ADICIONAR"
+                                        }
+
+                                    </button>
+
+
+                                </div>
+
+                            </div>
+
+
+                            {/* ====================================== */}
+                            {/* NOVO SERVIÇO */}
+                            {/* ====================================== */}
+
+                            <div className={styles.acao_compacta}>
+
+                                <div className={styles.acao_titulo}>
+
+                                    <span>
+                                        +
+                                    </span>
+
+                                    <strong>
+                                        Novo serviço
+                                    </strong>
+
+                                </div>
+
+
+                                <div className={styles.servico_compacto}>
+
+
+                                    {/* PROBLEMA */}
+
+                                    <select
+                                        value={problemaSelecionado}
+                                        onChange={(event) =>
+                                            setProblemaSelecionado(
+                                                event.target.value
+                                            )
+                                        }
+                                    >
+
+                                        <option value="">
+                                            Problema
+                                        </option>
+
+
+                                        {
+                                            ordem.problemas?.map(
+                                                (problema) => (
+
+                                                    <option
+                                                        key={
+                                                            problema.id_problema
+                                                        }
+                                                        value={
+                                                            problema.id_problema
+                                                        }
+                                                    >
+
+                                                        {
+                                                            problema.descricao
+                                                        }
+
+                                                    </option>
+
+                                                )
+                                            )
+                                        }
+
+                                    </select>
+
+
+                                    {/* SERVIÇO */}
+
+                                    <input
+                                        type="text"
+                                        placeholder="Serviço realizado"
+                                        value={descricaoServico}
+                                        onChange={(event) =>
+                                            setDescricaoServico(
+                                                event.target.value
+                                            )
+                                        }
+                                    />
+
+
+                                    {/* TEMPO */}
+
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        placeholder="Minutos"
+                                        value={tempoServico}
+                                        onChange={(event) =>
+                                            setTempoServico(
+                                                event.target.value
+                                            )
+                                        }
+                                    />
+
+
+                                    {/* VALOR */}
+
+                                    <div className={styles.valor_compacto}>
+
+                                        <span>
+                                            R$
+                                        </span>
+
+                                        <input
+                                            type="number"
+                                            min="0"
+                                            step="0.01"
+                                            placeholder="Valor"
+                                            value={valorServico}
+                                            onChange={(event) =>
+                                                setValorServico(
+                                                    event.target.value
+                                                )
+                                            }
+                                        />
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        onClick={
+                                            cadastrarEAdicionarServico
+                                        }
+                                        disabled={
+                                            cadastrandoServico
+                                        }
+                                    >
+
+                                        {
+                                            cadastrandoServico
+                                                ? "SALVANDO..."
+                                                : "ADICIONAR"
+                                        }
+
+                                    </button>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        
+
 
                         {
                             ordem.problemas?.length === 0
@@ -1363,16 +2158,26 @@ function DetalhesOs() {
                                                     <div className={styles.badges}>
 
                                                         <span className={styles.badge_prioridade}>
-                                                            {
-                                                                problema.prioridade
-                                                            }
+                                                            {problema.prioridade}
                                                         </span>
 
+
                                                         <span className={styles.badge_status}>
-                                                            {
-                                                                problema.status
-                                                            }
+                                                            {problema.status}
                                                         </span>
+
+
+                                                        <button
+                                                            type="button"
+                                                            className={styles.botao_excluir_problema}
+                                                            onClick={() =>
+                                                                excluirProblema(
+                                                                    problema.id_problema
+                                                                )
+                                                            }
+                                                        >
+                                                            EXCLUIR
+                                                        </button>
 
                                                     </div>
 
@@ -1750,6 +2555,10 @@ function DetalhesOs() {
                                             Total
                                         </th>
 
+                                        <th>
+                                            Ações
+                                        </th>
+
                                     </tr>
 
                                 </thead>
@@ -1822,6 +2631,20 @@ function DetalhesOs() {
                                                                         item.valor_total
                                                                     )
                                                                 }
+
+                                                            </td>
+
+                                                            <td>
+
+                                                                <button
+                                                                    type="button"
+                                                                    className={styles.botao_excluir_item}
+                                                                    onClick={() =>
+                                                                        removerItem(item.id_item)
+                                                                    }
+                                                                >
+                                                                    EXCLUIR
+                                                                </button>
 
                                                             </td>
 
