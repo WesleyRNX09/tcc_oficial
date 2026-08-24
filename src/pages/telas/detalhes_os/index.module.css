@@ -740,6 +740,251 @@
     border-color: #e50914;
 }
 
+.adicionar_problema {
+    width: 100%;
+
+    background: #101010;
+
+    border: 1px solid #2a2a2a;
+    border-radius: 1rem;
+
+    padding: 2rem;
+
+    margin-bottom: 2rem;
+}
+
+
+.adicionar_problema_topo {
+    margin-bottom: 1.8rem;
+}
+
+
+.adicionar_problema_topo h3 {
+    margin: 0.4rem 0 0;
+
+    color: white;
+
+    font-size: 1.6rem;
+}
+
+
+.problema_form {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        auto;
+
+    gap: 1.5rem;
+
+    align-items: end;
+}
+
+
+.campo_problema {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.8rem;
+}
+
+
+.campo_problema label {
+    color: #888;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+
+.campo_problema input,
+.campo_problema select {
+    width: 100%;
+    height: 4.5rem;
+
+    background: #202020;
+
+    color: white;
+
+    border: 1px solid #3b3b3b;
+    border-radius: 0.8rem;
+
+    padding: 0 1.3rem;
+
+    outline: none;
+
+    font-size: 1.2rem;
+}
+
+
+.campo_problema input:focus,
+.campo_problema select:focus {
+    border-color: #e50914;
+}
+
+
+.botao_adicionar_problema {
+    min-width: 20rem;
+    height: 4.5rem;
+
+    background: #b40000;
+
+    color: white;
+
+    border: 1px solid #d20a13;
+    border-radius: 0.8rem;
+
+    padding: 0 2rem;
+
+    cursor: pointer;
+
+    font-size: 1.1rem;
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+
+.botao_adicionar_problema:hover {
+    background: #d00000;
+}
+
+
+.botao_adicionar_problema:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+/* ========================================================= */
+/* CADASTRAR SERVIÇO */
+/* ========================================================= */
+
+.cadastrar_servico {
+    width: 100%;
+
+    background: #101010;
+
+    border: 1px solid #2a2a2a;
+    border-radius: 1rem;
+
+    padding: 2rem;
+
+    margin-bottom: 2rem;
+}
+
+
+.cadastrar_servico_topo {
+    margin-bottom: 1.8rem;
+}
+
+
+.cadastrar_servico_topo h3 {
+    margin: 0.4rem 0 0;
+
+    color: white;
+
+    font-size: 1.6rem;
+}
+
+
+.cadastrar_servico_form {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        auto;
+
+    gap: 1.5rem;
+
+    align-items: end;
+}
+
+
+.campo_servico input {
+    width: 100%;
+
+    height: 4.5rem;
+
+    background: #202020;
+
+    color: white;
+
+    border: 1px solid #3b3b3b;
+    border-radius: 0.8rem;
+
+    padding: 0 1.3rem;
+
+    outline: none;
+
+    font-size: 1.2rem;
+}
+
+
+.campo_servico input:focus {
+    border-color: #e50914;
+}
+
+
+.botao_cadastrar_servico {
+    min-width: 20rem;
+    height: 4.5rem;
+
+    background: #b40000;
+
+    color: white;
+
+    border: 1px solid #d20a13;
+    border-radius: 0.8rem;
+
+    cursor: pointer;
+
+    padding: 0 2rem;
+
+    font-size: 1.1rem;
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+
+.botao_cadastrar_servico:hover {
+    background: #d00000;
+}
+
+
+.botao_cadastrar_servico:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+.aviso_servico {
+    width: 100%;
+
+    padding: 1.5rem;
+
+    background: #171717;
+
+    border: 1px solid #292929;
+    border-radius: 0.8rem;
+
+    color: #888;
+
+    font-size: 1.2rem;
+}
+
 
 /* ========================================================= */
 /* OBSERVAÇÕES */
@@ -828,6 +1073,40 @@
     gap: 1rem;
 }
 
+.botao_excluir_problema {
+    min-width: 10rem;
+    height: 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(180, 0, 0, 0.15);
+
+    color: #ff5c5c;
+
+    border: 1px solid #7a1616;
+    border-radius: 2rem;
+
+    padding: 0 1.5rem;
+
+    cursor: pointer;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+
+.botao_excluir_problema:hover {
+    background: #a80000;
+
+    border-color: #e50914;
+
+    color: white;
+}
+
 
 .badge_prioridade,
 .badge_status {
@@ -857,6 +1136,242 @@
     background: #282828;
 
     color: #ddd;
+}
+
+/* ========================================================= */
+/* ADICIONAR SERVIÇO */
+/* ========================================================= */
+
+.adicionar_servico {
+    width: 100%;
+
+    background: #101010;
+
+    border: 1px solid #2a2a2a;
+    border-radius: 1rem;
+
+    padding: 2rem;
+
+    margin-bottom: 2rem;
+}
+
+
+.adicionar_servico_topo {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1.8rem;
+}
+
+
+.adicionar_servico_topo h3 {
+    margin: 0.4rem 0 0;
+
+    color: white;
+
+    font-size: 1.6rem;
+}
+
+
+/* FORMULÁRIO */
+
+.servico_form {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        2fr
+        1fr
+        1fr;
+
+    gap: 1.5rem;
+
+    align-items: end;
+}
+
+
+.campo_servico {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.8rem;
+}
+
+
+.campo_servico label {
+    color: #888;
+
+    font-size: 1.1rem;
+
+    font-weight: 600;
+}
+
+
+.campo_servico select {
+    width: 100%;
+
+    height: 4.5rem;
+
+    background: #202020;
+
+    color: white;
+
+    border: 1px solid #3b3b3b;
+    border-radius: 0.8rem;
+
+    padding: 0 1.3rem;
+
+    outline: none;
+
+    font-size: 1.2rem;
+
+    transition: 0.2s;
+}
+
+
+.campo_servico select:focus {
+    border-color: #e50914;
+}
+
+
+.campo_servico select:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+/* INFORMAÇÕES */
+
+.servico_informacao {
+    min-height: 4.5rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 0.4rem;
+
+    background: #181818;
+
+    border: 1px solid #303030;
+    border-radius: 0.8rem;
+
+    padding: 0.8rem 1.3rem;
+}
+
+
+.servico_informacao span {
+    color: #777;
+
+    font-size: 1rem;
+}
+
+
+.servico_informacao strong {
+    color: #eee;
+
+    font-size: 1.3rem;
+}
+
+
+.valor_servico {
+    color: #62dc79 !important;
+}
+
+
+/* RODAPÉ */
+
+.servico_rodape {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 2rem;
+
+    margin-top: 2rem;
+
+    padding-top: 1.5rem;
+
+    border-top: 1px solid #242424;
+}
+
+
+.servico_total {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 0.3rem;
+}
+
+
+.servico_total span {
+    color: #777;
+
+    font-size: 1rem;
+
+    text-transform: uppercase;
+}
+
+
+.servico_total strong {
+    color: #62dc79;
+
+    font-size: 2rem;
+}
+
+
+/* BOTÃO */
+
+.botao_adicionar_servico {
+    min-width: 20rem;
+
+    height: 4.5rem;
+
+    background: #b40000;
+
+    color: white;
+
+    border: 1px solid #d20a13;
+    border-radius: 0.8rem;
+
+    padding: 0 2rem;
+
+    cursor: pointer;
+
+    font-size: 1.1rem;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+
+.botao_adicionar_servico:hover:not(:disabled) {
+    background: #d00000;
+
+    border-color: #e50914;
+}
+
+
+.botao_adicionar_servico:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
 }
 
 
@@ -919,6 +1434,220 @@
     color: #999;
 
     font-size: 1.2rem;
+}
+
+/* ========================================================= */
+/* MANUTENÇÃO COMPACTA */
+/* ========================================================= */
+
+.manutencao_acoes {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+}
+
+
+/* LINHA */
+
+.acao_compacta {
+    width: 100%;
+
+    background: #101010;
+
+    border: 1px solid #292929;
+
+    border-radius: 0.8rem;
+
+    padding: 1.3rem;
+}
+
+
+.acao_titulo {
+    display: flex;
+    align-items: center;
+
+    gap: 0.8rem;
+
+    margin-bottom: 1rem;
+}
+
+
+.acao_titulo span {
+    color: #e50914;
+
+    font-size: 1.8rem;
+
+    font-weight: 700;
+}
+
+
+.acao_titulo strong {
+    color: #eee;
+
+    font-size: 1.3rem;
+}
+
+
+/* ========================================================= */
+/* PROBLEMA */
+/* ========================================================= */
+
+.problema_compacto {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        15rem
+        13rem;
+
+    gap: 1rem;
+}
+
+
+/* ========================================================= */
+/* SERVIÇO */
+/* ========================================================= */
+
+.servico_compacto {
+    display: grid;
+
+    grid-template-columns:
+        1.4fr
+        2fr
+        12rem
+        15rem
+        13rem;
+
+    gap: 1rem;
+}
+
+
+/* ========================================================= */
+/* CAMPOS */
+/* ========================================================= */
+
+.problema_compacto input,
+.problema_compacto select,
+.servico_compacto input,
+.servico_compacto select {
+    width: 100%;
+
+    height: 4rem;
+
+    background: #1c1c1c;
+
+    color: white;
+
+    border: 1px solid #353535;
+
+    border-radius: 0.7rem;
+
+    padding: 0 1rem;
+
+    outline: none;
+
+    font-size: 1.1rem;
+}
+
+
+.problema_compacto input:focus,
+.problema_compacto select:focus,
+.servico_compacto input:focus,
+.servico_compacto select:focus {
+
+    border-color: #e50914;
+
+}
+
+
+/* ========================================================= */
+/* VALOR */
+/* ========================================================= */
+
+.valor_compacto {
+    height: 4rem;
+
+    display: flex;
+
+    background: #1c1c1c;
+
+    border: 1px solid #353535;
+
+    border-radius: 0.7rem;
+
+    overflow: hidden;
+}
+
+
+.valor_compacto span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 1rem;
+
+    background: #252525;
+
+    color: #888;
+}
+
+
+.valor_compacto input {
+    border: none !important;
+
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    height: 100%;
+}
+
+
+/* ========================================================= */
+/* BOTÕES */
+/* ========================================================= */
+
+.problema_compacto button,
+.servico_compacto button {
+    height: 4rem;
+
+    background: #b40000;
+
+    color: white;
+
+    border: 1px solid #d20a13;
+
+    border-radius: 0.7rem;
+
+    cursor: pointer;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+
+.problema_compacto button:hover,
+.servico_compacto button:hover {
+
+    background: #d00000;
+
+}
+
+
+.problema_compacto button:disabled,
+.servico_compacto button:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
 }
 
 /* ========================================================= */
@@ -1226,6 +1955,38 @@
     font-weight: bold;
 }
 
+.botao_excluir_item {
+    width: 10rem;
+    height: 3.5rem;
+
+    background: rgba(180, 0, 0, 0.15);
+
+    color: #ff5c5c;
+
+    border: 1px solid #7a1616;
+    border-radius: 0.7rem;
+
+    cursor: pointer;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+
+.botao_excluir_item:hover {
+    background: #a80000;
+
+    color: white;
+
+    border-color: #e50914;
+}
+
 
 /* ========================================================= */
 /* PAGAMENTOS */
@@ -1338,6 +2099,23 @@
             repeat(2, 1fr);
     }
 
+    .servico_form {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .problema_compacto {
+        grid-template-columns:
+            1fr
+            1fr;
+    }
+
+
+    .servico_compacto {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
 }
 
 
@@ -1403,6 +2181,32 @@
 
     .botao_adicionar_peca {
         width: 100%;
+    }
+
+    .servico_form {
+        grid-template-columns: 1fr;
+    }
+
+
+    .servico_rodape {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .servico_total {
+        align-items: flex-start;
+    }
+
+
+    .botao_adicionar_servico {
+        width: 100%;
+    }
+
+    .problema_compacto,
+    .servico_compacto {
+        grid-template-columns: 1fr;
     }
 
 }
