@@ -41,6 +41,18 @@ function DetalhesOs() {
     const [problemaSelecionado, setProblemaSelecionado] = useState("");
 
     // =====================================================
+    // EXECUÇÃO / FUNCIONÁRIOS
+    // =====================================================
+
+    const [funcionarios, setFuncionarios] = useState([]);
+
+    const [funcionarioSelecionado, setFuncionarioSelecionado] =
+        useState({});
+
+    const [iniciandoExecucao, setIniciandoExecucao] =
+        useState(null);
+
+    // =====================================================
     // PEÇAS
     // =====================================================
 
@@ -320,6 +332,29 @@ function DetalhesOs() {
 
     }
 
+    async function carregarFuncionarios() {
+
+        try {
+
+            const resposta = await apiRequest(
+                "/funcionarios"
+            );
+
+            setFuncionarios(
+                resposta.dados || []
+            );
+
+        } catch (error) {
+
+            console.log(
+                "Erro ao carregar funcionários:",
+                error
+            );
+
+        }
+
+    }
+
     // =====================================================
     // CARREGAR PEÇAS
     // =====================================================
@@ -351,8 +386,8 @@ function DetalhesOs() {
     useEffect(() => {
 
         carregarDetalhes();
-
         carregarPecas();
+        carregarFuncionarios();
 
     }, [id]);
 
@@ -1143,6 +1178,184 @@ function DetalhesOs() {
             } finally {
 
                 setCadastrandoProblema(false);
+
+            }
+
+        }
+        function dataMysqlAgora() {
+
+            const agora = new Date();
+
+            const ano =
+                agora.getFullYear();
+
+            const mes =
+                String(
+                    agora.getMonth() + 1
+                ).padStart(2, "0");
+
+            const dia =
+                String(
+                    agora.getDate()
+                ).padStart(2, "0");
+
+            const hora =
+                String(
+                    agora.getHours()
+                ).padStart(2, "0");
+
+            const minuto =
+                String(
+                    agora.getMinutes()
+                ).padStart(2, "0");
+
+            const segundo =
+                String(
+                    agora.getSeconds()
+                ).padStart(2, "0");
+
+
+            return (
+                `${ano}-${mes}-${dia} ` +
+                `${hora}:${minuto}:${segundo}`
+            );
+
+        }
+
+        async function iniciarExecucao(problema) {
+
+            try {
+
+                setErro("");
+                setMensagem("");
+
+
+                const idFuncionario =
+                    funcionarioSelecionado[
+                        problema.id_problema
+                    ];
+
+
+                if (!idFuncionario) {
+
+                    setErro(
+                        "Selecione um funcionário."
+                    );
+
+                    return;
+
+                }
+
+
+                setIniciandoExecucao(
+                    problema.id_problema
+                );
+
+
+                // =========================================
+                // 1. CRIAR EXECUÇÃO
+                // =========================================
+
+                const resposta =
+                    await apiRequest(
+                        "/execucoes",
+                        {
+                            method: "POST",
+
+                            body: JSON.stringify({
+
+                                id_funcionario:
+                                    Number(
+                                        idFuncionario
+                                    ),
+
+                                data_inicio:
+                                    dataMysqlAgora(),
+
+                                data_fim:
+                                    null,
+
+                                status:
+                                    "Em andamento"
+
+                            })
+                        }
+                    );
+
+
+                const idExecucao =
+                    resposta.dados?.id_execucao;
+
+
+                if (!idExecucao) {
+
+                    throw new Error(
+                        "Não foi possível criar a execução."
+                    );
+
+                }
+
+
+                // =========================================
+                // 2. VINCULAR AO PROBLEMA
+                // =========================================
+
+                await apiRequest(
+                    `/problemas/${problema.id_problema}`,
+                    {
+                        method: "PATCH",
+
+                        body: JSON.stringify({
+
+                            id_os:
+                                ordem.id_os,
+
+                            descricao_prob:
+                                problema.descricao,
+
+                            prioridade:
+                                problema.prioridade,
+
+                            status:
+                                "Em análise",
+
+                            id_execucao:
+                                idExecucao
+
+                        })
+                    }
+                );
+
+
+                setMensagem(
+                    "Serviço iniciado com sucesso."
+                );
+
+
+                setFuncionarioSelecionado(
+                    (anterior) => ({
+                        ...anterior,
+
+                        [problema.id_problema]:
+                            ""
+                    })
+                );
+
+
+                await carregarDetalhes();
+
+
+            } catch (error) {
+
+                console.log(error);
+
+                setErro(
+                    error.message
+                );
+
+            } finally {
+
+                setIniciandoExecucao(null);
 
             }
 
@@ -2252,58 +2465,167 @@ function DetalhesOs() {
 
                                                 {/* EXECUÇÃO */}
 
+                                                {/* ======================================== */}
+                                                {/* EXECUÇÃO */}
+                                                {/* ======================================== */}
+
                                                 {
-                                                    problema.execucao && (
+                                                    problema.execucao
+                                                        ? (
 
-                                                        <div className={styles.execucao}>
+                                                            // =====================================
+                                                            // JÁ EXISTE EXECUÇÃO
+                                                            // =====================================
 
-                                                            <h4>
-                                                                Execução
-                                                            </h4>
+                                                            <div className={styles.execucao_ativa}>
+
+                                                                <div>
+
+                                                                    <span>
+                                                                        Mecânico responsável
+                                                                    </span>
+
+                                                                    <strong>
+
+                                                                        {
+                                                                            problema
+                                                                                .execucao
+                                                                                .funcionario
+                                                                                ?.nome ||
+                                                                            "Funcionário"
+                                                                        }
+
+                                                                    </strong>
+
+                                                                </div>
 
 
-                                                            <span>
+                                                                <div>
 
-                                                                Funcionário:
+                                                                    <span>
+                                                                        Status
+                                                                    </span>
 
-                                                                <strong>
+                                                                    <strong>
 
-                                                                    {" "}
+                                                                        {
+                                                                            problema
+                                                                                .execucao
+                                                                                .status
+                                                                        }
+
+                                                                    </strong>
+
+                                                                </div>
+
+
+                                                                <span
+                                                                    className={
+                                                                        styles.execucao_status
+                                                                    }
+                                                                >
+                                                                    EM EXECUÇÃO
+                                                                </span>
+
+                                                            </div>
+
+                                                        )
+                                                        : (
+
+                                                            // =====================================
+                                                            // AINDA NÃO EXISTE EXECUÇÃO
+                                                            // =====================================
+
+                                                            <div className={styles.iniciar_execucao}>
+
+                                                                <select
+                                                                    value={
+                                                                        funcionarioSelecionado[
+                                                                            problema.id_problema
+                                                                        ] || ""
+                                                                    }
+                                                                    onChange={(event) =>
+
+                                                                        setFuncionarioSelecionado(
+                                                                            (anterior) => ({
+
+                                                                                ...anterior,
+
+                                                                                [problema.id_problema]:
+                                                                                    event.target.value
+
+                                                                            })
+                                                                        )
+
+                                                                    }
+                                                                >
+
+                                                                    <option value="">
+                                                                        Selecionar mecânico
+                                                                    </option>
+
 
                                                                     {
-                                                                        problema
-                                                                            .execucao
-                                                                            .funcionario
-                                                                            ?.nome ||
-                                                                        "-"
+                                                                        funcionarios.map(
+                                                                            (funcionario) => (
+
+                                                                                <option
+                                                                                    key={
+                                                                                        funcionario
+                                                                                            .id_funcionario
+                                                                                    }
+                                                                                    value={
+                                                                                        funcionario
+                                                                                            .id_funcionario
+                                                                                    }
+                                                                                >
+
+                                                                                    {
+                                                                                        funcionario
+                                                                                            .nome_funcionario
+                                                                                    }
+
+                                                                                    {
+                                                                                        funcionario
+                                                                                            .especialidade
+                                                                                            ? ` - ${funcionario.especialidade}`
+                                                                                            : ""
+                                                                                    }
+
+                                                                                </option>
+
+                                                                            )
+                                                                        )
                                                                     }
 
-                                                                </strong>
-
-                                                            </span>
+                                                                </select>
 
 
-                                                            <span>
-
-                                                                Status:
-
-                                                                <strong>
-
-                                                                    {" "}
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() =>
+                                                                        iniciarExecucao(
+                                                                            problema
+                                                                        )
+                                                                    }
+                                                                    disabled={
+                                                                        iniciandoExecucao ===
+                                                                        problema.id_problema
+                                                                    }
+                                                                >
 
                                                                     {
-                                                                        problema
-                                                                            .execucao
-                                                                            .status
+                                                                        iniciandoExecucao ===
+                                                                        problema.id_problema
+                                                                            ? "INICIANDO..."
+                                                                            : "INICIAR SERVIÇO"
                                                                     }
 
-                                                                </strong>
+                                                                </button>
 
-                                                            </span>
+                                                            </div>
 
-                                                        </div>
-
-                                                    )
+                                                        )
                                                 }
 
 
